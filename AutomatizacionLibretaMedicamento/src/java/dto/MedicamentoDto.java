@@ -20,6 +20,8 @@ public class MedicamentoDto {
   private Integer cantidad;
   private Integer  gramaje;
   private Date   fecha_vencimiento;
+  private String estado;
+  private Integer Id_seccion;
 
     public MedicamentoDto() {
     }
@@ -88,8 +90,6 @@ public class MedicamentoDto {
         this.gramaje = gramaje;
     }
 
-   
-
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
     }
@@ -98,9 +98,25 @@ public class MedicamentoDto {
         this.fecha_vencimiento = fecha_vencimiento;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Integer getId_seccion() {
+        return Id_seccion;
+    }
+
+    public void setId_seccion(Integer Id_seccion) {
+        this.Id_seccion = Id_seccion;
+    }
+
     @Override
     public String toString() {
-        return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + '}';
+        return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + ", estado=" + estado + ", Id_seccion=" + Id_seccion + '}';
     }
 
     
