@@ -67,6 +67,36 @@ public class FarmauceticoDao {
           
       }
       
+      public boolean modificar(FarmaceuticoDto dto){
+          try {
+              Connection conexion = Conexion.getConexion();
+              String query = "UPDATE Farmaceutico SET Nombre = ? , Direccion = ? , Telefono = ? , Id_seccion = ? "
+                      + "WHERE Rut_Farmaceutico =  ?";
+              PreparedStatement actualizar = conexion.prepareStatement(query);
+              
+              actualizar.setString(1, dto.getNombre());
+              actualizar.setString(2, dto.getDireccion());
+              actualizar.setInt(3, dto.getTelefono());
+              actualizar.setInt(4, dto.getId_seccion());
+              
+              actualizar.executeUpdate();
+              
+               actualizar.close();
+               conexion.close();
+               
+               return true;
+              
+          }catch(SQLException w){
+              System.out.println("Error sql al actualizar " +w.getMessage()); 
+              return false;
+          } catch (Exception e) {
+              System.out.println("Error al actualizar "+e.getMessage());
+              return  false;
+          }
+          
+      }
+      
+      
       public List<FarmaceuticoDto>  listarFarmaceuticos(){
          List<FarmaceuticoDto> lista = new ArrayList<FarmaceuticoDto>();
           try {
