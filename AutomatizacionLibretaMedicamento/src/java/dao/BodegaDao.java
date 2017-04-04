@@ -4,6 +4,7 @@ package dao;
 import  java.sql.*;
 import dto.BodegaDto;
 import  componentes.Conexion;
+import java.util.*;
 
 
 
@@ -66,6 +67,33 @@ public class BodegaDao {
         
     }
     
-    
+    public List<BodegaDto> listarBodegas(){
+        List<BodegaDto>  lista = null;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Bodega";
+            PreparedStatement listar = conexion.prepareStatement(query);
+            ResultSet rs = listar.executeQuery();
+             lista= new ArrayList<BodegaDto>();
+            while(rs.next()){
+                
+                BodegaDto dto = new BodegaDto();
+                dto.setId_seccion(rs.getInt("id_seccion"));
+                dto.setCategoria(rs.getString("Categoria"));
+               
+                lista.add(dto);
+            }
+            
+            listar.close();
+            conexion.close();
+            
+            
+        }catch(SQLException w){
+            System.out.println("Error al listar sql "+w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar "+e.getMessage());
+        }
+       return lista; 
+    }
     
 }
