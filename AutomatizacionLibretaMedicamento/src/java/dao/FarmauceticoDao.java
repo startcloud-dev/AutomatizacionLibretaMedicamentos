@@ -5,7 +5,7 @@
  */
 package dao;
 import componentes.Conexion;
-import dto.Farmaceutico;
+import dto.FarmaceuticoDto;
 import  java.sql.*;
 
 /**
@@ -14,7 +14,7 @@ import  java.sql.*;
  */
 public class FarmauceticoDao {
 
-  public boolean agregar(Farmaceutico farmaceutico){
+  public boolean agregar(FarmaceuticoDto farmaceutico){
       try {
           Connection conexion = Conexion.getConexion();
           String query = "INSERT INTO Farmaceutico (Rut_Farmaceutico,Nombre,Direccion,Telefono,id_seccion)"

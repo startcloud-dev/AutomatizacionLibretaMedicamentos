@@ -9,12 +9,12 @@ package dto;
  *
  * @author Sergio
  */
-public class Bodega {
+public class BodegaDto {
  
   private Integer id_seccion;
   private String categoria ;
 
-    public Bodega() {
+    public BodegaDto() {
     }
 
     public Integer getId_seccion() {

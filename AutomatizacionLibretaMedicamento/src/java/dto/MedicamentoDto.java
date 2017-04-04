@@ -9,7 +9,7 @@ import java.util.Date;
  *
  * @author Sergio
  */
-public class Medicamento {
+public class MedicamentoDto {
    
   private Integer codigo;
   private String nombre;
@@ -18,10 +18,10 @@ public class Medicamento {
   private String componente;
   private String contenido ;
   private Integer cantidad;
-  private String  gramaje;
+  private Integer  gramaje;
   private Date   fecha_vencimiento;
 
-    public Medicamento() {
+    public MedicamentoDto() {
     }
 
     public Integer getCodigo() {
@@ -80,13 +80,15 @@ public class Medicamento {
         this.cantidad = cantidad;
     }
 
-    public String getGramaje() {
+    public Integer getGramaje() {
         return gramaje;
     }
 
-    public void setGramaje(String gramaje) {
+    public void setGramaje(Integer gramaje) {
         this.gramaje = gramaje;
     }
+
+   
 
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
@@ -98,10 +100,11 @@ public class Medicamento {
 
     @Override
     public String toString() {
-        return "Medicamento{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + '}';
+        return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + '}';
     }
-  
-  
+
+    
+    
     
     
 }

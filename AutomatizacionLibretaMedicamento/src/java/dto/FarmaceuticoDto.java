@@ -5,7 +5,7 @@ package dto;
  *
  * @author Sergio
  */
-public class Farmaceutico {
+public class FarmaceuticoDto {
 
  private String rut_farmaceutico;
  private String nombre;
@@ -13,7 +13,7 @@ public class Farmaceutico {
  private Integer telefono;
  private Integer id_seccion;
 
-    public Farmaceutico() {
+    public FarmaceuticoDto() {
     }
 
     public String getRut_farmaceutico() {

@@ -2,7 +2,7 @@
 
 package dao;
 import  java.sql.*;
-import dto.Bodega;
+import dto.BodegaDto;
 import  componentes.Conexion;
 
 
@@ -14,7 +14,7 @@ import  componentes.Conexion;
  */
 public class BodegaDao {
    
-    public boolean agregar(Bodega bodega){
+    public boolean agregar(BodegaDto bodega){
         
         try {
             Connection conexion = Conexion.getConexion();
@@ -42,7 +42,7 @@ public class BodegaDao {
         
     }
     
-    public boolean eliminar(Bodega bodega ){
+    public boolean eliminar(BodegaDto bodega ){
         
         try {
         Connection conexion = Conexion.getConexion();
