@@ -74,7 +74,7 @@ public class BodegaDao {
             String query = "SELECT * FROM Bodega";
             PreparedStatement listar = conexion.prepareStatement(query);
             ResultSet rs = listar.executeQuery();
-             lista= new ArrayList<BodegaDto>();
+            lista= new ArrayList<BodegaDto>();
             while(rs.next()){
                 
                 BodegaDto dto = new BodegaDto();
