@@ -46,13 +46,13 @@ public class MedicamentoDao {
 
     }
 
-    public boolean eliminar(String codigo){
+    public boolean eliminar(MedicamentoDto dto){
         try {
             Connection conexion = Conexion.getConexion();
             String query   = "DELETE FROM Medicamento WHERE  Codigo = ? ";
             PreparedStatement eliminar = conexion.prepareStatement(query);
             
-            eliminar.setString(1, codigo);
+            eliminar.setInt(1, dto.getCodigo());
 
             eliminar.execute();
             conexion.commit();
@@ -69,6 +69,44 @@ public class MedicamentoDao {
             return false;
         }
         
+    }
+    
+    public List<MedicamentoDto> listarMedicamentos(){
+        List<MedicamentoDto> lista = null;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Medicamento ";
+            PreparedStatement listar = conexion.prepareStatement(query);
+            
+            ResultSet rs = listar.executeQuery();
+            lista = new ArrayList<MedicamentoDto>();
+            while(rs.next()){
+                MedicamentoDto dto = new MedicamentoDto();
+                dto.setCodigo(rs.getInt("Codigo"));
+                dto.setNombre(rs.getString("Nombre"));
+                dto.setTipo(rs.getString("Tipo"));
+                dto.setFabricante(rs.getString("Fabricante"));
+                dto.setComponente(rs.getString("Componentes"));
+                dto.setContenido(rs.getString("Contenido"));
+                dto.setCantidad(rs.getInt("Cantidad"));
+                dto.setGramaje(rs.getInt("Gramaje"));
+                dto.setFecha_vencimiento(rs.getDate("Fecha_Vencimiento"));
+                dto.setEstado(rs.getString("Estado"));
+                dto.setId_seccion(rs.getInt("Id_seccion"));
+                
+                
+                lista.add(dto);
+                
+            }
+             listar.close();
+             conexion.close();
+            
+        }catch(SQLException w){
+            System.out.println("Error sql al listar los medicamentos "+w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar los medicamentos ");
+        }
+        return lista;
     }
     
     
