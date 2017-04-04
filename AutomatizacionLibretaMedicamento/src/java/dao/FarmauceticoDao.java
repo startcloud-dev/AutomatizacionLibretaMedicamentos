@@ -7,6 +7,8 @@ package dao;
 import componentes.Conexion;
 import dto.FarmaceuticoDto;
 import  java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -64,6 +66,39 @@ public class FarmauceticoDao {
           }
           
       }
+      
+      public List<FarmaceuticoDto>  listarFarmaceuticos(){
+         List<FarmaceuticoDto> lista = new ArrayList<FarmaceuticoDto>();
+          try {
+              Connection conexion = Conexion.getConexion();
+              String query = "SELECT * FROM Farmaceutico";
+              PreparedStatement listar = conexion.prepareStatement(query);
+              ResultSet rs = listar.executeQuery();
+              
+              while(rs.next()){
+                  FarmaceuticoDto dto = new FarmaceuticoDto();
+                  dto.setRut_farmaceutico(rs.getString("Rut_Farmaceutico"));
+                  dto.setNombre(rs.getString("Nombre"));
+                  dto.setDireccion(rs.getString("Direccion"));
+                  dto.setTelefono(rs.getInt("Telefono"));
+                  dto.setId_seccion(rs.getInt("Id_seccion"));
+                  
+                  lista.add(dto);
+                  
+                  
+              }
+              listar.close();
+              conexion.close();
+              
+          } catch(SQLException w){
+              System.out.println("Error sql a listar los farmaceuticos "+w.getMessage());
+          } catch (Exception e) {
+              System.out.println("Error al listar a los farmaceutico  "+e.getMessage());
+              
+          }
+          return lista;
+      }
+      
   }
     
 
