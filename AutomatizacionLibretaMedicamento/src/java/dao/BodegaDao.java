@@ -43,6 +43,30 @@ public class BodegaDao {
         
     }
     
+    public boolean modificar(BodegaDto dto){
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "UPDATE Bodega SET Bodega = ? WHERE Id_seccion = ?";
+            PreparedStatement modificar = conexion.prepareStatement(query);
+            modificar.setString(1,dto.getCategoria());
+            modificar.setInt(2, dto.getId_seccion());
+
+           modificar.executeUpdate();
+           modificar.close();
+           conexion.close();      
+           
+           return true;
+        } catch(SQLException w){
+            System.out.println("Error sql al modificar la bodega ");
+            return false;
+        } catch (Exception e) {
+            System.out.println("Error al modificar  la bodega");
+            return false;
+        }
+        
+    }
+    
+    
     public boolean eliminar(BodegaDto bodega ){
         
         try {
@@ -67,7 +91,7 @@ public class BodegaDao {
         
     }
     
-    public List<BodegaDto> listarBodegas(){
+    public List<BodegaDto> listar(){
         List<BodegaDto>  lista = null;
         try {
             Connection conexion = Conexion.getConexion();

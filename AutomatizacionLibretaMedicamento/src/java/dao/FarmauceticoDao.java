@@ -97,7 +97,7 @@ public class FarmauceticoDao {
       }
       
       
-      public List<FarmaceuticoDto>  listarFarmaceuticos(){
+      public List<FarmaceuticoDto>  listar(){
          List<FarmaceuticoDto> lista = new ArrayList<FarmaceuticoDto>();
           try {
               Connection conexion = Conexion.getConexion();

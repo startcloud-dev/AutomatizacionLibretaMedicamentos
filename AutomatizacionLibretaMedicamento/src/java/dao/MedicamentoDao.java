@@ -108,7 +108,7 @@ public class MedicamentoDao {
     }
     
     
-    public List<MedicamentoDto> listarMedicamentos(){
+    public List<MedicamentoDto> listar(){
         List<MedicamentoDto> lista = null;
         try {
             Connection conexion = Conexion.getConexion();
