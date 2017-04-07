@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @author Sergio
  */
-public class BodegaDao {
+public class BodegaDao {    
    
     public boolean agregar(BodegaDto bodega){
         
