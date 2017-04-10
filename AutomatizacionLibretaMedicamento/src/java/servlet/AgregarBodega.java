@@ -37,7 +37,7 @@ public class AgregarBodega extends HttpServlet {
             request.setAttribute("mensaje", mensaje);
             request.setAttribute("lista",  new dao.BodegaDao().listar());
 
-            request.getRequestDispatcher("Bodega/EliminarBodega.jsp").forward(request, response);
+            request.getRequestDispatcher("Bodega/AgregarBodega.jsp").forward(request, response);
           
         }
     }
