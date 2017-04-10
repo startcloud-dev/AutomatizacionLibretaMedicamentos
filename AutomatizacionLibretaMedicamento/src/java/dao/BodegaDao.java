@@ -46,7 +46,7 @@ public class BodegaDao {
     public boolean modificar(BodegaDto dto){
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "UPDATE Bodega SET Bodega = ? WHERE Id_seccion = ?";
+            String query = "UPDATE Bodega SET Categoria = ? WHERE Id_seccion = ?";
             PreparedStatement modificar = conexion.prepareStatement(query);
             modificar.setString(1,dto.getCategoria());
             modificar.setInt(2, dto.getId_seccion());
@@ -67,13 +67,13 @@ public class BodegaDao {
     }
     
     
-    public boolean eliminar(BodegaDto bodega ){
+    public boolean eliminar(BodegaDto dto){
         
         try {
         Connection conexion = Conexion.getConexion();
-        String query = "DELETE FROM  Bodega WHERE Categoria = ?";
+        String query = "DELETE FROM  Bodega WHERE id_seccion = ?";
         PreparedStatement eliminar = conexion.prepareStatement(query);
-        eliminar.setString(1, bodega.getCategoria());
+        eliminar.setInt(1, dto.getId_seccion());
         
         eliminar.execute();
         eliminar.close();
@@ -95,7 +95,7 @@ public class BodegaDao {
         List<BodegaDto>  lista = null;
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT * FROM Bodega";
+            String query = "SELECT * FROM Bodega  ORDER BY id_seccion ASC";
             PreparedStatement listar = conexion.prepareStatement(query);
             ResultSet rs = listar.executeQuery();
             lista= new ArrayList<BodegaDto>();

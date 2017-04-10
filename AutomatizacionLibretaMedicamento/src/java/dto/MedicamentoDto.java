@@ -17,8 +17,8 @@ public class MedicamentoDto {
   private String fabricante;
   private String componente;
   private String contenido ;
-  private Integer cantidad;
-  private Integer  gramaje;
+  private String cantidad;
+  private String  gramaje;
   private Date   fecha_vencimiento;
   private String estado;
   private Integer id_seccion;
@@ -74,21 +74,25 @@ public class MedicamentoDto {
         this.contenido = contenido;
     }
 
-    public Integer getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 
-    public Integer getGramaje() {
+    public String getGramaje() {
         return gramaje;
     }
 
-    public void setGramaje(Integer gramaje) {
+    public void setGramaje(String gramaje) {
         this.gramaje = gramaje;
     }
+
+    
+    
+    
 
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
@@ -119,7 +123,6 @@ public class MedicamentoDto {
         return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + ", estado=" + estado + ", id_seccion=" + id_seccion + '}';
     }
 
- 
   
     
     

@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class MedicamentoDao {
 
-    public boolean agregar(MedicamentoDto medicamento) {
+    public boolean agregar(MedicamentoDto dto) {
 
         try {
             Connection conexion = Conexion.getConexion();
@@ -20,18 +20,18 @@ public class MedicamentoDao {
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
-            insertar.setInt(1, medicamento.getCodigo());
-            insertar.setString(2, medicamento.getNombre());
-            insertar.setString(3, medicamento.getTipo());
-            insertar.setString(4, medicamento.getFabricante());
-            insertar.setString(5, medicamento.getComponente());
-            insertar.setString(6, medicamento.getContenido());
-            insertar.setInt(7, medicamento.getCantidad());
-            insertar.setInt(8, medicamento.getGramaje());
+            insertar.setInt(1, dto.getCodigo());
+            insertar.setString(2, dto.getNombre());
+            insertar.setString(3, dto.getTipo());
+            insertar.setString(4, dto.getFabricante());
+            insertar.setString(5, dto.getComponente());
+            insertar.setString(6, dto.getContenido());
+            insertar.setString(7, dto.getCantidad());
+            insertar.setString(8, dto.getGramaje());
             insertar.setDate(9,
-                    new java.sql.Date(medicamento.getFecha_vencimiento().getTime()));
-            insertar.setString(10, medicamento.getEstado());
-            insertar.setInt(11, medicamento.getId_seccion());
+                    new java.sql.Date(dto.getFecha_vencimiento().getTime()));
+            insertar.setString(10, dto.getEstado());
+            insertar.setInt(11, dto.getId_seccion());
             insertar.execute();
             conexion.commit();
             insertar.close();
@@ -88,8 +88,8 @@ public class MedicamentoDao {
             modificar.setString(3, dto.getFabricante());
             modificar.setString(4, dto.getComponente());
             modificar.setString(5, dto.getContenido());
-            modificar.setInt(6, dto.getCantidad());
-            modificar.setInt(7, dto.getGramaje());
+            modificar.setString(6, dto.getCantidad());
+            modificar.setString(7, dto.getGramaje());
             modificar.setDate(8,
                     new java.sql.Date(dto.getFecha_vencimiento().getTime()));
             modificar.setInt(9, dto.getCodigo());
@@ -114,7 +114,7 @@ public class MedicamentoDao {
         List<MedicamentoDto> lista = null;
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT * FROM Medicamento ";
+            String query = "SELECT * FROM Medicamento ORDER BY Codigo ASC";
             PreparedStatement listar = conexion.prepareStatement(query);
             
             ResultSet rs = listar.executeQuery();
@@ -127,8 +127,8 @@ public class MedicamentoDao {
                 dto.setFabricante(rs.getString("Fabricante"));
                 dto.setComponente(rs.getString("Componentes"));
                 dto.setContenido(rs.getString("Contenido"));
-                dto.setCantidad(rs.getInt("Cantidad"));
-                dto.setGramaje(rs.getInt("Gramaje"));
+                dto.setCantidad(rs.getString("Cantidad"));
+                dto.setGramaje(rs.getString("Gramaje"));
                 dto.setFecha_vencimiento(rs.getDate("Fecha_Vencimiento"));
                 dto.setEstado(rs.getString("Estado"));
                 dto.setId_seccion(rs.getInt("Id_seccion"));

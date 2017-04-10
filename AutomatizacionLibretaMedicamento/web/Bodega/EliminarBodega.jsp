@@ -17,7 +17,7 @@
         
          <c:set var="msn" scope="request" value="${requestScope.mensaje}" />
         
-        <c:if test="${msn}">
+        <c:if test="${msn!=null}">
             <script>
                 alert('<c:out value="${msn}"/>');             
             </script>
@@ -33,7 +33,7 @@
 
 
 
-        <form name="frmEliminarBodega" action="EliminarBodega" method="POST">
+        <form name="frmEliminarBodega" action="/AutomatizacionLibretaMedicamento/EliminarBodega" method="POST">
 
             <table border="1">
                 <tbody>
@@ -49,6 +49,35 @@
             <input type="submit" value="Eliminar" name="btnEliminarBodega" />
         </form>
 
+               <c:set  var="lista" scope="request" 
+                value="${requestScope.lista}">
+        </c:set >
+            
+        <c:if test="${requestScope.lista!=null}">
+
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>IdSeccion</th>
+                        <th>Categoria</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${requestScope.lista}" var = "bodega" >
+                        <tr>
+                            <td><c:out value="${bodega.id_seccion}" /></td>
+                            <td><c:out value="${bodega.categoria}" /></td>
+
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </c:if>       
+
+            
+            
 
     </body>
 </html>

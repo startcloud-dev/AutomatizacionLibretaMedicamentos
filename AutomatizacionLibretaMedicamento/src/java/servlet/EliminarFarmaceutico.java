@@ -31,7 +31,8 @@ public class EliminarFarmaceutico extends HttpServlet {
                
                mensaje = "Farmaceutico no eliminado";
            }
-          request.setAttribute("msn", mensaje);
+          request.setAttribute("mensaje", mensaje);
+          request.setAttribute("lista",  new dao.FarmaceuticoDao().listar());
           
           request.getRequestDispatcher("Farmaceutico/EliminarFarmaceutico.jsp").forward(request, response);
           

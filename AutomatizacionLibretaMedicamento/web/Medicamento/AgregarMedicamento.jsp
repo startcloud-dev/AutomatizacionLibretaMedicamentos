@@ -25,7 +25,7 @@
 
 
 
-        <form name="frmAgregarMedicamento" action="AgregarMedicamento" method="POST">
+        <form name="frmAgregarMedicamento" action="/AutomatizacionLibretaMedicamento/AgregarMedicamento" method="POST">
 
             <table border="1">
                 <tbody>
@@ -63,7 +63,7 @@
                     </tr>
                     <tr>
                         <td>FechaVencimiento</td>
-                        <td><input type="text" name="txtFechaVencimiento" value="" /></td>
+                        <td><input type="date" name="txtFechaVencimiento" value="" /></td>
                     </tr>
                     <tr>
                         <td>Estado</td>

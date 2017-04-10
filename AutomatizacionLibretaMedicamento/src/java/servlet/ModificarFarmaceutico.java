@@ -37,6 +37,7 @@ public class ModificarFarmaceutico extends HttpServlet {
               mensaje = "farmaceutico  no modificado";
             }
             request.setAttribute("mensaje",mensaje );
+            request.setAttribute("lista",  new dao.FarmaceuticoDao().listar());
             
             request.getRequestDispatcher("Farmaceutico/ModificarFarmaceutico.jsp").forward(request, response);
         }

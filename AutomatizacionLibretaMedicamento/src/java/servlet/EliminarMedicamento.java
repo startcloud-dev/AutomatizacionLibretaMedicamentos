@@ -35,6 +35,8 @@ public class EliminarMedicamento extends HttpServlet {
             
             request.setAttribute("mensaje", mensaje);
             
+            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
+            
             request.getRequestDispatcher("Medicamento/EliminarMedicamento.jsp").forward(request, response);
         }
     }

@@ -36,6 +36,7 @@ public class EliminarBodega extends HttpServlet {
           }
           
           request.setAttribute("mensaje", mensaje);
+          request.setAttribute("lista",  new dao.BodegaDao().listar());
           
           request.getRequestDispatcher("Bodega/EliminarBodega.jsp").forward(request, response);
         }

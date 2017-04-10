@@ -34,7 +34,7 @@ public class AgregarFarmaceutico extends HttpServlet {
             dto.setDireccion(request.getParameter("txtDireccion".trim()));
             dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
-            dto.setPassword(request.getParameter(request.getParameter("txtPassword".trim())));
+            dto.setPassword(request.getParameter("txtPassword".trim()));
             
             
             
@@ -56,7 +56,7 @@ public class AgregarFarmaceutico extends HttpServlet {
             
             request.setAttribute("lista",  new dao.FarmaceuticoDao().listar());
             
-           request.getRequestDispatcher("Farmaceutico/AgregarFarmaceutico.jsp");
+           request.getRequestDispatcher("Farmaceutico/AgregarFarmaceutico.jsp").forward(request, response);
             
             
             

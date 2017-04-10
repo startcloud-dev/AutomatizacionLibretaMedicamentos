@@ -23,7 +23,7 @@
 
         </c:if>
         
-        <form name="frmModificarFarmaceutico" action="ModificarFarmaceutico" method="POST">
+        <form name="frmModificarFarmaceutico" action="/AutomatizacionLibretaMedicamento/ModificarFarmaceutico" method="POST">
             
             <table border="1">
                 <tbody>
@@ -48,5 +48,40 @@
             <input type="submit" value="Modificar" name="btnModificar" />
         </form>
         
+            
+              <c:set var="lista" scope="request" value="${requestScope.lista}" />
+            
+            <c:if test="${lista!=null}">
+                
+                
+                
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>IdSeccion</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${requestScope.lista}" var = "farma">
+                        <tr>
+                            <td><c:out value="${farma.rut_farmaceutico}"/></td>
+                            <td><c:out value="${farma.nombre}" /></td>
+                            <td><c:out value="${farma.direccion}"/></td>
+                            <td><c:out value="${farma.telefono}"/></td>
+                            <td><c:out value="${farma.id_seccion}"/></td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+
+                
+            </c:if>
+            
+            
     </body>
 </html>

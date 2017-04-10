@@ -102,7 +102,7 @@ public class FarmaceuticoDao {
          List<FarmaceuticoDto> lista = new ArrayList<FarmaceuticoDto>();
           try {
               Connection conexion = Conexion.getConexion();
-              String query = "SELECT * FROM Farmaceutico";
+              String query = "SELECT * FROM Farmaceutico ORDER BY Rut_farmaceutico ASC";
               PreparedStatement listar = conexion.prepareStatement(query);
               ResultSet rs = listar.executeQuery();
               

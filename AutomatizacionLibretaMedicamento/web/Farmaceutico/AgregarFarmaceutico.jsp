@@ -27,7 +27,7 @@
         </c:if>
 
 
-        <form name="frmAgregarFarmaceutico" action="AgregarFarmaceutico" method="POST">
+        <form name="frmAgregarFarmaceutico" action="/AutomatizacionLibretaMedicamento/AgregarFarmaceutico" method="POST">
 
 
             <table border="1">
@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td<input type="text" name="txtPassword" value="" />></td>
+                        <td><input type="password" name="txtPassword" value="" /></td>
                     </tr>
                 </tbody>
             </table>

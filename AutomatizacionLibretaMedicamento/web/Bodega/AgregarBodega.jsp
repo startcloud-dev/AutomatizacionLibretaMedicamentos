@@ -57,15 +57,20 @@
 
             <hr>
 
-            <input type="submit" value="Ingresar" name="btnAgregarBodega" />
+            <input type="submit" value="Ingresar" name="btnAgregarBodega" /> <a href="Bodega/EliminarBodega.jsp">EliminarBodega</a>
 
         </form>
 
-           
+             <c:set  var="lista" scope="request" 
+                value="${requestScope.lista}">
+        </c:set >
             
         <c:if test="${requestScope.lista!=null}">
 
 
+            <hr>
+            
+            
             <table border="1">
                 <thead>
                     <tr>
@@ -88,11 +93,7 @@
 
             
 
-        <c:set  var="lista" scope="request" 
-                value="${requestScope.lista}">
-        </c:set >
-
-        <c:out value="${lista}" /> 
+     
 
     </body>
 </html>

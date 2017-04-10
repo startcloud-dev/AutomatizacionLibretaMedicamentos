@@ -4,6 +4,7 @@ import dto.MedicamentoDto;
 import dao.MedicamentoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +28,9 @@ public class ModificarMedicamento extends HttpServlet {
             dto.setFabricante(request.getParameter("txtFabricante".trim()));
             dto.setComponente(request.getParameter("txtComponente".trim()));
             dto.setContenido(request.getParameter("txtContenido".trim()));
-            dto.setCantidad(Integer.parseInt("txtCantidad".trim()));
-            dto.setGramaje(Integer.parseInt("txtGramaje".trim()));
-
+            dto.setCantidad("txtCantidad".trim());
+            dto.setGramaje("txtGramaje".trim());
+            dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
             dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt("txtIdSeccion".trim()));
 
@@ -40,6 +41,9 @@ public class ModificarMedicamento extends HttpServlet {
             } else {
                 mensaje = "Medicamento no agregado";
             }
+            request.setAttribute("mensaje", mensaje);
+            
+            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
 
             request.getRequestDispatcher("Medicamento/ModificarMedicamento.jsp").forward(request, response);
 

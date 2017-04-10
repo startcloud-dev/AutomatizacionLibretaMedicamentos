@@ -32,12 +32,12 @@ public class AgregarMedicamento extends HttpServlet {
             dto.setFabricante(request.getParameter("txtFabricante".trim()));
             dto.setComponente(request.getParameter("txtComponente".trim()));
             dto.setContenido(request.getParameter("txtContenido".trim()));
-            dto.setCantidad(Integer.parseInt("txtCantidad".trim()));
-            dto.setGramaje(Integer.parseInt("txtGramaje".trim()));
-         
+            dto.setCantidad("txtCantidad".trim());
+            dto.setGramaje("txtGramaje".trim());
+            dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
             dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt("txtIdSeccion".trim()));
-            
+             
             if(new dao.MedicamentoDao().agregar(dto)){
                 
                 mensaje = "Medicamento agregado";
@@ -47,6 +47,7 @@ public class AgregarMedicamento extends HttpServlet {
             }
             
             request.setAttribute("lista",  new dao.MedicamentoDao().listar());
+            request.setAttribute("mensaje", mensaje);
             
            request.getRequestDispatcher("Medicamento/AgregarMedicamento.jsp").forward(request, response);
         }
