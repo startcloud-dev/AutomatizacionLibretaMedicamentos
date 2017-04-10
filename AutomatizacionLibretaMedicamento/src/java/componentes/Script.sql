@@ -43,7 +43,7 @@ CREATE TABLE Doctor
      Rut_Doctor VARCHAR2 (15)  NOT NULL , 
      Nombre VARCHAR2 (30) NOT NULL , 
      Direccion VARCHAR2 (30) NOT NULL , 
-     Telefono VARCHAR2 (15) NOT NULL , 
+     Telefono INTEGER  NOT NULL , 
      Especialidad VARCHAR2 (30) NOT NULL ,
 	 Password VARCHAR2 (15) NOT NULL
     ) 
@@ -76,8 +76,8 @@ CREATE TABLE Medicamento
      Fabricante VARCHAR2 (30) NOT NULL , 
      Componentes VARCHAR2 (30) NOT NULL , 
      Contenido VARCHAR2 (30) NOT NULL , 
-     Cantidad VARCHAR2 (30) NOT NULL , 
-     Gramaje VARCHAR2 (30) NOT NULL , 
+     Cantidad INTEGER  NOT NULL , 
+     Gramaje INTEGER  NOT NULL , 
      Fecha_Vencimiento DATE  NOT NULL, 
      Estado VARCHAR2 (30) NOT NULL , 
      Id_seccion INTEGER  NOT NULL 
