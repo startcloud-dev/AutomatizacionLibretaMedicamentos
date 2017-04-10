@@ -16,8 +16,8 @@ public class MedicamentoDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "INSERT INTO Medicamento (Codigo,Nombre,Tipo,Fabricante"
-                    + ",Componentes,Contenido,Cantidad,Gramaje,Fecha_Vencimiento,Estado) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+                    + ",Componentes,Contenido,Cantidad,Gramaje,Fecha_Vencimiento,Estado,Id_seccion) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
             insertar.setInt(1, medicamento.getCodigo());
@@ -30,6 +30,8 @@ public class MedicamentoDao {
             insertar.setInt(8, medicamento.getGramaje());
             insertar.setDate(9,
                     new java.sql.Date(medicamento.getFecha_vencimiento().getTime()));
+            insertar.setString(10, medicamento.getEstado());
+            insertar.setInt(11, medicamento.getId_seccion());
             insertar.execute();
             conexion.commit();
             insertar.close();

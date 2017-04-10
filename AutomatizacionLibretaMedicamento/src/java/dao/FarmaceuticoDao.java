@@ -14,20 +14,21 @@ import java.util.List;
  *
  * @author Sergio
  */
-public class FarmauceticoDao {
+public class FarmaceuticoDao {
 
-  public boolean agregar(FarmaceuticoDto farmaceutico){
+  public boolean agregar(FarmaceuticoDto dto){
       try {
           Connection conexion = Conexion.getConexion();
-          String query = "INSERT INTO Farmaceutico (Rut_Farmaceutico,Nombre,Direccion,Telefono,id_seccion)"
-                  + " VALUES(?,?,?,?,?)";
+          String query = "INSERT INTO Farmaceutico (Rut_Farmaceutico,Nombre,Direccion,Telefono,id_seccion,Password)"
+                  + " VALUES(?,?,?,?,?,?)";
           PreparedStatement insertar = conexion.prepareStatement(query);
           
-          insertar.setString(1, farmaceutico.getRut_farmaceutico());
-          insertar.setString(2, farmaceutico.getNombre());
-          insertar.setString(3, farmaceutico.getDireccion());
-          insertar.setInt(4, farmaceutico.getTelefono());
-          insertar.setInt(5, farmaceutico.getId_seccion());
+          insertar.setString(1, dto.getRut());
+          insertar.setString(2, dto.getNombre());
+          insertar.setString(3, dto.getDireccion());
+          insertar.setInt(4, dto.getTelefono());
+          insertar.setInt(5, dto.getId_seccion());
+          insertar.setString(6, dto.getPassword());
           
         
           insertar.execute();
@@ -45,12 +46,12 @@ public class FarmauceticoDao {
           return  false;
       }
   }  
-      public boolean eliminar(String rut ){
+      public boolean eliminar(FarmaceuticoDto dto ){
           try {
               Connection conexion = Conexion.getConexion();
               String sql = "DELETE  FROM Farmaceutico WHERE Rut_farmaceutico = ? ";
               PreparedStatement eliminar = conexion.prepareStatement(sql);
-              eliminar.setString(1, rut);
+              eliminar.setString(1, dto.getRut());
               
               eliminar.execute();
               eliminar.close();
@@ -107,11 +108,12 @@ public class FarmauceticoDao {
               
               while(rs.next()){
                   FarmaceuticoDto dto = new FarmaceuticoDto();
-                  dto.setRut_farmaceutico(rs.getString("Rut_Farmaceutico"));
+                  dto.setRut(rs.getString("Rut_Farmaceutico"));
                   dto.setNombre(rs.getString("Nombre"));
                   dto.setDireccion(rs.getString("Direccion"));
                   dto.setTelefono(rs.getInt("Telefono"));
                   dto.setId_seccion(rs.getInt("Id_seccion"));
+                 
                   
                   lista.add(dto);
                   

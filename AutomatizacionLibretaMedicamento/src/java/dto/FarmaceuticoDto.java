@@ -1,4 +1,4 @@
-
+    
 package dto;
 
 /**
@@ -7,21 +7,22 @@ package dto;
  */
 public class FarmaceuticoDto {
 
- private String rut_farmaceutico;
+ private String rut;
  private String nombre;
  private String direccion;
  private Integer telefono;
  private Integer id_seccion;
+ private String  password;
 
     public FarmaceuticoDto() {
     }
 
-    public String getRut_farmaceutico() {
-        return rut_farmaceutico;
+    public String getRut() {
+        return rut;
     }
 
-    public void setRut_farmaceutico(String rut_farmaceutico) {
-        this.rut_farmaceutico = rut_farmaceutico;
+    public void setRut(String rut) {
+        this.rut = rut;
     }
 
     public String getNombre() {
@@ -56,10 +57,17 @@ public class FarmaceuticoDto {
         this.id_seccion = id_seccion;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
-        return "Farmaceutico{" + "rut_farmaceutico=" + rut_farmaceutico + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", id_seccion=" + id_seccion + '}';
+        return "FarmaceuticoDto{" + "rut=" + rut + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", id_seccion=" + id_seccion + ", password=" + password + '}';
     }
- 
     
 }

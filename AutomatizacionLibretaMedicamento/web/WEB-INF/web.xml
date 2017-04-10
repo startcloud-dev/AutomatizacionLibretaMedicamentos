@@ -12,6 +12,30 @@
         <servlet-name>ModificarBodega</servlet-name>
         <servlet-class>servlet.ModificarBodega</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarFarmaceutico</servlet-name>
+        <servlet-class>servlet.AgregarFarmaceutico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarFarmaceutico</servlet-name>
+        <servlet-class>servlet.EliminarFarmaceutico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarFarmaceutico</servlet-name>
+        <servlet-class>servlet.ModificarFarmaceutico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarMedicamento</servlet-name>
+        <servlet-class>servlet.AgregarMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarMedicamento</servlet-name>
+        <servlet-class>servlet.EliminarMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarMedicamento</servlet-name>
+        <servlet-class>servlet.ModificarMedicamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -23,6 +47,30 @@
     <servlet-mapping>
         <servlet-name>ModificarBodega</servlet-name>
         <url-pattern>/ModificarBodega</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarFarmaceutico</servlet-name>
+        <url-pattern>/AgregarFarmaceutico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarFarmaceutico</servlet-name>
+        <url-pattern>/EliminarFarmaceutico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarFarmaceutico</servlet-name>
+        <url-pattern>/ModificarFarmaceutico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarMedicamento</servlet-name>
+        <url-pattern>/AgregarMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarMedicamento</servlet-name>
+        <url-pattern>/EliminarMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarMedicamento</servlet-name>
+        <url-pattern>/ModificarMedicamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

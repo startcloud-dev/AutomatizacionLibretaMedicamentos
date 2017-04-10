@@ -35,7 +35,7 @@ public class EliminarBodega extends HttpServlet {
               mensaje = "Bodega no eliminada  ";
           }
           
-          request.setAttribute("msn", "mensaje");
+          request.setAttribute("mensaje", mensaje);
           
           request.getRequestDispatcher("Bodega/EliminarBodega.jsp").forward(request, response);
         }

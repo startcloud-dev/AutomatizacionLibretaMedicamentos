@@ -6,7 +6,7 @@
 CREATE TABLE Atencion 
     ( 
      Hora_Atencion VARCHAR2 (30)  NOT NULL , 
-     Fecha_Atencion DATE
+     Fecha_Atencion DATE NOT NULL
     ) 
 ;
 
@@ -16,7 +16,7 @@ ALTER TABLE Atencion
 CREATE TABLE Bodega 
     ( 
      Id_seccion INTEGER  NOT NULL , 
-     Categoria VARCHAR2 (15) 
+     Categoria VARCHAR2 (15) NOT NULL
     ) 
 ;
 
@@ -41,10 +41,11 @@ CREATE UNIQUE INDEX Consulta__IDX ON Consulta
 CREATE TABLE Doctor 
     ( 
      Rut_Doctor VARCHAR2 (15)  NOT NULL , 
-     Nombre VARCHAR2 (30) , 
-     Direccion VARCHAR2 (30) , 
-     Telefono VARCHAR2 (15) , 
-     Especialidad VARCHAR2 (30) 
+     Nombre VARCHAR2 (30) NOT NULL , 
+     Direccion VARCHAR2 (30) NOT NULL , 
+     Telefono VARCHAR2 (15) NOT NULL , 
+     Especialidad VARCHAR2 (30) NOT NULL ,
+	 Password VARCHAR2 (15) NOT NULL
     ) 
 ;
 
@@ -56,10 +57,11 @@ ALTER TABLE Doctor
 CREATE TABLE Farmaceutico 
     ( 
      Rut_Farmaceutico VARCHAR2 (15)  NOT NULL , 
-     Nombre VARCHAR2 (30) , 
-     Direccion VARCHAR2 (30) , 
-     Telefono INTEGER , 
-     Id_seccion INTEGER  NOT NULL 
+     Nombre VARCHAR2 (30) NOT NULL , 
+     Direccion VARCHAR2 (30) NOT NULL , 
+     Telefono INTEGER  NOT NULL , 
+     Id_seccion INTEGER  NOT NULL ,
+	 Password VARCHAR2 (15) NOT NULL
     ) 
 ;
 
@@ -69,15 +71,15 @@ ALTER TABLE Farmaceutico
 CREATE TABLE Medicamento 
     ( 
      Codigo INTEGER  NOT NULL , 
-     Nombre VARCHAR2 (30) , 
-     Tipo VARCHAR2 (30) , 
-     Fabricante VARCHAR2 (30) , 
-     Componentes VARCHAR2 (30) , 
-     Contenido VARCHAR2 (30) , 
-     Cantidad VARCHAR2 (30) , 
-     Gramaje VARCHAR2 (30) , 
-     Fecha_Vencimiento DATE , 
-     Estado VARCHAR2 (30) , 
+     Nombre VARCHAR2 (30) NOT NULL , 
+     Tipo VARCHAR2 (30) NOT NULL , 
+     Fabricante VARCHAR2 (30) NOT NULL , 
+     Componentes VARCHAR2 (30) NOT NULL , 
+     Contenido VARCHAR2 (30) NOT NULL , 
+     Cantidad VARCHAR2 (30) NOT NULL , 
+     Gramaje VARCHAR2 (30) NOT NULL , 
+     Fecha_Vencimiento DATE  NOT NULL, 
+     Estado VARCHAR2 (30) NOT NULL , 
      Id_seccion INTEGER  NOT NULL 
     ) 
 ;
@@ -88,13 +90,13 @@ ALTER TABLE Medicamento
 CREATE TABLE Paciente 
     ( 
      Rut_Paciente VARCHAR2 (15)  NOT NULL , 
-     Nombre VARCHAR2 (15) , 
-     Apellido_Paterno VARCHAR2 (20) , 
-     Apellido_Materno VARCHAR2 (20) , 
-     Direccion VARCHAR2 (30) , 
-     Telefono VARCHAR2 (10) , 
-     Correo VARCHAR2 (30) , 
-     Fecha_Nacimiento DATE 
+     Nombre VARCHAR2 (15) NOT NULL , 
+     Apellido_Paterno VARCHAR2 (20) NOT NULL , 
+     Apellido_Materno VARCHAR2 (20) NOT NULL , 
+     Direccion VARCHAR2 (30) NOT NULL , 
+     Telefono VARCHAR2 (10) NOT NULL , 
+     Correo VARCHAR2 (30) NOT NULL , 
+     Fecha_Nacimiento DATE NOT NULL
     ) 
 ;
 
@@ -114,8 +116,8 @@ ALTER TABLE Realiza
 CREATE TABLE Receta 
     ( 
      Id_receta INTEGER  NOT NULL , 
-     Fecha_Emision DATE , 
-     Indicaciones VARCHAR2 (30) 
+     Fecha_Emision DATE NOT NULL , 
+     Indicaciones VARCHAR2 (30) NOT NULL
     ) 
 ;
 
@@ -135,7 +137,7 @@ ALTER TABLE Tiene
 CREATE TABLE Tratamiento 
     ( 
      Id_Tratamiento INTEGER  NOT NULL , 
-     Duracion VARCHAR2 (20) 
+     Duracion VARCHAR2 (20) NOT NULL
     ) 
 ;
 
@@ -274,9 +276,9 @@ INSERT INTO Bodega VALUES (1,'Pastilla');
 INSERT INTO Bodega VALUES (2,'Jarabe');
 INSERT INTO Bodega VALUES (3,'Otros');
 
-INSERT INTO Farmaceutico VALUES ('12.153.864-5','Max Arcos','Manquehue 4576',7726410,1);
-INSERT INTO Farmaceutico VALUES ('9.374.097-k','Rodrigo Ramirez','Recoleta 5460',78532257,2);
-INSERT INTO Farmaceutico VALUES ('22.165.836-3','Mario Benedetti','Carrascal 2489',9577893,3);
+INSERT INTO Farmaceutico VALUES ('12.153.864-5','Max Arcos','Manquehue 4576',7726410,1,'Thefarma');
+INSERT INTO Farmaceutico VALUES ('9.374.097-k','Rodrigo Ramirez','Recoleta 5460',78532257,2,'pas123');
+INSERT INTO Farmaceutico VALUES ('22.165.836-3','Mario Benedetti','Carrascal 2489',9577893,3,'baiabaia');
 
 INSERT INTO Medicamento VALUES (1,'Hipertencion','pastillas','Laboratorio Chile','muchas cosas','80mg','30','80','10-10-2018','En bodega',1);
 INSERT INTO Medicamento VALUES (2,'kralflex','pastillas','Laboratorio Chile','muchas cosas','40mg','10','40','08-06-2017','En reserva',1);
@@ -294,9 +296,9 @@ INSERT INTO Tratamiento VALUES ('1','1 Semana');
 INSERT INTO Tratamiento VALUES ('2','3 Semanas');
 INSERT INTO Tratamiento VALUES ('3','3 Dias');
 
-INSERT INTO Doctor VALUES ('6.517.936-5','Roberto Gomez','Vitacura 2465','6574596','Traumatologia');
-INSERT INTO Doctor VALUES ('5.163.947-9','Miguel Herrera','Lobos Tranquilos 9754','2136793','Cardiologia');
-INSERT INTO Doctor VALUES ('11.164.197-3','Marco Landaeta','Nueva Independencia 9353','9873246','Medicina General');
+INSERT INTO Doctor VALUES ('6.517.936-5','Roberto Gomez','Vitacura 2465','6574596','Traumatologia','Robertitox65');
+INSERT INTO Doctor VALUES ('5.163.947-9','Miguel Herrera','Lobos Tranquilos 9754','2136793','Cardiologia','12345');
+INSERT INTO Doctor VALUES ('11.164.197-3','Marco Landaeta','Nueva Independencia 9353','9873246','Medicina General','holapapu');
 
 INSERT INTO realiza VALUES('6.517.936-5',1);
 INSERT INTO realiza VALUES('5.163.947-9',2);
@@ -313,7 +315,3 @@ INSERT INTO tiene VALUES (3,3);
 INSERT INTO Consulta VALUES ('12:30:00','6.517.936-5','10.123.456-k',1);
 INSERT INTO Consulta VALUES ('13:00:00','5.163.947-9','1.987.654-2',2);
 INSERT INTO Consulta VALUES ('13:30:00','11.164.197-3','15.537.193-k',3);
-
-INSERT INTO Receta VALUES ('1','01-15-2017','3 semanas');
-INSERT INTO Receta VALUES ('2','01-23-2017','1 semana');
-INSERT INTO Receta VALUES ('3','02-05-2017','3 dias');

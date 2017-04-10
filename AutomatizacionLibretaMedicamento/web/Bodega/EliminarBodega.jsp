@@ -14,6 +14,14 @@
         <title>Bodega | Eliminar </title>
     </head>
     <body>
+        
+         <c:set var="msn" scope="request" value="${requestScope.mensaje}" />
+        
+        <c:if test="${msn}">
+            <script>
+                alert('<c:out value="${msn}"/>');             
+            </script>
+        </c:if>
 
         <header>
             <hgroup>
@@ -21,19 +29,9 @@
 
             </hgroup>
         </header>
-        <c:set var="msn" scope="request" value="${requestScope.mensaje}}"  />
+   
 
 
-        <c:if test="${msn!=null}">
-
-            <script>
-
-                alert('<c:out value="${msn}"/>')
-            </script>
-
-
-
-        </c:if>
 
         <form name="frmEliminarBodega" action="EliminarBodega" method="POST">
 

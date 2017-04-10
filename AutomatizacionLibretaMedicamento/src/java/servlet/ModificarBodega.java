@@ -26,8 +26,26 @@ public class ModificarBodega extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
         
+            String mensaje = "";
             
+          BodegaDto dto = new BodegaDto();
+          
+          dto.setCategoria(request.getParameter("txtCategoria".trim()));
+          
+          if(new BodegaDao().modificar(dto)){
+              
+             mensaje = "Bodega modificada"; 
+          }else{
+              
+              mensaje = "Bodega no modificada";
+          }
             
+          request.setAttribute("mensaje", mensaje);
+          
+          request.getRequestDispatcher("Bodega/ModificarBodega.jsp").forward(request, response);
+          
+          
+          
         }
     }
 
