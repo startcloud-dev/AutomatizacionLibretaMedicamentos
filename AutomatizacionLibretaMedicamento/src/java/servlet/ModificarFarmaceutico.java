@@ -26,8 +26,8 @@ public class ModificarFarmaceutico extends HttpServlet {
             FarmaceuticoDto dto = new FarmaceuticoDto();
             dto.setNombre(request.getParameter("txtNombre".trim()));
             dto.setDireccion(request.getParameter("txtDireccion".trim()));
-            dto.setTelefono(Integer.parseInt("txtTelefeno".trim()));
-            dto.setId_seccion(Integer.parseInt("txtIdSeccion".trim()));
+            dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
+            dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
             
             if(new dao.FarmaceuticoDaoImp().modificar(dto)){
                
