@@ -1,15 +1,14 @@
 <%-- 
-    Document   : EliminarFarmaceutivo
-    Created on : 08-04-2017, 20:53:16
-    Author     : Sergio
+    Document   : EliminarDoctor
+    Created on : 11-abr-2017, 22:18:35
+    Author     : Kevin
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
         <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
@@ -18,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Eliminar | Farmaceutico</title>
+        <title>Eliminar | Doctor</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -37,12 +36,12 @@
 
                     </c:if>
 
-                    <form name="frmFarmaceutico" action="/AutomatizacionLibretaMedicamento/EliminarFarmaceutivo" method="POST">
+                    <form name="frmFarmaceutico" action="/AutomatizacionLibretaMedicamento/EliminarDoctor" method="POST">
                         <h1>Eliminar Farmaceutico </h1>
                         <table border="0">
                             <tbody>
                                 <tr>
-                                    <td>Rut Farmaceutico</td>
+                                    <td>Rut Doctor</td>
                                     <td><input type="text" name="txtRut" value="" /></td>
                                 </tr>
                             </tbody>
@@ -52,7 +51,7 @@
                             <input type="submit" value="Eliminar" name="btnELiminar" />
                         </p>
                         <p class="login button">
-                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
+                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Doctor.jsp">Volver al menu</a>
                         </p>
                     </form>
 
@@ -60,25 +59,25 @@
 
                     <c:if test="${lista!=null}">
 
-                        <table border="1">
+                        <table border="0">
                             <thead>
                                 <tr>
                                     <th>Rut</th>
                                     <th>Nombre</th>
                                     <th>Direccion</th>
                                     <th>Telefono</th>
-                                    <th>IdSeccion</th>
+                                    <th>Especialidad</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "farma">
+                                <c:forEach items="${requestScope.lista}" var = "doc">
                                     <tr>
-                                        <td><c:out value="${farma.rut_farmaceutico}"/></td>
-                                        <td><c:out value="${farma.nombre}" /></td>
-                                        <td><c:out value="${farma.direccion}"/></td>
-                                        <td><c:out value="${farma.telefono}"/></td>
-                                        <td><c:out value="${farma.id_seccion}"/></td>
+                                        <td><c:out value="${doc.rut_doctor}"/></td>
+                                        <td><c:out value="${doc.nombre}" /></td>
+                                        <td><c:out value="${doc.direccion}"/></td>
+                                        <td><c:out value="${doc.telefono}"/></td>
+                                        <td><c:out value="${doc.especialidad}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

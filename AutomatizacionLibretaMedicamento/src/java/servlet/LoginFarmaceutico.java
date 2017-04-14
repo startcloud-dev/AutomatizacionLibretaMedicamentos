@@ -5,49 +5,57 @@
  */
 package servlet;
 
-import dao.DoctorDaoImp;
+import dao.FarmaceuticoDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dto.FarmaceuticoDto;
-import dao.FarmaceuticoDaoImp;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Sergio
+ * @author Kevin
  */
-public class AgregarFarmaceutico extends HttpServlet {
+public class LoginFarmaceutico extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        try (PrintWriter out = response.getWriter()) {;
-            FarmaceuticoDto dto = new FarmaceuticoDto();
-            dto.setRut(request.getParameter("txtRut".trim()));
-            dto.setNombre(request.getParameter("txtNombre".trim()));
-            dto.setDireccion(request.getParameter("txtDireccion".trim()));
-            dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
-            dto.setId_seccion(Integer.parseInt(request.getParameter("txtSeccion".trim())));
-            dto.setPassword(request.getParameter("txtClave".trim()));
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession sesion = request.getSession();
+            String rute = request.getParameter("txtRut");
+            String pass = request.getParameter("txtPass");
 
-            String pass = request.getParameter("txtClave".trim());
-            String conpass = request.getParameter("txtConfClave".trim());
-            if (pass.equals(conpass)) {
-                new FarmaceuticoDaoImp().agregar(dto);
-                request.setAttribute("mensaje", "Se registro el Usuario  "
-                        + "por favor Inicie Session");
-            } else {
-                request.setAttribute("mensaje", "Las contraseñas no coinciden "
+            String rut = new FarmaceuticoDaoImp().validarRut(rute, pass);
+            String password = new FarmaceuticoDaoImp().validarPass(pass, rut);
+            String usuario = new FarmaceuticoDaoImp().recuperarNombre(rut);
+
+            if (!rute.equals(rut) && !pass.equals(password) && sesion.getAttribute("usuario") != null) {
+                request.setAttribute("mensaje", "La contraseña o el rut de usuario no existe, "
                         + "Intentelo nuevamente ");
+                request.getRequestDispatcher("Farmaceutico/Login_Registro_Farmaceutico.jsp").
+                        forward(request, response);
+            } else {
+                //si coincide el rut,password y además no hay sesión iniciada
+                sesion.setAttribute("usuario", usuario);
+                request.setAttribute("mensaje", "Bienvenido Doctor "
+                        + usuario);
+                request.getRequestDispatcher("Inicio_Farmaceutico.jsp").
+                        forward(request, response);
             }
-            request.setAttribute("lista", new dao.FarmaceuticoDaoImp().listar());
-
-            request.getRequestDispatcher("Farmaceutico/Login_Registro_Farmaceutico.jsp").
-                    forward(request, response);
         }
     }
 

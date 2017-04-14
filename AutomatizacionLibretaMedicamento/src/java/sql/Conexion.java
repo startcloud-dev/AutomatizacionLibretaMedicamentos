@@ -1,4 +1,4 @@
-package componentes;
+package sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class Conexion {
            String driverUrl="jdbc:oracle:thin:@localhost:1521:XE";
            Class.forName(driverClassName);
            connection = DriverManager.getConnection(
-                   driverUrl, "libreta","1");
+                   driverUrl, "Cesfam","01");
         }catch (Exception e) {
             e.printStackTrace();
         }

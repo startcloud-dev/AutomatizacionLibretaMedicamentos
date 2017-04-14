@@ -11,89 +11,102 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
         <title>Bodega | Farmaceutica</title>
     </head>
     <body>
-        <header>
-            <hgroup>
-                <h1>Bodega farmaceutica </h1>
-            </hgroup>
-        </header>
+        <div id="container_demo" >
+            <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
+            <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
+                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+            </form>
+            <div id="wrapper">
+                <div id="login" class="animate form">
+                    <header>
+                        <hgroup>
+                            <h1>Bodega farmaceutica </h1>
+                        </hgroup>
+                    </header>
 
-        <c:set var="msn" scope="request" value="${requestScope.mensaje}">
+                    <c:set var="msn" scope="request" value="${requestScope.mensaje}">
 
-        </c:set>
+                    </c:set>
 
-        <c:if test="${msn!=null}">
+                    <c:if test="${msn!=null}">
 
-            <script>
+                        <script>
 
-                alert('<c:out value="${msn}" />');
+                            alert('<c:out value="${msn}" />');
 
-            </script>
+                        </script>
 
-        </c:if>
-        <hgroup>
-            <h3>Ingreso de bodega</h3>
-        </hgroup>
+                    </c:if>
+                    <hgroup>
+                        <h3></h3>
+                    </hgroup>
 
+                    <form name="frmAgregarBodega" action="AgregarBodega" method="POST">
 
-        <form name="frmAgregarBodega" action="AgregarBodega" method="POST">
+                        <table border="0">
 
+                            <tbody>
+                                <tr>
+                                    <td>Id Seccion </td>
+                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Categoria </td>
+                                    <td><input type="text" name="txtCategoria" value="" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-            <table border="1">
+                        <hr>
+                        <p class="login button">
+                            <input type="submit" value="Ingresar" name="btnAgregarBodega" />
+                        </p>
+                        <p class="login button">
+                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
+                        </p>
+                    </form>
 
-                <tbody>
-                    <tr>
-                        <td>IdSeccion</td>
-                        <td><input type="text" name="txtIdSeccion" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td>Categoria</td>
-                        <td><input type="text" name="txtCategoria" value="" /></td>
-                    </tr>
-                </tbody>
-            </table>
+                    <hr>
+                    <c:set  var="lista" scope="request" 
+                            value="${requestScope.lista}">
+                    </c:set >
 
-            <hr>
+                    <c:if test="${requestScope.lista!=null}">
 
-            <input type="submit" value="Ingresar" name="btnAgregarBodega" /> <a href="Bodega/EliminarBodega.jsp">EliminarBodega</a>
+                        <hr>
 
-        </form>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>IdSeccion</th>
+                                    <th>Categoria</th>
 
-             <c:set  var="lista" scope="request" 
-                value="${requestScope.lista}">
-        </c:set >
-            
-        <c:if test="${requestScope.lista!=null}">
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${requestScope.lista}" var = "bodega" >
+                                    <tr>
+                                        <td><c:out value="${bodega.id_seccion}" /></td>
+                                        <td><c:out value="${bodega.categoria}" /></td>
 
-
-            <hr>
-            
-            
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>IdSeccion</th>
-                        <th>Categoria</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${requestScope.lista}" var = "bodega" >
-                        <tr>
-                            <td><c:out value="${bodega.id_seccion}" /></td>
-                            <td><c:out value="${bodega.categoria}" /></td>
-
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </c:if>       
-
-            
-
-     
-
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>       
+                </div>
+            </div>
+        </div>
     </body>
 </html>

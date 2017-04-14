@@ -36,6 +36,30 @@
         <servlet-name>ModificarMedicamento</servlet-name>
         <servlet-class>servlet.ModificarMedicamento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginDoctor</servlet-name>
+        <servlet-class>servlet.LoginDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CierreSession</servlet-name>
+        <servlet-class>servlet.CierreSession</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarDoctor</servlet-name>
+        <servlet-class>servlet.AgregarDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarDoctor</servlet-name>
+        <servlet-class>servlet.EliminarDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarDoctor</servlet-name>
+        <servlet-class>servlet.ModificarDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginFarmaceutico</servlet-name>
+        <servlet-class>servlet.LoginFarmaceutico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -72,12 +96,36 @@
         <servlet-name>ModificarMedicamento</servlet-name>
         <url-pattern>/ModificarMedicamento</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginDoctor</servlet-name>
+        <url-pattern>/LoginDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CierreSession</servlet-name>
+        <url-pattern>/CierreSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarDoctor</servlet-name>
+        <url-pattern>/AgregarDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarDoctor</servlet-name>
+        <url-pattern>/EliminarDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarDoctor</servlet-name>
+        <url-pattern>/ModificarDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginFarmaceutico</servlet-name>
+        <url-pattern>/LoginFarmaceutico</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>Bodega/AgregarBodega.jsp</welcome-file>
+        <welcome-file>Index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

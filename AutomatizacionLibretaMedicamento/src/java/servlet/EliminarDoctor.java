@@ -1,43 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
+import dto.DoctorDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dto.MedicamentoDto;
-import dao.MedicamentoDao;
 
 /**
  *
- * @author Sergio
+ * @author Kevin
  */
-public class EliminarMedicamento extends HttpServlet {
+public class EliminarDoctor extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-       
-            MedicamentoDto dto = new MedicamentoDto();
+            /* TODO output your page here. You may use following sample code. */
+           DoctorDto dto = new DoctorDto();
             
-            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
+           dto.setRut_doctor(request.getParameter("txtRut".trim()));
             
-            String mensaje = "";
-            if(new dao.MedicamentoDao().eliminar(dto)){
-                
-                mensaje= "Medicamento eliminado";
-            }else{
-                
-                mensaje = "Medicamento no eliminado";
-            }
-            
-            request.setAttribute("mensaje", mensaje);
-            
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
-            
-            request.getRequestDispatcher("Medicamento/EliminarMedicamento.jsp").forward(request, response);
+           String mensaje = "";
+           if(new dao.DoctorDaoImp().eliminar(dto)){
+               
+               mensaje = "Doctor eliminado";
+           }else{
+               
+               mensaje = "Doctor no eliminado";
+           }
+          request.setAttribute("mensaje", mensaje);
+          request.setAttribute("lista",  new dao.DoctorDaoImp().listar());
+          
+          request.getRequestDispatcher("Doctor/EliminarDoctor.jsp").forward(request, response);
+          
         }
     }
 

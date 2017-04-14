@@ -5,16 +5,18 @@
  */
 package dao;
 
-import dto.FarmaceuticoDto;
+import dto.DoctorDto;
 
 /**
  *
- * @author Kevin
+ * @author leslie
  */
-public interface FarmaceuticoDao extends BaseDao<FarmaceuticoDto> {
+public interface DoctorDao extends BaseDao<DoctorDto> {
+
     public String validarRut(String rut, String pass);
 
     public String validarPass(String pass, String rut);
-
+    
     public String recuperarNombre(String rut);
+
 }

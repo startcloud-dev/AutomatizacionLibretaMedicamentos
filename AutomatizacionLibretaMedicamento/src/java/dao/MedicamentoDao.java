@@ -2,7 +2,7 @@ package dao;
 
 import java.sql.*;
 import dto.MedicamentoDto;
-import componentes.Conexion;
+import sql.Conexion;
 import java.util.*;
 
 /**

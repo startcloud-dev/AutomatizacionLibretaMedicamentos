@@ -1,55 +1,60 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
+import dao.DoctorDaoImp;
+import dto.DoctorDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dto.MedicamentoDto;
-import dao.MedicamentoDao;
-import java.sql.Date;
-
 
 /**
  *
- * @author Sergio
+ * @author Kevin
  */
-public class AgregarMedicamento extends HttpServlet {
+public class AgregarDoctor extends HttpServlet {
 
- 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
-            String mensaje = "";
-            MedicamentoDto dto = new MedicamentoDto();
-            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
+            /* TODO output your page here. You may use following sample code. */
+            DoctorDto dto = new DoctorDto();
+            dto.setRut_doctor(request.getParameter("txtRut".trim()));
             dto.setNombre(request.getParameter("txtNombre".trim()));
-            dto.setTipo(request.getParameter("txtTipo".trim()));
-            dto.setFabricante(request.getParameter("txtFabricante".trim()));
-            dto.setComponente(request.getParameter("txtComponente".trim()));
-            dto.setContenido(request.getParameter("txtContenido".trim()));
-            dto.setCantidad(request.getParameter("txtCantidad".trim()));
-            dto.setGramaje(request.getParameter("txtGramaje".trim()));
-            dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
-            dto.setEstado(request.getParameter("txtEstado".trim()));
-            dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
-             
-            if(new dao.MedicamentoDao().agregar(dto)){
-                
-                mensaje = "Medicamento agregado";
-                
-            }else{
-                mensaje = "Medicamento no agregado";
+            dto.setEspecialidad(request.getParameter("txtEspecialidad".trim()));
+            dto.setDireccion(request.getParameter("txtDireccion".trim()));
+            dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
+            dto.setPassword(request.getParameter("txtClave".trim()));
+
+            String pass = request.getParameter("txtClave".trim());
+            String conpass = request.getParameter("txtConfClave".trim());
+            if (pass.equals(conpass)) {
+                new DoctorDaoImp().agregar(dto);
+                request.setAttribute("mensaje", "Se registro el Usuario  "
+                        + "por favor Inicie Session");
+            } else {
+                request.setAttribute("mensaje", "Las contraseñas no coinciden "
+                        + "Intentelo nuevamente ");
             }
-            
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
-            request.setAttribute("mensaje", mensaje);
-            
-           request.getRequestDispatcher("Medicamento/AgregarMedicamento.jsp").forward(request, response);
+            request.getRequestDispatcher("Doctor/Login_Registro_Doctor.jsp").
+                    forward(request, response);
         }
     }
 

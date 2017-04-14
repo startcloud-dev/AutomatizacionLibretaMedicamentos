@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dto.FarmaceuticoDto;
-import dao.FarmaceuticoDao;
+import dao.FarmaceuticoDaoImp;
 
 /**
  *
@@ -29,7 +29,7 @@ public class ModificarFarmaceutico extends HttpServlet {
             dto.setTelefono(Integer.parseInt("txtTelefeno".trim()));
             dto.setId_seccion(Integer.parseInt("txtIdSeccion".trim()));
             
-            if(new dao.FarmaceuticoDao().modificar(dto)){
+            if(new dao.FarmaceuticoDaoImp().modificar(dto)){
                
              mensaje = "farmaceutico modificado";   
             }else{
@@ -37,7 +37,7 @@ public class ModificarFarmaceutico extends HttpServlet {
               mensaje = "farmaceutico  no modificado";
             }
             request.setAttribute("mensaje",mensaje );
-            request.setAttribute("lista",  new dao.FarmaceuticoDao().listar());
+            request.setAttribute("lista",  new dao.FarmaceuticoDaoImp().listar());
             
             request.getRequestDispatcher("Farmaceutico/ModificarFarmaceutico.jsp").forward(request, response);
         }

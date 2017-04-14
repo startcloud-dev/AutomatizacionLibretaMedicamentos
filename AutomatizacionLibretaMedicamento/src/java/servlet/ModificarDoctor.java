@@ -1,43 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
+import dto.DoctorDto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dto.MedicamentoDto;
-import dao.MedicamentoDao;
 
 /**
  *
- * @author Sergio
+ * @author Kevin
  */
-public class EliminarMedicamento extends HttpServlet {
+public class ModificarDoctor extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-       
-            MedicamentoDto dto = new MedicamentoDto();
-            
-            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
-            
+            /* TODO output your page here. You may use following sample code. */
             String mensaje = "";
-            if(new dao.MedicamentoDao().eliminar(dto)){
-                
-                mensaje= "Medicamento eliminado";
-            }else{
-                
-                mensaje = "Medicamento no eliminado";
+
+            DoctorDto dto = new DoctorDto();
+            dto.setNombre(request.getParameter("txtNombre".trim()));
+            dto.setDireccion(request.getParameter("txtDireccion".trim()));
+            dto.setTelefono(Integer.parseInt("txtTelefeno".trim()));
+            dto.setEspecialidad("txtEspecialidad".trim());
+
+            if (new dao.DoctorDaoImp().modificar(dto)) {
+
+                mensaje = "doctor modificado";
+            } else {
+
+                mensaje = "doctor no modificado";
             }
-            
             request.setAttribute("mensaje", mensaje);
-            
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
-            
-            request.getRequestDispatcher("Medicamento/EliminarMedicamento.jsp").forward(request, response);
+            request.setAttribute("lista", new dao.DoctorDaoImp().listar());
+
+            request.getRequestDispatcher("Doctor/ModificarDoctor.jsp").forward(request, response);
         }
     }
 

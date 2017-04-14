@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dto.FarmaceuticoDto;
-import dao.FarmaceuticoDao;
+import dao.FarmaceuticoDaoImp;
 /**
  *
  * @author Sergio
@@ -24,7 +24,7 @@ public class EliminarFarmaceutico extends HttpServlet {
            dto.setRut(request.getParameter("txtRut".trim()));
             
            String mensaje = "";
-           if(new dao.FarmaceuticoDao().eliminar(dto)){
+           if(new dao.FarmaceuticoDaoImp().eliminar(dto)){
                
                mensaje = "Farmaceutico eliminado";
            }else{
@@ -32,11 +32,9 @@ public class EliminarFarmaceutico extends HttpServlet {
                mensaje = "Farmaceutico no eliminado";
            }
           request.setAttribute("mensaje", mensaje);
-          request.setAttribute("lista",  new dao.FarmaceuticoDao().listar());
+          request.setAttribute("lista",  new dao.FarmaceuticoDaoImp().listar());
           
           request.getRequestDispatcher("Farmaceutico/EliminarFarmaceutico.jsp").forward(request, response);
-          
-          
            
         }
     }
