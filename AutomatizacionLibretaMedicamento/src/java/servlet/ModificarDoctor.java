@@ -38,8 +38,8 @@ public class ModificarDoctor extends HttpServlet {
             DoctorDto dto = new DoctorDto();
             dto.setNombre(request.getParameter("txtNombre".trim()));
             dto.setDireccion(request.getParameter("txtDireccion".trim()));
-            dto.setTelefono(Integer.parseInt("txtTelefeno".trim()));
-            dto.setEspecialidad("txtEspecialidad".trim());
+            dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefeno".trim())));
+            dto.setEspecialidad(request.getParameter("txtEspecialidad".trim()));
 
             if (new dao.DoctorDaoImp().modificar(dto)) {
 
