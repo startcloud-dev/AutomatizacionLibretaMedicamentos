@@ -79,7 +79,6 @@ CREATE TABLE Medicamento
      Cantidad VARCHAR2(30)  NOT NULL , 
      Gramaje VARCHAR2(30)  NOT NULL , 
      Fecha_Vencimiento DATE  NOT NULL, 
-     Estado VARCHAR2 (30) NOT NULL , 
      Id_seccion INTEGER  NOT NULL 
     ) 
 ;
@@ -101,7 +100,7 @@ CREATE TABLE Paciente
 ;
 
 
-CREATE TABLE historico_medicamento
+CREATE TABLE Historico_medicamento
   (
     Codigo            INTEGER NOT NULL ,
     Nombre            VARCHAR2(30) NOT NULL ,
@@ -112,9 +111,7 @@ CREATE TABLE historico_medicamento
     Cantidad          VARCHAR2(30)NOT NULL,
     Gramaje           VARCHAR2(30) NOT NULL ,
     Fecha_Vencimiento DATE NOT NULL,
-    Estado            VARCHAR2(30) NOT NULL ,
-    Id_seccion        INTEGER NOT NULL ,
-    justificacion     VARCHAR2(100)
+    Id_seccion        INTEGER NOT NULL 
   );
   
 
