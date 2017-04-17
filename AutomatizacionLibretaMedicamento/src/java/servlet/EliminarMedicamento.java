@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dto.MedicamentoDto;
-import dao.MedicamentoDao;
+import dao.MedicamentoDaoImp;
 
 /**
  *
@@ -25,7 +25,7 @@ public class EliminarMedicamento extends HttpServlet {
             dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
             
             String mensaje = "";
-            if(new dao.MedicamentoDao().eliminar(dto)){
+            if(new dao.MedicamentoDaoImp().eliminar(dto)){
                 
                 mensaje= "Medicamento eliminado";
             }else{
@@ -35,7 +35,7 @@ public class EliminarMedicamento extends HttpServlet {
             
             request.setAttribute("mensaje", mensaje);
             
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
+            request.setAttribute("lista",  new dao.MedicamentoDaoImp().listar());
             
             request.getRequestDispatcher("Medicamento/EliminarMedicamento.jsp").forward(request, response);
         }

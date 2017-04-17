@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dto.MedicamentoDto;
-import dao.MedicamentoDao;
+import dao.MedicamentoDaoImp;
 import java.sql.Date;
 
 
@@ -38,7 +38,7 @@ public class AgregarMedicamento extends HttpServlet {
             dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
              
-            if(new dao.MedicamentoDao().agregar(dto)){
+            if(new dao.MedicamentoDaoImp().agregar(dto)){
                 
                 mensaje = "Medicamento agregado";
                 
@@ -46,7 +46,7 @@ public class AgregarMedicamento extends HttpServlet {
                 mensaje = "Medicamento no agregado";
             }
             
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
+            request.setAttribute("lista",  new dao.MedicamentoDaoImp().listar());
             request.setAttribute("mensaje", mensaje);
             
            request.getRequestDispatcher("Medicamento/AgregarMedicamento.jsp").forward(request, response);

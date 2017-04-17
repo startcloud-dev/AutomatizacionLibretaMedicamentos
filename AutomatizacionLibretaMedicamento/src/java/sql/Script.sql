@@ -76,8 +76,8 @@ CREATE TABLE Medicamento
      Fabricante VARCHAR2 (30) NOT NULL , 
      Componentes VARCHAR2 (30) NOT NULL , 
      Contenido VARCHAR2 (30) NOT NULL , 
-     Cantidad INTEGER  NOT NULL , 
-     Gramaje INTEGER  NOT NULL , 
+     Cantidad VARCHAR2(30)  NOT NULL , 
+     Gramaje VARCHAR2(30)  NOT NULL , 
      Fecha_Vencimiento DATE  NOT NULL, 
      Estado VARCHAR2 (30) NOT NULL , 
      Id_seccion INTEGER  NOT NULL 
@@ -99,6 +99,26 @@ CREATE TABLE Paciente
      Fecha_Nacimiento DATE NOT NULL
     ) 
 ;
+
+
+CREATE TABLE historico_medicamento
+  (
+    Codigo            INTEGER NOT NULL ,
+    Nombre            VARCHAR2(30) NOT NULL ,
+    Tipo              VARCHAR2(30)NOT NULL,
+    Fabricante        VARCHAR2(30) NOT NULL,
+    Componentes       VARCHAR2(30) NOT NULL ,
+    Contenido         VARCHAR2(30) NOT NULL ,
+    Cantidad          VARCHAR2(30)NOT NULL,
+    Gramaje           VARCHAR2(30) NOT NULL ,
+    Fecha_Vencimiento DATE NOT NULL,
+    Estado            VARCHAR2(30) NOT NULL ,
+    Id_seccion        INTEGER NOT NULL ,
+    justificacion     VARCHAR2(100)
+  );
+  
+
+
 
 ALTER TABLE Paciente 
     ADD CONSTRAINT "Paciente PK" PRIMARY KEY ( Rut_Paciente ) ;

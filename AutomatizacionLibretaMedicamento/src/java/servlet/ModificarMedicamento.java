@@ -1,7 +1,7 @@
 package servlet;
 
 import dto.MedicamentoDto;
-import dao.MedicamentoDao;
+import dao.MedicamentoDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -34,7 +34,7 @@ public class ModificarMedicamento extends HttpServlet {
             dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
 
-            if (new dao.MedicamentoDao().modificar(dto)) {
+            if (new dao.MedicamentoDaoImp().modificar(dto)) {
 
                 mensaje = "Medicamento agregado";
 
@@ -43,7 +43,7 @@ public class ModificarMedicamento extends HttpServlet {
             }
             request.setAttribute("mensaje", mensaje);
             
-            request.setAttribute("lista",  new dao.MedicamentoDao().listar());
+            request.setAttribute("lista",  new dao.MedicamentoDaoImp().listar());
 
             request.getRequestDispatcher("Medicamento/ModificarMedicamento.jsp").forward(request, response);
 

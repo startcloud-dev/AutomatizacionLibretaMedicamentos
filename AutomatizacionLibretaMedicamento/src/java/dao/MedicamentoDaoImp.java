@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author CETECOM
  */
-public class MedicamentoDao {
+public class MedicamentoDaoImp {
 
     public boolean agregar(MedicamentoDto dto) {
 
@@ -147,6 +147,8 @@ public class MedicamentoDao {
         }
         return lista;
     }
+    
+    
     
     
 }
