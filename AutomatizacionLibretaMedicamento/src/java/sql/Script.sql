@@ -100,7 +100,7 @@ CREATE TABLE Paciente
 ;
 
 
-CREATE TABLE Historico_medicamento
+CREATE TABLE Baja_medicamento
   (
     Codigo            INTEGER NOT NULL ,
     Nombre            VARCHAR2(30) NOT NULL ,
