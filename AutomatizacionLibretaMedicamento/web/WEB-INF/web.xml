@@ -134,6 +134,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>Index.jsp</welcome-file>
+        <welcome-file>Medicamento/BajaMedicamento.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

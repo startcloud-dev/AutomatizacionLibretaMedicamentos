@@ -1,5 +1,3 @@
-
-
 package servlet;
 
 import java.io.IOException;
@@ -11,32 +9,44 @@ import javax.servlet.http.HttpServletResponse;
 import dao.MedicamentoDaoImp;
 import java.util.List;
 import dto.MedicamentoDto;
+
 /**
  *
  * @author Sergio
  */
 public class BuscarMedicamento extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
+            String justi = request.getParameter("txtJustificacion".trim());
+
             int codigo = Integer.parseInt(request.getParameter("txtCodigo".trim()));
-            
-          List<MedicamentoDto> lista = new dao.MedicamentoDaoImp()
-                  .buscarPorCodigo(codigo);
-           
+
+            List<MedicamentoDto> lista = new dao.MedicamentoDaoImp()
+                    .buscarPorCodigo(codigo);
+
             if (lista.isEmpty()) {
-                
+
                 request.setAttribute("mensaje", "No se encuentra empleado ");
-            }else{
-                
+            } else {
+
                 request.setAttribute("lista", lista);
-                 request.setAttribute("mensaje", "Empleado Encontrado");
+                request.setAttribute("mensaje", "Empleado Encontrado");
+                MedicamentoDto dto = new MedicamentoDto();
+                dto.setCodigo(codigo);
+                new dao.MedicamentoDaoImp().eliminar(dto);
             }
-          
+
+            if (new dao.MedicamentoDaoImp().ingresarJustificacion(justi, codigo)) {
+
+                request.setAttribute("mensaje", "Justificacion agregada con exito");
+            } else {
+                request.setAttribute("mensaje", "Justificacion No agregada");
+            }
+
             request.getRequestDispatcher("Medicamento/BajaMedicamento.jsp")
                     .forward(request, response);
         }

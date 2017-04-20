@@ -194,7 +194,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             // establecemos que no sea autocommit,
 	    // asi controlamos la transaccion de manera manual
             conexion.setAutoCommit(false);
-            CallableStatement  sp  = conexion.prepareCall("CALL INGRESAR_JUSTIFICACION(?,?)");
+            CallableStatement  sp  = conexion.prepareCall("{CALL INGRESAR_JUSTIFICACION(?,?)}");
             
             sp.setString(1, justificacion);
             sp.setInt(2, codigo);
@@ -204,8 +204,8 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             conexion.commit();
             
             //Cierro conexion
-             
             conexion.close();
+         
             return true;
            
             

@@ -12,7 +12,7 @@
         <title>Medicamento | BajaMedicamento</title>
     </head>
     <body>
-        <c:set var="lista"  scope="request"  value="${requestScope.lista}" />
+     
         <c:set var="msn"  scope="request" value="${requestScope.mensaje}"/>
 
         <c:if test="${msn!=null}">
@@ -30,7 +30,10 @@
                         <td>Codigo</td>
                         <td><input type="text" name="txtCodigo" value="" placeholder="Codigo A Buscar" /></td>
                     </tr>
-
+                    <tr>
+                        <td>Justificacion</td>
+                        <td><input type="text" name="txtJustificacion" value="" placeholder="Justificacion" /></td>
+                    </tr>
                 </tbody>
             </table>
             <br>
@@ -55,7 +58,7 @@
                         <th>Componente</th>
                         <th>Contenido</th>
                         <th>Cantidad</th>
-                        <th>Gramaje/th>
+                        <th>Gramaje</th>
                         <th>FechaVencimiento</th>
                         <th>IdSeccion</th>
                     </tr>
@@ -79,20 +82,11 @@
             </table>
 
         </c:if>
-        <form name="frmBajaMedicamento" action="BajaMedicamento" method="POST">
+        <br>
+        <hr>
+        
 
-
-            <table id="tabla2" border="1">
-
-                <tbody>
-                    <tr>
-                        <td>Justificacion</td>
-                        <td><input type="text" name="txtJustificacion" value="" /></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </form>
+      
 
     </body>
 </html>
