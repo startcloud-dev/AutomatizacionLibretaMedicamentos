@@ -100,20 +100,6 @@ CREATE TABLE Paciente
 ;
 
 
-CREATE TABLE Baja_medicamento
-  (
-    Codigo            INTEGER NOT NULL ,
-    Nombre            VARCHAR2(30) NOT NULL ,
-    Tipo              VARCHAR2(30)NOT NULL,
-    Fabricante        VARCHAR2(30) NOT NULL,
-    Componentes       VARCHAR2(30) NOT NULL ,
-    Contenido         VARCHAR2(30) NOT NULL ,
-    Cantidad          VARCHAR2(30)NOT NULL,
-    Gramaje           VARCHAR2(30) NOT NULL ,
-    Fecha_Vencimiento DATE NOT NULL,
-    Id_seccion        INTEGER NOT NULL 
-  );
-  
 
 
 
@@ -297,9 +283,9 @@ INSERT INTO Farmaceutico VALUES ('12.153.864-5','Max Arcos','Manquehue 4576',772
 INSERT INTO Farmaceutico VALUES ('9.374.097-k','Rodrigo Ramirez','Recoleta 5460',78532257,2,'pas123');
 INSERT INTO Farmaceutico VALUES ('22.165.836-3','Mario Benedetti','Carrascal 2489',9577893,3,'baiabaia');
 
-INSERT INTO Medicamento VALUES (1,'Hipertencion','pastillas','Laboratorio Chile','muchas cosas','80mg','30','80','10-10-2018','En bodega',1);
-INSERT INTO Medicamento VALUES (2,'kralflex','pastillas','Laboratorio Chile','muchas cosas','40mg','10','40','08-06-2017','En reserva',1);
-INSERT INTO Medicamento VALUES (3,'Paracetamol','pastillas','Laboratorio Chile','muchas cosas','60mg','20','60','12-08-2017','Sin stock',1);
+INSERT INTO Medicamento VALUES (1,'Hipertencion','pastillas','Laboratorio Chile','muchas cosas','80mg','30','80','10-10-2018',1);
+INSERT INTO Medicamento VALUES (2,'kralflex','pastillas','Laboratorio Chile','muchas cosas','40mg','10','40','08-06-2017',1);
+INSERT INTO Medicamento VALUES (3,'Paracetamol','pastillas','Laboratorio Chile','muchas cosas','60mg','20','60','12-08-2017',1);
 
 INSERT INTO Receta VALUES (1,'01-15-2017','3 semanas');
 INSERT INTO Receta VALUES (2,'01-23-2017','1 semana');
@@ -332,3 +318,59 @@ INSERT INTO tiene VALUES (3,3);
 INSERT INTO Consulta VALUES ('12:30:00','6.517.936-5','10.123.456-k',1);
 INSERT INTO Consulta VALUES ('13:00:00','5.163.947-9','1.987.654-2',2);
 INSERT INTO Consulta VALUES ('13:30:00','11.164.197-3','15.537.193-k',3);
+
+
+--Trigger Baja de medicamento 
+
+
+CREATE TABLE Baja_medicamento
+  (
+    Codigo            INTEGER  ,
+    Nombre            VARCHAR2(30)  ,
+    Tipo              VARCHAR2(30),
+    Fabricante        VARCHAR2(30) ,
+    Componentes       VARCHAR2(30)  ,
+    Contenido         VARCHAR2(30)  ,
+    Cantidad          VARCHAR2(30),
+    Gramaje           VARCHAR2(30)  ,
+    Fecha_Vencimiento DATE ,
+    Id_seccion        INTEGER  ,
+    Justificacion     VARCHAR2(100)
+  );
+  
+
+
+
+
+  CREATE OR REPLACE TRIGGER TBajaMedicamento
+  AFTER DELETE ON Medicamento
+  
+  FOR EACH ROW
+  BEGIN
+  IF DELETING THEN
+  
+  INSERT INTO BAJA_MEDICAMENTO(Codigo,Nombre
+  ,Tipo,Fabricante,Componentes,Contenido
+  ,Cantidad,Gramaje,Fecha_Vencimiento,Id_seccion) VALUES (:old.Codigo,:old.Nombre,
+                                       :old.Tipo,:old.Fabricante,
+                                       :old.Componentes,:old.Contenido,
+                                       :old.Cantidad ,:old.Gramaje , 
+                                       :old.Fecha_Vencimiento,:old.Id_seccion);
+  END IF;
+  END;
+  
+
+  --Ingreso de justificacion
+
+CREATE OR REPLACE PROCEDURE INGRESAR_JUSTIFICACION 
+(
+  JUSTI IN VARCHAR2 ,
+  COD IN INTEGER 
+) AS 
+BEGIN
+ 
+ UPDATE BAJA_MEDICAMENTO
+ SET JUSTIFICACION = JUSTI
+ WHERE Codigo = COD;
+  
+END INGRESAR_JUSTIFICACION;

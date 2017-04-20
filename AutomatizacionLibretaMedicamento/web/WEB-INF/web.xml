@@ -60,6 +60,10 @@
         <servlet-name>LoginFarmaceutico</servlet-name>
         <servlet-class>servlet.LoginFarmaceutico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarMedicamento</servlet-name>
+        <servlet-class>servlet.BuscarMedicamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>LoginFarmaceutico</servlet-name>
         <url-pattern>/LoginFarmaceutico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarMedicamento</servlet-name>
+        <url-pattern>/BuscarMedicamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
