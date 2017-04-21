@@ -148,7 +148,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
     @Override
     public List<MedicamentoDto> buscarPorCodigo(Integer codigo) {
-        List<MedicamentoDto> lista = new ArrayList<MedicamentoDto>();
+        List<MedicamentoDto> lista  =  new ArrayList<MedicamentoDto>();
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM Medicamento WHERE Codigo = ?";

@@ -12,33 +12,33 @@
         <title>Medicamento | BajaMedicamento</title>
     </head>
     <body>
-     
+
         <c:set var="msn"  scope="request" value="${requestScope.mensaje}"/>
 
         <c:if test="${msn!=null}">
             <script>
 
-                alert('<c:out value="msn"/>');
+                alert('<c:out value="${msn}"  />');
 
             </script>
         </c:if>
         <form name="frmBuscaMedicamento" action="/AutomatizacionLibretaMedicamento/BuscarMedicamento" method="POST">
 
-            <table  id="tabla1" border="1">
+            <table  border="1">
                 <tbody>
                     <tr>
                         <td>Codigo</td>
-                        <td><input type="text" name="txtCodigo" value="" placeholder="Codigo A Buscar" /></td>
+                        <td><input type="text" name="txtCodigo" required="" value="" placeholder="Codigo A Buscar" /></td>
                     </tr>
                     <tr>
                         <td>Justificacion</td>
-                        <td><input type="text" name="txtJustificacion" value="" placeholder="Justificacion" /></td>
+                        <td><input type="text" required="" name="txtJustificacion" placeholder="Justificacion de baja" value="" /></td>
                     </tr>
                 </tbody>
             </table>
             <br>
-
-            <input type="submit" value="BuscarMedicamento" name="btnBuscarMedicamento" />
+            <hr>
+            <input type="submit" value="DarDeBajaMedicamento" name="btnBuscarMedicamento" />
         </form>
 
 
@@ -46,6 +46,9 @@
                 value="${requestScope.lista}">
         </c:set >
 
+        <c:set var="justi" scope="request" value="${requestScope.justificacion}"  />
+           
+        
         <c:if test="${requestScope.lista!=null}">
 
             <table border="1">
@@ -61,6 +64,7 @@
                         <th>Gramaje</th>
                         <th>FechaVencimiento</th>
                         <th>IdSeccion</th>
+                        <th>Justificacion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,17 +80,12 @@
                             <td><c:out   value="${med.gramaje}"/></td>
                             <td><c:out   value="${med.fecha_vencimiento}"/></td>
                             <td><c:out  value="${med.id_seccion}" /></td>
+                            <td><c:out value="${justi}"/></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
-
+            <br>
         </c:if>
-        <br>
-        <hr>
-        
-
-      
-
     </body>
 </html>

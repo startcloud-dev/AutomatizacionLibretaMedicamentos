@@ -1,14 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
+import dto.MedicamentoDto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.MedicamentoDaoImp;
-import java.util.List;
-import dto.MedicamentoDto;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,39 +21,42 @@ import dto.MedicamentoDto;
  */
 public class BuscarMedicamento extends HttpServlet {
 
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+           
+           int codigo = Integer.parseInt(request.getParameter("txtCodigo".trim()));
 
-            String justi = request.getParameter("txtJustificacion".trim());
-
-            int codigo = Integer.parseInt(request.getParameter("txtCodigo".trim()));
-
+           String justi = request.getParameter("txtJustificacion".trim());
+           
+           request.setAttribute("justificacion", justi);
+           
             List<MedicamentoDto> lista = new dao.MedicamentoDaoImp()
                     .buscarPorCodigo(codigo);
 
             if (lista.isEmpty()) {
 
-                request.setAttribute("mensaje", "No se encuentra empleado ");
+                request.setAttribute("mensaje", "No se encuentra medicamento");
             } else {
-
+                
                 request.setAttribute("lista", lista);
-                request.setAttribute("mensaje", "Empleado Encontrado");
+                request.setAttribute("mensaje", "Medicamento encontrado ");
+
                 MedicamentoDto dto = new MedicamentoDto();
+                
                 dto.setCodigo(codigo);
+                
                 new dao.MedicamentoDaoImp().eliminar(dto);
-            }
 
-            if (new dao.MedicamentoDaoImp().ingresarJustificacion(justi, codigo)) {
-
-                request.setAttribute("mensaje", "Justificacion agregada con exito");
-            } else {
-                request.setAttribute("mensaje", "Justificacion No agregada");
+                new dao.MedicamentoDaoImp().ingresarJustificacion(justi, codigo);
+                
             }
 
             request.getRequestDispatcher("Medicamento/BajaMedicamento.jsp")
                     .forward(request, response);
+            
         }
     }
 
