@@ -17,13 +17,13 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Modificar | Farmaceutico  </title>
+        <title>Modificar | Doctor  </title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">

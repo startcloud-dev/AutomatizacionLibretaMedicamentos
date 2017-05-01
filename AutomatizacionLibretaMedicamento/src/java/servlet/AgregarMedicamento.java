@@ -35,8 +35,8 @@ public class AgregarMedicamento extends HttpServlet {
             dto.setCantidad(request.getParameter("txtCantidad".trim()));
             dto.setGramaje(request.getParameter("txtGramaje".trim()));
             dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
-            dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
+            dto.setId_Reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
              
             if(new dao.MedicamentoDaoImp().agregar(dto)){
                 

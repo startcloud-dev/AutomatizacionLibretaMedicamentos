@@ -33,7 +33,7 @@
             <div id="wrapper">
                 <div id="login" class="animate form">
                     <form  action="/AutomatizacionLibretaMedicamento/LoginFarmaceutico" autocomplete="off" method="POST"> 
-                        <h1>Iniciar Session</h1> 
+                        <h1>Iniciar Sesion</h1> 
                         <p> 
                             <label> Rut </label>
                             <input id="username" name="txtRut" required="required" type="text"/>
@@ -84,6 +84,10 @@
                         <p> 
                             <label> Seccion </label>
                             <input id="passwordsignup_confirm" name="txtSeccion" required="required" type="text"/>
+                        </p>
+                        <p> 
+                            <label> Reserva </label>
+                            <input id="passwordsignup_confirm" name="txtReserva" required="required" type="text"/>
                         </p>
                         <a href="../Index.jsp">Volver</a>
                         <p class="signin button"> 

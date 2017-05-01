@@ -24,7 +24,7 @@
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -78,12 +78,12 @@
                                     <td><input type="date" name="txtFechaVencimiento" value="" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Estado</td>
-                                    <td><input type="text" name="txtEstado" value="" /></td>
-                                </tr>
-                                <tr>
                                     <td>Id Seccion</td>
                                     <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Id Reserva</td>
+                                    <td><input type="text" name="txtReserva" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -91,6 +91,9 @@
                         <hr>
                         <p class="login button">
                             <input type="submit" value="Agregar" name="btnAgregar" />
+                        </p>
+                        <p class="login button">
+                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
 
@@ -110,10 +113,8 @@
                                     <th>Componente</th>
                                     <th>Contenido</th>
                                     <th>Cantidad</th>
-                                    <th>Gramaje/th>
+                                    <th>Gramaje</th>
                                     <th>FechaVencimiento</th>
-                                    <th>Estado</th>
-                                    <th>IdSeccion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,8 +129,6 @@
                                         <td><c:out  value="${med.cantidad}" /></td>
                                         <td><c:out   value="${med.gramaje}"/></td>
                                         <td><c:out   value="${med.fecha_vencimiento}"/></td>
-                                        <td><c:out  value="${med.estado}" /></td>
-                                        <td><c:out  value="${med.id_seccion}" /></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

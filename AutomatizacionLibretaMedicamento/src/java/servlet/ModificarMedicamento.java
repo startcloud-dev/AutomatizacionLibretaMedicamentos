@@ -28,11 +28,10 @@ public class ModificarMedicamento extends HttpServlet {
             dto.setFabricante(request.getParameter("txtFabricante".trim()));
             dto.setComponente(request.getParameter("txtComponente".trim()));
             dto.setContenido(request.getParameter("txtContenido".trim()));
-            dto.setCantidad(request.getParameter("txtCantidad".trim()));
-            dto.setGramaje(request.getParameter("txtGramaje".trim()));
+            dto.setCantidad("txtCantidad".trim());
+            dto.setGramaje("txtGramaje".trim());
             dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
-            dto.setEstado(request.getParameter("txtEstado".trim()));
-            dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
+            dto.setId_seccion(Integer.parseInt("txtIdSeccion".trim()));
 
             if (new dao.MedicamentoDaoImp().modificar(dto)) {
 

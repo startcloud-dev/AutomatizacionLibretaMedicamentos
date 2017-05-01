@@ -13,6 +13,7 @@ public class BodegaDto {
  
   private Integer id_seccion;
   private String categoria ;
+  private Integer id_reserva;
 
     public BodegaDto() {
     }
@@ -33,11 +34,17 @@ public class BodegaDto {
         this.categoria = categoria;
     }
 
+    public Integer getId_reserva() {
+        return id_reserva;
+    }
+
+    public void setId_reserva(Integer id_reserva) {
+        this.id_reserva = id_reserva;
+    }
+
     @Override
     public String toString() {
-        return "Bodega{" + "id_seccion=" + id_seccion + ", categoria=" + categoria + '}';
+        return "BodegaDto{" + "id_seccion=" + id_seccion + ", categoria=" + categoria + ", id_reserva=" + id_reserva + '}';
     }
-  
-  
-    
+
 }

@@ -26,7 +26,7 @@
                 alert("${mensaje}");
             </script>
         </c:if>
-        <h1>Inicio de Session / Registro</h1>
+        <h1>Inicio de Sesion / Registro</h1>
         <div id="container_demo" >
             <a class="hiddenanchor" id="toregister"></a>
             <a class="hiddenanchor" id="tologin"></a>

@@ -19,9 +19,9 @@ public class MedicamentoDto {
   private String contenido ;
   private String cantidad;
   private String  gramaje;
-  private Date   fecha_vencimiento;
-  private String estado;
+  private Date fecha_vencimiento;
   private Integer id_seccion;
+  private Integer id_Reserva;
 
     public MedicamentoDto() {
     }
@@ -90,24 +90,12 @@ public class MedicamentoDto {
         this.gramaje = gramaje;
     }
 
-    
-    
-    
-
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
     }
 
     public void setFecha_vencimiento(Date fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Integer getId_seccion() {
@@ -118,14 +106,17 @@ public class MedicamentoDto {
         this.id_seccion = id_seccion;
     }
 
-    @Override
-    public String toString() {
-        return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + ", estado=" + estado + ", id_seccion=" + id_seccion + '}';
+    public Integer getId_Reserva() {
+        return id_Reserva;
     }
 
-  
-    
-    
-    
-    
+    public void setId_Reserva(Integer id_Reserva) {
+        this.id_Reserva = id_Reserva;
+    }
+
+    @Override
+    public String toString() {
+        return "MedicamentoDto{" + "codigo=" + codigo + ", nombre=" + nombre + ", tipo=" + tipo + ", fabricante=" + fabricante + ", componente=" + componente + ", contenido=" + contenido + ", cantidad=" + cantidad + ", gramaje=" + gramaje + ", fecha_vencimiento=" + fecha_vencimiento + ", id_seccion=" + id_seccion + ", id_Reserva=" + id_Reserva + '}';
+    }
+
 }

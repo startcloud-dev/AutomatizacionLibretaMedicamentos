@@ -22,11 +22,21 @@
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1000px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
-                    <h1>CESFAM :: Menu</h1>
+                    <h1>CESFAM :: Menu Doctor</h1>
+                    <a href="Paciente/AgregarPaciente.jsp">Agregar Paciente</a>
+                    <br>
+                    <br>
+                    <a href="Paciente/EliminarPaciente.jsp">Eliminar Paciente</a>
+                    <br>
+                    <br>
+                    <a href="Tratamiento/AgregarTratamiento.jsp">Agregar Tratamiento</a>
+                    <br>
+                    <br>
+                    <a href="Tratamiento/EliminarTratamiento.jsp">Eliminar Tratamiento</a>
                 </div>
             </div>
         </div>

@@ -20,12 +20,15 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
         <title>Bodega | Farmaceutica</title>
+        
+         
+
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -52,7 +55,7 @@
                         <h3></h3>
                     </hgroup>
 
-                    <form name="frmAgregarBodega" action="AgregarBodega" method="POST">
+                    <form name="frmAgregarBodega" action="/AutomatizacionLibretaMedicamento/AgregarBodega" method="POST">
 
                         <table border="0">
 
@@ -81,30 +84,32 @@
                     <c:set  var="lista" scope="request" 
                             value="${requestScope.lista}">
                     </c:set >
+                  
+                        <c:if test="${requestScope.lista!=null}">
 
-                    <c:if test="${requestScope.lista!=null}">
+                            <hr>
 
-                        <hr>
-
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>IdSeccion</th>
-                                    <th>Categoria</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "bodega" >
+                            <table  border="1">
+                                <thead>
                                     <tr>
-                                        <td><c:out value="${bodega.id_seccion}" /></td>
-                                        <td><c:out value="${bodega.categoria}" /></td>
+                                        <th>IdSeccion</th>
+                                        <th>Categoria</th>
 
                                     </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </c:if>       
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${requestScope.lista}" var = "bodega" >
+                                        <tr>
+                                            <td><c:out value="${bodega.id_seccion}" /></td>
+                                            <td><c:out value="${bodega.categoria}" /></td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                      
+                        </c:if>  
+                   
                 </div>
             </div>
         </div>

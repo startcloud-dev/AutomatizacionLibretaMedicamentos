@@ -3,7 +3,7 @@
 package dao;
 import  java.sql.*;
 import dto.BodegaDto;
-import  sql.Conexion;
+import  componentes.Conexion;
 import java.util.*;
 
 

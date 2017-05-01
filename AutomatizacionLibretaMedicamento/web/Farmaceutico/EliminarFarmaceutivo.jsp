@@ -24,7 +24,7 @@
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -55,36 +55,6 @@
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
-
-                    <c:set var="lista" scope="request" value="${requestScope.lista}" />
-
-                    <c:if test="${lista!=null}">
-
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>Rut</th>
-                                    <th>Nombre</th>
-                                    <th>Direccion</th>
-                                    <th>Telefono</th>
-                                    <th>IdSeccion</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "farma">
-                                    <tr>
-                                        <td><c:out value="${farma.rut_farmaceutico}"/></td>
-                                        <td><c:out value="${farma.nombre}" /></td>
-                                        <td><c:out value="${farma.direccion}"/></td>
-                                        <td><c:out value="${farma.telefono}"/></td>
-                                        <td><c:out value="${farma.id_seccion}"/></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-
-                    </c:if>
                 </div>
             </div>
         </div>   

@@ -33,6 +33,7 @@ public class AgregarFarmaceutico extends HttpServlet {
             dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtSeccion".trim())));
             dto.setPassword(request.getParameter("txtClave".trim()));
+            dto.setId_reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
 
             String pass = request.getParameter("txtClave".trim());
             String conpass = request.getParameter("txtConfClave".trim());

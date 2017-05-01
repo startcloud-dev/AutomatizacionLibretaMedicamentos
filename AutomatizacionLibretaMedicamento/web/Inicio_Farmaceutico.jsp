@@ -23,11 +23,11 @@
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
-                    <h1>CESFAM :: Menu</h1>
+                    <h1>CESFAM :: Menu Farmaceutico</h1>
                     <br>
                     <a href="/AutomatizacionLibretaMedicamento/Bodega/AgregarBodega.jsp">Agregar Bodega</a>
                     <br>
@@ -41,6 +41,19 @@
                     <a href="Medicamento/EliminarMedicamento.jsp">Eliminar Stock Medicamento</a>
                     <br>
                     <br>
+                    <a href="Farmaceutico/ReservaMedicamento.jsp">Reservar Medicamento</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/EliminarReserva.jsp">Eliminar Reserva</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/BuscarReserva.jsp">Buscar Reserva/ModificarEstado</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/GenerarInformes.jsp">Emitir Informes </a>
+                    <br>
+                    <br>
+                    <a href="Medicamento/BajaMedicamento.jsp">Justificar Baja de Medicamento </a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
  */
 package dao;
 
-import sql.Conexion;
+import componentes.Conexion;
 import dto.FarmaceuticoDto;
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "INSERT INTO Farmaceutico (Rut_Farmaceutico,Nombre,"
-                    + "Direccion,Telefono,id_seccion,Password) VALUES(?,?,?,?,?,?)";
+                    + "Direccion,Telefono,id_seccion,Password,id_reserva) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
             insertar.setString(1, dto.getRut());
             insertar.setString(2, dto.getNombre());
@@ -30,7 +30,8 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
             insertar.setInt(4, dto.getTelefono());
             insertar.setInt(5, dto.getId_seccion());
             insertar.setString(6, dto.getPassword());
-
+            insertar.setInt(7, dto.getId_reserva());
+            
             insertar.execute();
             insertar.close();
             conexion.close();

@@ -13,6 +13,7 @@ public class FarmaceuticoDto {
  private Integer telefono;
  private Integer id_seccion;
  private String  password;
+ private Integer id_reserva;
 
     public FarmaceuticoDto() {
     }
@@ -65,9 +66,17 @@ public class FarmaceuticoDto {
         this.password = password;
     }
 
+    public Integer getId_reserva() {
+        return id_reserva;
+    }
+
+    public void setId_reserva(Integer id_reserva) {
+        this.id_reserva = id_reserva;
+    }
+
     @Override
     public String toString() {
-        return "FarmaceuticoDto{" + "rut=" + rut + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", id_seccion=" + id_seccion + ", password=" + password + '}';
+        return "FarmaceuticoDto{" + "rut=" + rut + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", id_seccion=" + id_seccion + ", password=" + password + ", id_reserva=" + id_reserva + '}';
     }
-    
+
 }

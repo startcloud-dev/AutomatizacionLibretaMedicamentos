@@ -9,7 +9,7 @@ import dto.DoctorDto;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import sql.Conexion;
+import componentes.Conexion;
 
 /**
  *
