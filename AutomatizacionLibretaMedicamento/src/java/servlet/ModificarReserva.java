@@ -11,16 +11,22 @@ import dto.ReservaDto;
 import dao.PacienteDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+import webservice.WSEnviarSMS_Service;
 
 /**
  *
  * @author Sergio
  */
 public class ModificarReserva extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_47976/SMS/WSEnviarSMS.wsdl")
+    private WSEnviarSMS_Service service;
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -37,11 +43,20 @@ public class ModificarReserva extends HttpServlet {
            String correo =  new PacienteDaoImp().recuperarCorreo(rut);
            
            Correo.EnviarRecordatorio(correo);
+           
+           Date fecha = ReservaDaoImp.traerFechaTermino();
+           
+           
+           String fechaParse = fecha.toString();
+           
+            enviarMensajeDeTexto(fechaParse);
             
             response.sendRedirect("Farmaceutico/BuscarReserva.jsp");
             
         }
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -81,5 +96,12 @@ public class ModificarReserva extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void enviarMensajeDeTexto(java.lang.String fecha) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        webservice.WSEnviarSMS port = service.getWSEnviarSMSPort();
+        port.enviarMensajeDeTexto(fecha);
+    }
 
 }
