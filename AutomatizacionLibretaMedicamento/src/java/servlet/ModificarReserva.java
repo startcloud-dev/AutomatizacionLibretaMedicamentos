@@ -19,6 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import webservice.WSEnviarSMS_Service;
 
+
+
+
+
+
 /**
  *
  * @author Sergio
@@ -28,7 +33,8 @@ public class ModificarReserva extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_47976/SMS/WSEnviarSMS.wsdl")
     private WSEnviarSMS_Service service;
 
-   
+  
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -46,18 +52,14 @@ public class ModificarReserva extends HttpServlet {
            
            Date fecha = ReservaDaoImp.traerFechaTermino();
            
-           
            String fechaParse = fecha.toString();
            
-            enviarMensajeDeTexto(fechaParse);
-            
-            response.sendRedirect("Farmaceutico/BuscarReserva.jsp");
+           EnviarMensajeDeTexto(fechaParse);
+
+           response.sendRedirect("Farmaceutico/BuscarReserva.jsp");
             
         }
     }
-    
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -97,11 +99,12 @@ public class ModificarReserva extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void enviarMensajeDeTexto(java.lang.String fecha) {
+    private void EnviarMensajeDeTexto(java.lang.String fecha) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         webservice.WSEnviarSMS port = service.getWSEnviarSMSPort();
         port.enviarMensajeDeTexto(fecha);
     }
 
+  
 }

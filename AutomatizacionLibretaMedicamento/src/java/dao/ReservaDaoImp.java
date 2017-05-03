@@ -154,7 +154,7 @@ public class ReservaDaoImp implements ReservaDao {
        Date fechaSalida = null;
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT Fecha_termino FROM Reserva WHERE id_reserva = 1";
+            String query = "SELECT Fecha_termino FROM Reserva WHERE id_reserva = 2";
             PreparedStatement traer = conexion.prepareStatement(query);
             
             ResultSet rs = traer.executeQuery();

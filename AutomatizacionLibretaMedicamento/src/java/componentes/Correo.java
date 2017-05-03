@@ -159,8 +159,8 @@ public class Correo {
  
             // Creo la parte del mensaje
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setText("Debe dirigirse al cesfam a retirar "
-                    + "se medicamento en la siguiente fecha : "+" Formato fecha : "+" (yyyy-mm-dd) "+ 
+            mimeBodyPart.setText("Debe dirigirse al cesfam a retirarse "
+                    + " medicamento en la siguiente fecha : "+" Formato fecha : "+" (YYYY-MM-DD) "+ 
                    fecha.toString() + " Si no debera volver a hacer la consulta");
 
 //                    MimeBodyPart mimeBodyPartAdjunto = new MimeBodyPart();
