@@ -10,11 +10,13 @@ package componentes;
  * @author Sergio
  */
     
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
 import dto.MedicamentoDto;
 import dto.ReservaDto;
 import java.io.FileOutputStream;
@@ -30,12 +32,20 @@ public class GenerarInformes {
             String nombre = "Medicamentos";
             if(tipo == 1){
                 nombre = "Reservas";
+            }else if (tipo == 2){
+                nombre = "Receta";
             }
             PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Sergio\\Desktop\\Informe"+nombre+".pdf"));
             document.open();
+              Paragraph par1 = new Paragraph();
+             Font font_titulo = new Font(Font.FontFamily.HELVETICA,15,Font.BOLD,BaseColor.BLACK);
+              par1.setAlignment(Element.ALIGN_CENTER);
+               par1.add(new Phrase(Chunk.NEWLINE));
+               par1.add(new Phrase(Chunk.NEWLINE));
             PdfPTable table = new PdfPTable(5);
             if (tipo == 0) { // Tipo 0 es Medicamento
-                document.add(new Paragraph("MEDICAMENTOS\n\n"));
+                par1.add(new Phrase("MEDICAMENTOS", font_titulo));
+               
                 table.addCell("Nombre");
                 table.addCell("Laboratorio");
                 table.addCell("Cantidad");
@@ -43,14 +53,24 @@ public class GenerarInformes {
                 table.addCell("Gramaje");
             } else {
                 if (tipo == 1) {
-                    document.add(new Paragraph("RESERVAS\n\n"));
+                    par1.add(new Phrase("RESERVAS", font_titulo));
                     table.addCell("Rut paciente");
                     table.addCell("Fecha Inicio");
                     table.addCell("Fecha Termino");
                     table.addCell("Rut Farmaceutico");
                     table.addCell("Estado");
+                }else if (tipo ==3){
+                      par1.add(new Phrase("RECETA", font_titulo));
+                    table.addCell("Fecha Emision");
+                    table.addCell("Fecha Inicio");
+                    table.addCell("Fecha Termino");
+                    table.addCell("Rut Farmaceutico");
+                    table.addCell("Estado");
+                    
                 }
             }
+            
+            document.add(par1);
             // Este codigo genera una tabla de 3 columnas
 
             // addCell() agrega una celda a la tabla, el cambio de fila
