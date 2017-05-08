@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author CETECOM
  */
-public class MedicamentoDaoImp implements  MedicamentoDao{
+public class MedicamentoDaoImp implements MedicamentoDao {
 
     public boolean agregar(MedicamentoDto dto) {
 
@@ -48,42 +48,41 @@ public class MedicamentoDaoImp implements  MedicamentoDao{
 
     }
 
-    public boolean eliminar(MedicamentoDto dto){
+    public boolean eliminar(MedicamentoDto dto) {
         try {
             Connection conexion = Conexion.getConexion();
-            String query   = "DELETE FROM Medicamento WHERE  Codigo = ? ";
+            String query = "DELETE FROM Medicamento WHERE  Codigo = ? ";
             PreparedStatement eliminar = conexion.prepareStatement(query);
-            
+
             eliminar.setInt(1, dto.getCodigo());
 
             eliminar.execute();
             conexion.commit();
             eliminar.close();
             conexion.close();
-            
+
             return true;
-            
-        } catch(SQLException w){
-            System.out.println("Error al eliminar medicamento "+w.getMessage());
+
+        } catch (SQLException w) {
+            System.out.println("Error al eliminar medicamento " + w.getMessage());
             return false;
         } catch (Exception e) {
-            System.out.println("Error al eliminar el medicamento "+e.getMessage());
+            System.out.println("Error al eliminar el medicamento " + e.getMessage());
             return false;
         }
-        
+
     }
-    
-    public boolean modificar(MedicamentoDto dto){
+
+    public boolean modificar(MedicamentoDto dto) {
         try {
-        Connection conexion = Conexion.getConexion();
-        String query = "UPDATE Medicamento SET Nombre = ? ,Tipo = ? , "
-                + "Fabricante  = ? , Componentes = ? , Contenido = ? , Cantidad = ? , "
-                + "Gramaje = ? , Fecha_Vencimiento = ? , Id_seccion = ? "
-                + " WHERE Codigo = ? ";
-        PreparedStatement modificar = conexion.prepareStatement(query);
-        
-        
-        modificar.setString(1, dto.getNombre());
+            Connection conexion = Conexion.getConexion();
+            String query = "UPDATE Medicamento SET Nombre = ? ,Tipo = ? , "
+                    + "Fabricante  = ? , Componentes = ? , Contenido = ? , Cantidad = ? , "
+                    + "Gramaje = ? , Fecha_Vencimiento = ? , Id_seccion = ? "
+                    + " WHERE Codigo = ? ";
+            PreparedStatement modificar = conexion.prepareStatement(query);
+
+            modificar.setString(1, dto.getNombre());
             modificar.setString(2, dto.getTipo());
             modificar.setString(3, dto.getFabricante());
             modificar.setString(4, dto.getComponente());
@@ -95,31 +94,30 @@ public class MedicamentoDaoImp implements  MedicamentoDao{
             modificar.setInt(9, dto.getCodigo());
 
             modificar.executeUpdate();
-            
+
             modificar.close();
             conexion.close();
-            
-             return true ;    
-        }catch(SQLException w) { 
-            System.out.println("Error al modifcar el medicamento "+w.getMessage());
+
+            return true;
+        } catch (SQLException w) {
+            System.out.println("Error al modifcar el medicamento " + w.getMessage());
             return false;
         } catch (Exception e) {
-            System.out.println("Error al modificar "+e.getMessage());
+            System.out.println("Error al modificar " + e.getMessage());
             return false;
         }
     }
-    
-    
-    public List<MedicamentoDto> listar(){
+
+    public List<MedicamentoDto> listar() {
         List<MedicamentoDto> lista = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM Medicamento ORDER BY Codigo ASC";
             PreparedStatement listar = conexion.prepareStatement(query);
-            
+
             ResultSet rs = listar.executeQuery();
             lista = new ArrayList<MedicamentoDto>();
-            while(rs.next()){
+            while (rs.next()) {
                 MedicamentoDto dto = new MedicamentoDto();
                 dto.setCodigo(rs.getInt("Codigo"));
                 dto.setNombre(rs.getString("Nombre"));
@@ -133,21 +131,20 @@ public class MedicamentoDaoImp implements  MedicamentoDao{
                 dto.setId_seccion(rs.getInt("Id_seccion"));
                 dto.setId_Reserva(rs.getInt("Id_Reserva"));
                 lista.add(dto);
-                
+
             }
-             listar.close();
-             conexion.close();
-            
-        }catch(SQLException w){
-            System.out.println("Error sql al listar los medicamentos "+w.getMessage());
+            listar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error sql al listar los medicamentos " + w.getMessage());
         } catch (Exception e) {
             System.out.println("Error al listar los medicamentos ");
         }
         return lista;
     }
-    
-    
-     @Override
+
+    @Override
     public List<MedicamentoDto> buscarPorCodigo(Integer codigo) {
         List<MedicamentoDto> lista = new ArrayList<MedicamentoDto>();
         try {
@@ -219,6 +216,41 @@ public class MedicamentoDaoImp implements  MedicamentoDao{
             return false;
         }
     }
-    
-    
+
+    @Override
+    public List<MedicamentoDto> revisarStockPorNombre(String nombre) {
+        List<MedicamentoDto> lista = null;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT CODIGO , NOMBRE , GRAMAJE, FABRICANTE, CANTIDAD "
+                    + "FROM MEDICAMENTO WHERE NOMBRE = ?";
+            PreparedStatement listar = conexion.prepareStatement(query);
+            listar.setString(1, nombre);
+
+            ResultSet rs = listar.executeQuery();
+            lista = new ArrayList<MedicamentoDto>();
+            while (rs.next()) {
+                MedicamentoDto dto = new MedicamentoDto();
+                dto.setCodigo(rs.getInt("Codigo"));
+                dto.setNombre(rs.getString("Nombre"));
+                dto.setGramaje(rs.getString("Gramaje"));
+                dto.setFabricante(rs.getString("Fabricante"));
+                dto.setCantidad(rs.getString("Cantidad"));
+
+                lista.add(dto);
+            }
+            listar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al revisar stock por nombre " + w.getMessage());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al revisar stock por nombre " + e.getMessage());
+        }
+        return lista;
+    }
+
 }

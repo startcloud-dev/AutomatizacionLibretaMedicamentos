@@ -1,4 +1,4 @@
-eq-- Generado por Oracle SQL Developer Data Modeler 3.1.0.700
+-- Generado por Oracle SQL Developer Data Modeler 3.1.0.700
 --   en:        2017-04-21 15:22:24 CLT
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
@@ -187,7 +187,7 @@ CREATE TABLE Receta
     ( 
      Id_receta INTEGER  NOT NULL , 
      Fecha_Emision DATE , 
-     Indicaciones VARCHAR2 (30) 
+     Indicaciones VARCHAR2 (1000) 
     ) 
 ;
 
@@ -505,8 +505,7 @@ INSERT INTO Bodega VALUES (1,'Pastilla');
 INSERT INTO Bodega VALUES (2,'Jarabe');
 INSERT INTO Bodega VALUES (3,'Otros');
 
-INSERT INTO Farmaceutico VALUES ('12.153.864-5','Max Arcos','Manquehue 4576',7726410,1,'
-',1);
+INSERT INTO Farmaceutico VALUES ('12.153.864-5','Max Arcos','Manquehue 4576',7726410,1,'Thefarma',1);
 INSERT INTO Farmaceutico VALUES ('9.374.097-k','Rodrigo Ramirez','Recoleta 5460',78532257,2,'pas123',2);
 INSERT INTO Farmaceutico VALUES ('22.165.836-3','Mario Benedetti','Carrascal 2489',9577893,3,'baiabaia',3);
 
@@ -526,7 +525,7 @@ INSERT INTO reserva VALUES (1,'04-20-2017','04-25-2017','19.112.792-7',1,'12.153
 INSERT INTO reserva VALUES (2,'04-20-2017','04-25-2017','1.987.654-2',2,'9.374.097-k','En curso',2);
 INSERT INTO reserva VALUES (3,'04-20-2017','04-25-2017','15.537.193-k',3,'22.165.836-3','En curso',3);
 
-INSERT INTO Tratamiento VALUES ('1','1 Semana',4);
+INSERT INTO Tratamiento VALUES ('1','1 Semana',1);
 INSERT INTO Tratamiento VALUES ('2','3 Semanas',2);
 INSERT INTO Tratamiento VALUES ('3','3 Dias',3);
 
@@ -538,7 +537,7 @@ INSERT INTO realiza VALUES('6.517.936-5',1);
 INSERT INTO realiza VALUES('5.163.947-9',2);
 INSERT INTO realiza VALUES('11.164.197-3',3);
 
-INSERT INTO Paciente VALUES ('19.112.792-7','Lucas','Romero','Gonzalez','psje Radon 2345','6549871','k.arnaiz@alumnos.duoc.cl','05-30-1989',1);
+INSERT INTO Paciente VALUES ('19.112.792-7','Lucas','Romero','Gonzalez','psje Radon 2345','96358176','k.arnaiz@alumnos.duoc.cl','05-30-1989',1);
 INSERT INTO Paciente VALUES ('1.987.654-2','Marcelo','Martinez','Mendez','Pedro Prado 5678','9035241','marceloM98@gmail.com','07-13-1998',2);
 INSERT INTO Paciente VALUES ('15.537.193-k','Felipe','Miranda','Moya','Mistral 6543','5647862','feliMM92@gmail.com','10-10-1992',3);
 
@@ -550,13 +549,22 @@ INSERT INTO Consulta VALUES ('6.517.936-5','19.112.792-7',1,'12:30:00');
 INSERT INTO Consulta VALUES ('5.163.947-9','1.987.654-2',2,'13:00:00');
 INSERT INTO Consulta VALUES ('11.164.197-3','15.537.193-k',3,'13:30:00');
 
+CREATE SEQUENCE cod_reserva
+INCREMENT BY 1
+START WITH 4
+MAXVALUE 999
+MINVALUE 1;
 
---sequencia
---CREATE SEQUENCE cod_reserva
---INCREMENT BY 1
---START WITH 4
---MAXVALUE 999
---MINVALUE 1;
+
+SELECT MEDICAMENTO.Nombre , TRATAMIENTO.Duracion ,DOCTOR.Nombre , PACIENTE.nombre  
+FROM  MEDICAMENTO , RESERVA, TRATAMIENTO, REALIZA, DOCTOR , CONSULTA , PACIENTE
+INNER JOIN  RESERVA USING (ID_RESERVA) 
+INNER JOIN TRATAMIENTO USING (ID_RESERVA) 
+INNER JOIN REALIZA USING(TRATAMIENTO_ID_TRATAMIENTO) 
+INNER JOIN  DOCTOR USING (DOCTOR_RUT_DOCTOR)
+INNER JOIN CONSULTA USING(RUT_PACIENTE) 
+INNER JOIN PACIENTE USING (RUT_PACIENTE);
+
 
 ---trigger para baja_medicamento
 
@@ -599,14 +607,4 @@ END INGRESAR_JUSTIFICACION;
 
 
 
-
---consulta para emitir receta
-
-SELECT MEDICAMENTO.Nombre , TRATAMIENTO.Duracion ,DOCTOR.Nombre , PACIENTE.nombre  
-FROM  MEDICAMENTO , RESERVA, TRATAMIENTO, REALIZA, DOCTOR , CONSULTA , PACIENTE
-INNER JOIN  RESERVA USING (ID_RESERVA) 
-INNER JOIN TRATAMIENTO USING (ID_RESERVA) 
-INNER JOIN REALIZA USING(TRATAMIENTO_ID_TRATAMIENTO) 
-INNER JOIN  DOCTOR USING (DOCTOR_RUT_DOCTOR)
-INNER JOIN CONSULTA USING(RUT_PACIENTE) 
-INNER JOIN PACIENTE USING (RUT_PACIENTE);
+// Codigo Nombre Gramaje Lab Cantidad  

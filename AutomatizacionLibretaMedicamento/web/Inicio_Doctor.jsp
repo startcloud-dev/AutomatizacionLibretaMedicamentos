@@ -37,6 +37,9 @@
                     <br>
                     <br>
                     <a href="Tratamiento/EliminarTratamiento.jsp">Eliminar Tratamiento</a>
+                    <br>
+                    <br>
+                    <a href="Medicamento/RevisarStock.jsp">Revisar Stock</a>
                 </div>
             </div>
         </div>

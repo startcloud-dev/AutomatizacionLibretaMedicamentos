@@ -120,6 +120,10 @@
         <servlet-name>InformeReserva</servlet-name>
         <servlet-class>servlet.InformeReserva</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RevisarStock</servlet-name>
+        <servlet-class>servlet.RevisarStock</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>InformeReserva</servlet-name>
         <url-pattern>/InformeReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RevisarStock</servlet-name>
+        <url-pattern>/RevisarStock</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
