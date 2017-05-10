@@ -124,6 +124,18 @@
         <servlet-name>RevisarStock</servlet-name>
         <servlet-class>servlet.RevisarStock</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarReceta</servlet-name>
+        <servlet-class>servlet.AgregarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarReceta</servlet-name>
+        <servlet-class>servlet.EliminarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarReceta</servlet-name>
+        <servlet-class>servlet.ModificarReceta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -247,6 +259,18 @@
     <servlet-mapping>
         <servlet-name>RevisarStock</servlet-name>
         <url-pattern>/RevisarStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarReceta</servlet-name>
+        <url-pattern>/AgregarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarReceta</servlet-name>
+        <url-pattern>/EliminarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarReceta</servlet-name>
+        <url-pattern>/ModificarReceta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

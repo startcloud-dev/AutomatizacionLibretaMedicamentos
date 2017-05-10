@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Eliminar | Medicamento </title>
     </head>
     <body>
@@ -64,7 +67,7 @@
 
                     <c:if test="${requestScope.lista!=null}">
 
-                        <table border="1">
+                        <table  class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Codigo</th>

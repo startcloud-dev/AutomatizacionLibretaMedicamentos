@@ -92,7 +92,7 @@
 
                             <hr>
 
-                            <table  class="table table-bordered" border="1">
+                            <table  class="table table-bordered" >
                                 <thead>
                                     <tr>
                                         <th>IdSeccion</th>
