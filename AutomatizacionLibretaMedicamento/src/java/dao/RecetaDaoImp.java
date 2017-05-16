@@ -123,4 +123,37 @@ public class RecetaDaoImp implements RecetaDao {
         return lista;
     }
 
+    @Override
+    public RecetaDto buscarRecetaPorRutPaciente(String rut) {
+        RecetaDto dto = null;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT RECETA.ID_RECETA, RECETA.FECHA_EMISION , RECETA.INDICACIONES FROM RECETA,CONSULTA"
+                    + "WHERE RECETA.ID_RECETA=CONSULTA.ID_RECETA  AND  CONSULTA.RUT_PACIENTE = ?";
+            PreparedStatement listar = conexion.prepareStatement(query);
+
+            listar.setString(1, rut);
+
+            ResultSet rs = listar.executeQuery();
+
+            while (rs.next()) {
+                dto = new RecetaDto();
+                dto.setId_receta(rs.getInt("Id_receta"));
+                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+                dto.setIndicaciones(rs.getString("Indicaciones"));
+
+            }
+            System.out.println(dto.toString());
+            listar.close();
+            conexion.close();
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al buscar la receta por el rut del paciente " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar la receta por el rut del paciente " + e.getMessage());
+        }
+
+        return dto;
+    }
+
 }
