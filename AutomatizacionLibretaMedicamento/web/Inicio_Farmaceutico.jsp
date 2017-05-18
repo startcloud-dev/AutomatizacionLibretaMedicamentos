@@ -54,9 +54,6 @@
                     <br>
                     <br>
                     <a href="Medicamento/BajaMedicamento.jsp">Justificar Baja de Medicamento </a>
-                    <br>
-                    <br>
-                    <a href="Farmaceutico/PrescripcionesPendientes.jsp">Prescripciones pendientes </a>
                 </div>
             </div>
         </div>
