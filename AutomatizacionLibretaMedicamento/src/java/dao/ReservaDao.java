@@ -12,4 +12,6 @@ import dto.ReservaDto;
  */
 public interface ReservaDao extends BaseDao<ReservaDto>{
     
+    
+    
 }

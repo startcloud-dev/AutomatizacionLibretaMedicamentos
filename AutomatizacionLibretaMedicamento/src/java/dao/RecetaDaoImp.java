@@ -123,4 +123,40 @@ public class RecetaDaoImp implements RecetaDao {
         return lista;
     }
 
+    @Override
+    public List<RecetaDto> listarRecetasPendientes(String rutPaciente) {
+        List<RecetaDto> lista = new ArrayList<RecetaDto>();
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT Receta.Id_receta, Receta.Fecha_Emision , Receta.Indicaciones "
+                    + "FROM Receta,Consulta" + "WHERE Receta.Id_Receta=Consulta.Id_Receta AND"
+                    + "Consulta.Rut_Paciente = ?";
+            PreparedStatement listar = conexion.prepareStatement(query);
+
+            listar.setString(1, rutPaciente);
+
+            ResultSet rs = listar.executeQuery();
+
+            while (rs.next()) {
+                RecetaDto dto = new RecetaDto();
+                dto.setId_receta(rs.getInt("Id_receta"));
+                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+                dto.setIndicaciones(rs.getString("Indicaciones"));
+
+                lista.add(dto);
+            }
+            listar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql listar Las recetas por rut paciente " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al listar las recetas por rut de paciente " + e.getMessage());
+        }
+
+        return lista;
+    }
+
 }

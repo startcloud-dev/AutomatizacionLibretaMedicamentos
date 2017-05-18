@@ -6,11 +6,16 @@
 package dao;
 
 import dto.RecetaDto;
+import java.util.List;
 
 /**
  *
  * @author LeslieK
  */
 public interface RecetaDao extends BaseDao<RecetaDto>{
+    
+    public List<RecetaDto> listarRecetasPendientes(String rutPaciente);
+    
+    
     
 }

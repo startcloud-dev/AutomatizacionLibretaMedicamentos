@@ -54,6 +54,9 @@
                     <br>
                     <br>
                     <a href="Medicamento/BajaMedicamento.jsp">Justificar Baja de Medicamento </a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/RecetasPendientes.jsp" >RecetasPendientes</a>
                 </div>
             </div>
         </div>
