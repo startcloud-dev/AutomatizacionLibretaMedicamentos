@@ -129,7 +129,7 @@ public class RecetaDaoImp implements RecetaDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT Receta.Id_receta, Receta.Fecha_Emision , Receta.Indicaciones "
-                    + "FROM Receta,Consulta" + "WHERE Receta.Id_Receta=Consulta.Id_Receta AND"
+                    + "FROM Receta,Consulta " + " WHERE Receta.Id_Receta=Consulta.Id_Receta AND "
                     + "Consulta.Rut_Paciente = ?";
             PreparedStatement listar = conexion.prepareStatement(query);
 

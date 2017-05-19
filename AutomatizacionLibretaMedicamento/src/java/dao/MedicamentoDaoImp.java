@@ -239,6 +239,9 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
                 lista.add(dto);
             }
+            
+            System.out.println("Lista"+lista.toString());
+            
             listar.close();
             conexion.close();
 

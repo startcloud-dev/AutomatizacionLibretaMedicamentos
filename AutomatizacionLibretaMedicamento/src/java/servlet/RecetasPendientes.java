@@ -22,7 +22,7 @@ public class RecetasPendientes extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
           
-            String rut = request.getParameter("txtRut".toString());
+            String rut = request.getParameter("txtRut".trim());
             
             List lista = new dao.RecetaDaoImp().listarRecetasPendientes(rut);
             
