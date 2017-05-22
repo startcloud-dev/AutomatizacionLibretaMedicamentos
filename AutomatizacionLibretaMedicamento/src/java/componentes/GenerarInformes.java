@@ -17,8 +17,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
+import dto.DoctorDto;
 import dto.MedicamentoDto;
+import dto.RecetaDto;
 import dto.ReservaDto;
+import dto.TratamientoDto;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +62,7 @@ public class GenerarInformes {
                     table.addCell("Fecha Termino");
                     table.addCell("Rut Farmaceutico");
                     table.addCell("Estado");
-                }else if (tipo ==3){
+                }else if (tipo ==2){
                       par1.add(new Phrase("RECETA", font_titulo));
                     table.addCell("Fecha Emision");
                     table.addCell("Fecha Inicio");
@@ -97,6 +100,23 @@ public class GenerarInformes {
                 }
             }
 
+              if(tipo ==2 ){
+                    for (Object arg : lista)
+                    {
+                        DoctorDto doc = (DoctorDto) arg;
+                         TratamientoDto tra =(TratamientoDto) arg;
+                        RecetaDto rece =(RecetaDto) arg;
+                        table.addCell(doc.getNombre());
+                        table.addCell(String.valueOf(tra.getId_tratamiento()));
+                        table.addCell(tra.getDuracion());
+                        table.addCell(String.valueOf(rece.getId_receta()));
+                        table.addCell(rece.getFecha_emision().toString());
+                        table.addCell(rece.getIndicaciones());
+                        
+                        
+                    }
+              }
+            
             // Si desea crear una celda de mas de una columna
             // Cree un objecto Cell y cambie su propiedad span
             PdfPCell celdaFinal = new PdfPCell(new Paragraph("Filas Totales: "+lista.size()));

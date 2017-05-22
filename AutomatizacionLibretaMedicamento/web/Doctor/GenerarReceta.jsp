@@ -1,13 +1,13 @@
 <%-- 
-    Document   : AgregarBodega
-    Created on : 05-04-2017, 23:16:52
-    Author     : Sergio
+    Document   : GenerarReceta
+    Created on : 19-05-2017, 05:18:09 PM
+    Author     : LeslieK
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib   prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page     import="dto.BodegaDto" %>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Bodega | Farmaceutica</title>
+        <title>Generar | Receta</title>
 
 
 
@@ -37,9 +37,10 @@
                 <div id="login" class="animate form">
                     <header>
                         <hgroup>
-                            <h1>Bodega farmaceutica </h1>
+                            <h1>Generar Receta </h1>
                         </hgroup>
                     </header>
+
 
                     <c:set var="msn" scope="request" value="${requestScope.mensaje}">
 
@@ -50,7 +51,7 @@
                         <script>
 
                             alert('<c:out value="${msn}" />');
-                         
+
                         </script>
 
                     </c:if>
@@ -58,64 +59,30 @@
                         <h3></h3>
                     </hgroup>
 
-                    <form name="frmAgregarBodega" action="/AutomatizacionLibretaMedicamento/AgregarBodega" method="POST">
+                    <form name="frmGenerarReceta" action="/AutomatizacionLibretaMedicamento/GenerarReceta" method="POST">
 
                         <table  class="" border="0">
 
                             <tbody>
                                 <tr>
-                                    <td>Id Seccion </td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td>Rut Paciente </td>
+                                    <td><input type="text" name="txtRut" placeholder="Rut" required="" value="" /></td>
                                 </tr>
-                                <tr>
-                                    <td>Categoria </td>
-                                    <td><input type="text" name="txtCategoria" value="" /></td>
-                                </tr>
+
                             </tbody>
                         </table>
 
                         <hr>
                         <p class="login button">
-                            <input type="submit" value="Ingresar" name="btnAgregarBodega" />
+                            <input type="submit" value="Generar Receta" name="btnGenerarRecetas" />
                         </p>
                         <p class="login button">
-                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
+                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Doctor.jsp">Volver al menu</a>
                         </p>
                     </form>
-
-                    <hr>
-                    <c:set  var="lista" scope="request" 
-                            value="${requestScope.lista}">
-                    </c:set >
-
-                    <c:if test="${requestScope.lista!=null}">
-
-                        <hr>
-
-                        <table  class="table table-bordered" >
-                            <thead>
-                                <tr>
-                                    <th>IdSeccion</th>
-                                    <th>Categoria</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "bodega" >
-                                    <tr>
-                                        <td><c:out value="${bodega.id_seccion}" /></td>
-                                        <td><c:out value="${bodega.categoria}" /></td>
-
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-
-                    </c:if>  
-
-                        <c:out value="${lista}"/>     
                 </div>
             </div>
         </div>
     </body>
 </html>
+

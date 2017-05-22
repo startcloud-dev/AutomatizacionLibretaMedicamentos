@@ -140,6 +140,10 @@
         <servlet-name>RecetasPendientes</servlet-name>
         <servlet-class>servlet.RecetasPendientes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarReceta</servlet-name>
+        <servlet-class>servlet.GenerarReceta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -279,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>RecetasPendientes</servlet-name>
         <url-pattern>/RecetasPendientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarReceta</servlet-name>
+        <url-pattern>/GenerarReceta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
