@@ -38,7 +38,7 @@ public class GenerarInformes {
             }else if (tipo == 2){
                 nombre = "Receta";
             }
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Sergio\\Desktop\\Informe"+nombre+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\CETECOM\\Desktop\\Informe"+nombre+".pdf"));
             document.open();
               Paragraph par1 = new Paragraph();
              Font font_titulo = new Font(Font.FontFamily.HELVETICA,15,Font.BOLD,BaseColor.BLACK);
@@ -64,11 +64,11 @@ public class GenerarInformes {
                     table.addCell("Estado");
                 }else if (tipo ==2){
                       par1.add(new Phrase("RECETA", font_titulo));
-                    table.addCell("Fecha Emision");
-                    table.addCell("Fecha Inicio");
-                    table.addCell("Fecha Termino");
-                    table.addCell("Rut Farmaceutico");
-                    table.addCell("Estado");
+                    table.addCell("Doctor");
+//                    table.addCell("Fecha Inicio");
+//                    table.addCell("Fecha Termino");
+//                    table.addCell("Rut Farmaceutico");
+//                    table.addCell("Estado");
                     
                 }
             }
@@ -104,14 +104,22 @@ public class GenerarInformes {
                     for (Object arg : lista)
                     {
                         DoctorDto doc = (DoctorDto) arg;
-                         TratamientoDto tra =(TratamientoDto) arg;
-                        RecetaDto rece =(RecetaDto) arg;
-                        table.addCell(doc.getNombre());
-                        table.addCell(String.valueOf(tra.getId_tratamiento()));
-                        table.addCell(tra.getDuracion());
-                        table.addCell(String.valueOf(rece.getId_receta()));
-                        table.addCell(rece.getFecha_emision().toString());
-                        table.addCell(rece.getIndicaciones());
+                          table.addCell(doc.getNombre());
+                          TratamientoDto tra = (TratamientoDto) arg;
+                          table.addCell(tra.getDuracion());
+                          RecetaDto rec = (RecetaDto)arg;
+                          table.addCell(rec.getFecha_emision().toString());
+                          table.addCell(rec.getIndicaciones());
+                          
+//                        DoctorDto doc = (DoctorDto) arg;
+//                         TratamientoDto tra =(TratamientoDto) arg;
+//                        RecetaDto rece =(RecetaDto) arg;
+//                        table.addCell(doc.getNombre());
+//                        table.addCell(String.valueOf(tra.getId_tratamiento()));
+//                        table.addCell(tra.getDuracion());
+//                        table.addCell(String.valueOf(rece.getId_receta()));
+//                        table.addCell(rece.getFecha_emision().toString());
+//                        table.addCell(rece.getIndicaciones());
                         
                         
                     }

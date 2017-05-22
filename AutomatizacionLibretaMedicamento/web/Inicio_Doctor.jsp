@@ -40,6 +40,9 @@
                     <br>
                     <br>
                     <a href="Medicamento/RevisarStock.jsp">Revisar Stock</a>
+                    <br>
+                    <br>
+                    <a href="Doctor/GenerarReceta.jsp">GenerarReceta</a>
                 </div>
             </div>
         </div>

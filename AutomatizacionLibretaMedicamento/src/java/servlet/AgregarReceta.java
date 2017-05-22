@@ -30,6 +30,7 @@ public class AgregarReceta extends HttpServlet {
             RecetaDto dto = new RecetaDto();
             dto.setId_receta(Integer.parseInt(request.getParameter("txtReceta".trim())));
             dto.setFecha_emision(Date.valueOf(request.getParameter("txtFechaEmi")));
+            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodMedicamento")));
             dto.setIndicaciones(request.getParameter("txtIndicaciones"));
 
             if (new dao.RecetaDaoImp().agregar(dto)) {

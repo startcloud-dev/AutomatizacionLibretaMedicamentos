@@ -30,12 +30,13 @@ public class RecetaDaoImp implements RecetaDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "INSERT INTO Receta (Id_receta,Fecha_Emision,"
-                    + "Indicaciones) VALUES (?,?,?)";
+                    + "Indicaciones,Codigo) VALUES (?,?,?,?)";
             PreparedStatement ingresar = conexion.prepareStatement(query);
             ingresar.setInt(1, dto.getId_receta());
             ingresar.setDate(2,
                     new java.sql.Date(dto.getFecha_emision().getTime()));
             ingresar.setString(3, dto.getIndicaciones());
+            ingresar.setInt(4, dto.getCodigo());
             ingresar.execute();
             ingresar.close();
             conexion.close();
@@ -72,14 +73,16 @@ public class RecetaDaoImp implements RecetaDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "UPDATE Receta SET Fecha_Emision = ? , "
-                    + "Indicaciones  = ? "
+                    + "Indicaciones  = ? , "
+                    + " Codigo = ? , "
                     + " WHERE Id_receta = ? ";
             PreparedStatement modificar = conexion.prepareStatement(query);
 
             modificar.setDate(1,
                     new java.sql.Date(dto.getFecha_emision().getTime()));
             modificar.setString(2, dto.getIndicaciones());
-            modificar.setInt(3, dto.getId_receta());
+            modificar.setInt(3, dto.getCodigo());
+            modificar.setInt(4, dto.getId_receta());
 
             modificar.executeUpdate();
 
@@ -109,8 +112,9 @@ public class RecetaDaoImp implements RecetaDao {
                 RecetaDto dto = new RecetaDto();
                 dto.setId_receta(rs.getInt("Id_receta"));
                 dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+                dto.setCodigo(rs.getInt("Codigo"));
                 dto.setIndicaciones(rs.getString("Indicaciones"));
-
+                
                 lista.add(dto);
 
             }
@@ -130,7 +134,7 @@ public class RecetaDaoImp implements RecetaDao {
         List<RecetaDto> lista = new ArrayList<RecetaDto>();
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT Receta.Id_receta, Receta.Fecha_Emision , Receta.Indicaciones "
+            String query = "SELECT Receta.Id_receta, Receta.Fecha_Emision , Receta.Indicaciones, Receta.Codigo "
                     + "FROM Receta,Consulta " + " WHERE Receta.Id_Receta=Consulta.Id_Receta AND "
                     + "Consulta.Rut_Paciente = ?";
             PreparedStatement listar = conexion.prepareStatement(query);
@@ -143,6 +147,7 @@ public class RecetaDaoImp implements RecetaDao {
                 RecetaDto dto = new RecetaDto();
                 dto.setId_receta(rs.getInt("Id_receta"));
                 dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+                dto.setCodigo(rs.getInt("Codigo"));
                 dto.setIndicaciones(rs.getString("Indicaciones"));
 
                 lista.add(dto);
@@ -162,17 +167,18 @@ public class RecetaDaoImp implements RecetaDao {
     }
     
     public List<Object> listarRecetasPorPaciente(String rutPaciente) {
-        List<RecetaDto> lista1 = new ArrayList<RecetaDto>();
-        List<DoctorDto> lista2 = new ArrayList<DoctorDto>();
-        List<TratamientoDto> lista3 = new ArrayList<TratamientoDto>();
-        List<Object> listado = new ArrayList<Object>();
-        
+//        List<RecetaDto> lista1 = new ArrayList<RecetaDto>();
+//        List<DoctorDto> lista2 = new ArrayList<DoctorDto>();
+//        List<TratamientoDto> lista3 = new ArrayList<TratamientoDto>();
+//        List<Object> listado = new ArrayList<Object>();
+          List<Object> lista = new ArrayList<Object>();
         
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT Doctor.nombre, Id_tratamiento, Duracion, Receta.Id_receta, Receta.Fecha_Emision, Receta.Indicaciones "
-                    + "FROM Doctor,Tratamiento,Receta,Consulta " + " WHERE Receta.Id_Receta=Consulta.Id_Receta AND "
-                    + "Consulta.Rut_Paciente = ?";
+            String query = "SELECT Doctor.nombre as doctor , Duracion as dur,  Receta.Fecha_Emision as fecha, Receta.Indicaciones as indicacion  "
+                    + " FROM Doctor,Tratamiento,Receta,Consulta " 
+                    + " WHERE Receta.Id_Receta=Consulta.Id_Receta AND "
+                    + " Consulta.Rut_Paciente = ?";
             PreparedStatement listar = conexion.prepareStatement(query);
 
             listar.setString(1, rutPaciente);
@@ -180,25 +186,32 @@ public class RecetaDaoImp implements RecetaDao {
             ResultSet rs = listar.executeQuery();
 
             while (rs.next()) {
-                TratamientoDto dto2=new TratamientoDto();
-                dto2.setId_tratamiento(rs.getInt("Id_tratamiento"));
-                dto2.setDuracion(rs.getString("duracion"));
-                lista3.add(dto2);
-                                
-                DoctorDto dto1 = new DoctorDto();
-                dto1.setNombre("Nombre");
-                lista2.add(dto1);
                 
-                RecetaDto dto = new RecetaDto();
-                dto.setId_receta(rs.getInt("Id_receta"));
-                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
-                dto.setIndicaciones(rs.getString("Indicaciones"));
-                lista1.add(dto);
+                lista.add(rs.getString("doctor"));
+                lista.add(rs.getString("dur"));
+                lista.add(rs.getDate("fecha"));
+                lista.add(rs.getString("indicacion"));
                 
-                listado.add(lista2+" "+lista3+" "+lista1);
-                
+//                TratamientoDto dto2=new TratamientoDto();
+//                dto2.setId_tratamiento(rs.getInt("Id_tratamiento"));
+//                dto2.setDuracion(rs.getString("duracion"));
+//                lista3.add(dto2);
+//                                
+//                DoctorDto dto1 = new DoctorDto();
+//                dto1.setNombre("Nombre");
+//                lista2.add(dto1);
+//                
+//                RecetaDto dto = new RecetaDto();
+//                dto.setId_receta(rs.getInt("Id_receta"));
+//                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+//                dto.setIndicaciones(rs.getString("Indicaciones"));
+//                lista1.add(dto);
+//                
+//                listado.add(lista2+" "+lista3+" "+lista1);
+//                
                             
             }
+            System.out.println(lista.toString());
             listar.close();
             conexion.close();
 
@@ -210,7 +223,7 @@ public class RecetaDaoImp implements RecetaDao {
             System.out.println("Error al listar las recetas por rut de paciente " + e.getMessage());
         }
 
-        return listado;
+        return lista;
     }
 
 }

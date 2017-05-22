@@ -54,6 +54,10 @@
                                     <td><input type="date" name="txtFechaEmi" value="" /></td>
                                 </tr>
                                 <tr>
+                                    <td>Codigo</td>
+                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                </tr>
+                                <tr>
                                     <td> Indicaciones </td>
                                     <td><textarea name="txtIndicaciones" rows="6" cols="30">
                                         </textarea></td>
@@ -85,6 +89,7 @@
                                 <tr>
                                     <td><c:out value="${receta.id_receta}"/></td>
                                     <td><c:out value="${receta.fecha_emision}" /></td>
+                                    <td><c:out value="${receta.codigo}"/></td>
                                     <td><c:out value="${receta.indicaciones}"/></td>
                                 </tr>
                             </c:forEach>
