@@ -19,7 +19,10 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+        <title>Modificar | Reserva</title>
     </head>
     <body>
         <% ReservaDto dto = (ReservaDto) request.getAttribute("dto");%>

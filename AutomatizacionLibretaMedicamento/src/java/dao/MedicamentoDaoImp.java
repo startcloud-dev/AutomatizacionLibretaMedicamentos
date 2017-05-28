@@ -33,7 +33,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             insertar.setInt(10, dto.getId_seccion());
             insertar.setInt(11, dto.getId_Reserva());
             insertar.execute();
-            conexion.commit();
+          
             insertar.close();
             conexion.close();
 
@@ -57,7 +57,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             eliminar.setInt(1, dto.getCodigo());
 
             eliminar.execute();
-            conexion.commit();
+          
             eliminar.close();
             conexion.close();
 
@@ -109,14 +109,14 @@ public class MedicamentoDaoImp implements MedicamentoDao {
     }
 
     public List<MedicamentoDto> listar() {
-        List<MedicamentoDto> lista = null;
+        List<MedicamentoDto> lista =   new ArrayList<MedicamentoDto>();
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM Medicamento ORDER BY Codigo ASC";
             PreparedStatement listar = conexion.prepareStatement(query);
 
             ResultSet rs = listar.executeQuery();
-            lista = new ArrayList<MedicamentoDto>();
+            
             while (rs.next()) {
                 MedicamentoDto dto = new MedicamentoDto();
                 dto.setCodigo(rs.getInt("Codigo"));
@@ -256,4 +256,35 @@ public class MedicamentoDaoImp implements MedicamentoDao {
         return lista;
     }
 
+    public String recuperarNombreMedicamentoPorId(int id) {
+        String nombre = "";
+    
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query ="SELECT nombre FROM Medicamento where codigo=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setInt(1, id);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+
+                nombre = rs.getString("Nombre");
+                            
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al recuperar el nombre del medicamento por id " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al recuperar el nombre del medicamento por id " + e.getMessage());
+        }
+
+        return nombre;
+    }
+    
+    
 }

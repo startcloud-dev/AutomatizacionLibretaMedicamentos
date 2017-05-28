@@ -46,47 +46,47 @@
                             <tbody>
                                 <tr>
                                     <td>Codigo</td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Tipo</td>
-                                    <td><input type="text" name="txtTipo" value="" /></td>
+                                    <td><input type="text" required="" name="txtTipo" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Fabricante</td>
-                                    <td><input type="text" name="txtFabricante" value="" /></td>
+                                    <td><input type="text" required="" name="txtFabricante" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Componente</td>
-                                    <td><input type="text" name="txtComponente" value="" /></td>
+                                    <td><input type="text" required="" name="txtComponente" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Contenido</td>
-                                    <td><input type="text" name="txtContenido" value="" /></td>
+                                    <td><input type="text" required="" name="txtContenido" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Cantidad</td>
-                                    <td><input type="text" name="txtCantidad" value="" /></td>
+                                    <td><input type="text" required="" name="txtCantidad" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Gramaje</td>
-                                    <td><input type="text" name="txtGramaje" value="" /></td>
+                                    <td><input type="text" required="" name="txtGramaje" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>FechaVencimiento</td>
-                                    <td><input type="date" name="txtFechaVencimiento" value="" /></td>
+                                    <td><input type="date" required="" name="txtFechaVencimiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Id Seccion</td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtIdSeccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Id Reserva</td>
-                                    <td><input type="text" name="txtReserva" value="" /></td>
+                                    <td><input type="text" required="" name="txtReserva" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -106,7 +106,7 @@
 
                     <c:if test="${requestScope.lista!=null}">
 
-                        <tableclass="table table-bordered" >
+                        <table class="table table-bordered" >
                             <thead>
                                 <tr>
                                     <th>Codigo</th>

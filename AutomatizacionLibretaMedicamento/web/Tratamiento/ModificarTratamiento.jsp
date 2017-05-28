@@ -57,28 +57,36 @@
                         </p>
                     </form>
 
+                        <hr>
                     <c:set  var="lista" scope="request" 
                             value="${requestScope.lista}">
                     </c:set >
 
                     <c:if test="${requestScope.lista!=null}">
 
-                        <table class="table table-bordered" >
+                        <hr>
+
+                        <table  class="table table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>Numero</th>
+                                    <th>IdTratamiento</th>
                                     <th>Duracion</th>
+                                    <th>IdReserva</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "Tratamiento">
+                                <c:forEach items="${requestScope.lista}" var = "trata" >
                                     <tr>
-                                        <td><c:out value="${tratamiento.id_tratamiento}" /></td>
-                                        <td><c:out value="${tratamiento.duracion}" /></td>
-                                    </c:forEach>
+                                        <td><c:out value="${trata.id_tratamiento}" /></td>
+                                        <td><c:out value="${trata.duracion}" /></td>
+                                        <td><c:out value="${trata.id_reserva}" /></td>
+
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
-                    </c:if>
+
+                    </c:if>  
                 </div>
             </div>
         </div>

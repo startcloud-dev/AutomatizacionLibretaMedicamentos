@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Agregar | Farmaceutico</title>
+        <title>Session | Farmaceutico</title>
     </head>
     <body>    
         <c:if test="${mensaje!=null}">

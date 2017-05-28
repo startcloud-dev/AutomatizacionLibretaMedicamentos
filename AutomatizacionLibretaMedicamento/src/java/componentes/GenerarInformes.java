@@ -38,7 +38,7 @@ public class GenerarInformes {
             }else if (tipo == 2){
                 nombre = "Receta";
             }
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\CETECOM\\Desktop\\Informe"+nombre+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Sergio\\Desktop\\Informe"+nombre+".pdf"));
             document.open();
               Paragraph par1 = new Paragraph();
              Font font_titulo = new Font(Font.FontFamily.HELVETICA,15,Font.BOLD,BaseColor.BLACK);

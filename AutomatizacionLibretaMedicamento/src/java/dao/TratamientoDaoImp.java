@@ -32,7 +32,7 @@ public class TratamientoDaoImp implements TratamientoDao {
             insertar.setString(2, dto.getDuracion());
             insertar.setInt(3, dto.getId_reserva());
             insertar.execute();
-            conexion.commit();
+         
             insertar.close();
             conexion.close();
 
@@ -56,7 +56,7 @@ public class TratamientoDaoImp implements TratamientoDao {
             eliminar.setInt(1, dto.getId_tratamiento());
 
             eliminar.execute();
-            conexion.commit();
+          
             eliminar.close();
             conexion.close();
 

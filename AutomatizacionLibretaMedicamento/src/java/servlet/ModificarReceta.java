@@ -25,7 +25,7 @@ public class ModificarReceta extends HttpServlet {
             dto.setId_receta(Integer.valueOf(request.getParameter("txtReceta".trim())));
             dto.setFecha_emision(Date.valueOf(request.getParameter("txtFechaEmi")));
             dto.setIndicaciones(request.getParameter("txtIndicaciones".trim()));
-
+            dto.setCodigo(Integer.valueOf(request.getParameter("txtCodigo")));
             String mensaje="";
             if (new dao.RecetaDaoImp().modificar(dto)) {
 

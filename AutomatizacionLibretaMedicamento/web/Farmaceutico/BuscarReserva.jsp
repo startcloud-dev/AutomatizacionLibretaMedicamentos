@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Buscar || Reserva</title>
+        <title>Buscar  |  Reserva</title>
     </head>
     <body>
         <div id="container_demo" >

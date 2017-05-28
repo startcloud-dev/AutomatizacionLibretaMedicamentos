@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Eliminar | Farmaceutico</title>
     </head>
     <body>
@@ -55,6 +58,39 @@
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
+                         <c:set var="lista" scope="request" value="${requestScope.lista}" />
+
+                    <c:if test="${lista!=null}">
+
+
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Rut</th>
+                                    <th>Nombre</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>IdSeccion</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${requestScope.lista}" var = "farma">
+                                    <tr>
+                                        <td><c:out value="${farma.rut_farmaceutico}"/></td>
+                                        <td><c:out value="${farma.nombre}" /></td>
+                                        <td><c:out value="${farma.direccion}"/></td>
+                                        <td><c:out value="${farma.telefono}"/></td>
+                                        <td><c:out value="${farma.id_seccion}"/></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+
+
+                    </c:if>
+                        
                 </div>
             </div>
         </div>   

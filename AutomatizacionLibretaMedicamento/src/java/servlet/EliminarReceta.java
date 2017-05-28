@@ -19,7 +19,7 @@ public class EliminarReceta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            
-             RecetaDto dto = new RecetaDto();
+           RecetaDto dto = new RecetaDto();
             
            dto.setId_receta(Integer.valueOf(request.getParameter("txtReceta".trim())));
             

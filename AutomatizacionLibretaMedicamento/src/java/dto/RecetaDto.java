@@ -10,8 +10,8 @@ import java.util.Date;
 public class RecetaDto {
     private int id_receta;
     private Date fecha_emision;
-    private int  codigo;
     private String indicaciones;
+    private Integer codigo;
 
     public RecetaDto() {
     }
@@ -40,17 +40,22 @@ public class RecetaDto {
         this.indicaciones = indicaciones;
     }
 
-    public int getCodigo() {
+ 
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
     @Override
     public String toString() {
-        return "RecetaDto{" + "id_receta=" + id_receta + ", fecha_emision=" + fecha_emision + ", codigo=" + codigo + ", indicaciones=" + indicaciones + '}';
+        return "RecetaDto{" + "id_receta=" + id_receta + ", fecha_emision=" + fecha_emision + ", indicaciones=" + indicaciones + ", codigo=" + codigo + '}';
     }
+
+   
+    
+    
     
 }

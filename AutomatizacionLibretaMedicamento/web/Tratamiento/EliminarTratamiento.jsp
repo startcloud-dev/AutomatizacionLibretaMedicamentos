@@ -55,6 +55,38 @@
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Doctor.jsp">Volver al menu</a>
                         </p>
                     </form>
+                        
+                            <hr>
+                    <c:set  var="lista" scope="request" 
+                            value="${requestScope.lista}">
+                    </c:set >
+
+                    <c:if test="${requestScope.lista!=null}">
+
+                        <hr>
+
+                        <table  class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>IdTratamiento</th>
+                                    <th>Duracion</th>
+                                    <th>IdReserva</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${requestScope.lista}" var = "trata" >
+                                    <tr>
+                                        <td><c:out value="${trata.id_tratamiento}" /></td>
+                                        <td><c:out value="${trata.duracion}" /></td>
+                                        <td><c:out value="${trata.id_reserva}" /></td>
+
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+
+                    </c:if>  
+                        
                 </div>
             </div>
         </div>

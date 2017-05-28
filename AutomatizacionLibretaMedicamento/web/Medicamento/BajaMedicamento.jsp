@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-              <title>Medicamento | BajaMedicamento</title>
+        <title>Medicamento | BajaMedicamento</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -30,6 +30,8 @@
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
+                    
+                 
                     <c:set var="msn"  scope="request" value="${requestScope.mensaje}"/>
 
                     <c:if test="${msn!=null}">
@@ -71,7 +73,7 @@
 
                     <c:set var="justi" scope="request" value="${requestScope.justificacion}"  />
 
-
+               
                     <c:if test="${requestScope.lista!=null}">
 
                         <table class="table table-bordered">

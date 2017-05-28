@@ -144,6 +144,10 @@
         <servlet-name>GenerarReceta</servlet-name>
         <servlet-class>servlet.GenerarReceta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarMedicamentos</servlet-name>
+        <servlet-class>servlet.ListarMedicamentos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -287,6 +291,10 @@
     <servlet-mapping>
         <servlet-name>GenerarReceta</servlet-name>
         <url-pattern>/GenerarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarMedicamentos</servlet-name>
+        <url-pattern>/ListarMedicamentos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

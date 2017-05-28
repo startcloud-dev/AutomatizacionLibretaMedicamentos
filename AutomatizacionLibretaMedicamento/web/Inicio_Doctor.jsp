@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>JSP Page</title>
+        <title>Login | Doctor</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -42,7 +42,7 @@
                     <a href="Medicamento/RevisarStock.jsp">Revisar Stock</a>
                     <br>
                     <br>
-                    <a href="Doctor/GenerarReceta.jsp">GenerarReceta</a>
+                    <a href="Doctor/GenerarReceta.jsp">EmitirReceta</a>
                 </div>
             </div>
         </div>

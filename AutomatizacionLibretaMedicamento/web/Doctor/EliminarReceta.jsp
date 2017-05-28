@@ -68,6 +68,7 @@
                                 <tr>
                                     <th>Receta</th>
                                     <th>Fecha Emision</th>
+                                    <th>CodMedicamento</th>
                                     <th>Indicaciones</th>
                                 </tr>
                             </thead>

@@ -188,4 +188,36 @@ public class DoctorDaoImp implements DoctorDao {
         }
         return clave;
     }
+    
+    
+    
+     public String recuperarNombreDoctorPorId(int id) {
+        String nombre = "";
+     
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query ="select doctor.nombre as nombre_doc from consulta natural join doctor where id_receta=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setInt(1, id);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+               
+                nombre = rs.getString("Nombre_doc");     
+                            
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al recuperar el nombre  del Doctor por id " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al recuperar el nombre del Doctor por id " + e.getMessage());
+        }
+
+        return nombre;
+    }
 }

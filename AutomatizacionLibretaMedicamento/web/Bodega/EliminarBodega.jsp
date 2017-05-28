@@ -53,7 +53,7 @@
                             <tbody>
                                 <tr>
                                     <td>Id Seccion</td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtIdSeccion" value="" /></td>
                                 </tr>
 
                             </tbody>

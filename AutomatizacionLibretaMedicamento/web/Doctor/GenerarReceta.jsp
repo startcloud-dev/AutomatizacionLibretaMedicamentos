@@ -61,16 +61,11 @@
 
                     <form name="frmGenerarReceta" action="/AutomatizacionLibretaMedicamento/GenerarReceta" method="POST">
 
-                        <table  class="" border="0">
-
-                            <tbody>
-                                <tr>
-                                    <td>Rut Paciente </td>
-                                    <td><input type="text" name="txtRut" placeholder="Rut" required="" value="" /></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
+                      
+                        
+                       <h4>Codigo Receta </h4>
+                       <input type="text" name="txtId" placeholder="codigo receta" required="" value="" />
+                               
 
                         <hr>
                         <p class="login button">

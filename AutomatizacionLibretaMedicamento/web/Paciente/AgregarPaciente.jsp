@@ -86,7 +86,7 @@
                             <input type="submit" value="Agregar" name="btnAgregar" />
                         </p>
                         <p class="login button">
-                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
+                            <a href="/AutomatizacionLibretaMedicamento/Inicio_Doctor.jsp">Volver al menu</a>
                         </p>
                     </form>
                 </div>

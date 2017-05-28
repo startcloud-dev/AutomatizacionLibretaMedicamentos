@@ -53,7 +53,7 @@
                                     <td><input type="date" name="txtFechaEmi" value="" /></td>
                                 </tr>
                                 <tr>
-                                    <td>CodMedicamentos</td>
+                                    <td>CodMedicamento</td>
                                     <td><input type="text" name="txtCodMedicamento" value="" /></td>
                                 </tr>
                                 <tr>

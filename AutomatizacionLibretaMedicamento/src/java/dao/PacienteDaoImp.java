@@ -65,7 +65,7 @@ public class PacienteDaoImp implements PacienteDao{
             eliminar.setString(1, dto.getRut_paciente());
 
             eliminar.execute();
-            conexion.commit();
+         
             eliminar.close();
             conexion.close();
             
@@ -198,5 +198,35 @@ public class PacienteDaoImp implements PacienteDao{
         return clave;    
     
     }
+    
+     public String recuperarNombrePacientePorId(int id) {
+        String nombre = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query ="SELECT nombre||' '|| apellido_paterno ||' '|| apellido_materno as Nombre_completo from paciente where id_reserva=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setInt(1, id);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+
+                nombre = rs.getString("Nombre_Completo");    
+                            
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al recuperar el nombre del paciente por id " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al recuperar el nombre del paciente por id " + e.getMessage());
+        }
+
+        return nombre;
+    }
+    
     
 }

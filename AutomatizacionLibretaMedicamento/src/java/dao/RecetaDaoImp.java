@@ -74,7 +74,7 @@ public class RecetaDaoImp implements RecetaDao {
             Connection conexion = Conexion.getConexion();
             String query = "UPDATE Receta SET Fecha_Emision = ? , "
                     + "Indicaciones  = ? , "
-                    + " Codigo = ? , "
+                    + " Codigo = ? "
                     + " WHERE Id_receta = ? ";
             PreparedStatement modificar = conexion.prepareStatement(query);
 
@@ -147,9 +147,8 @@ public class RecetaDaoImp implements RecetaDao {
                 RecetaDto dto = new RecetaDto();
                 dto.setId_receta(rs.getInt("Id_receta"));
                 dto.setFecha_emision(rs.getDate("Fecha_Emision"));
-                dto.setCodigo(rs.getInt("Codigo"));
                 dto.setIndicaciones(rs.getString("Indicaciones"));
-
+                dto.setCodigo(rs.getInt("Codigo"));
                 lista.add(dto);
             }
             listar.close();
@@ -166,61 +165,37 @@ public class RecetaDaoImp implements RecetaDao {
         return lista;
     }
     
-    public List<Object> listarRecetasPorPaciente(String rutPaciente) {
-//        List<RecetaDto> lista1 = new ArrayList<RecetaDto>();
-//        List<DoctorDto> lista2 = new ArrayList<DoctorDto>();
-//        List<TratamientoDto> lista3 = new ArrayList<TratamientoDto>();
-//        List<Object> listado = new ArrayList<Object>();
-          List<Object> lista = new ArrayList<Object>();
-        
+    public List<RecetaDto> listarRecetasPorId(int id) {
+        List<RecetaDto> lista = new ArrayList<RecetaDto>();
+     
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT Doctor.nombre as doctor , Duracion as dur,  Receta.Fecha_Emision as fecha, Receta.Indicaciones as indicacion  "
-                    + " FROM Doctor,Tratamiento,Receta,Consulta " 
-                    + " WHERE Receta.Id_Receta=Consulta.Id_Receta AND "
-                    + " Consulta.Rut_Paciente = ?";
+            String query ="SELECT * FROM Receta where id_receta=?";
             PreparedStatement listar = conexion.prepareStatement(query);
 
-            listar.setString(1, rutPaciente);
+            listar.setInt(1, id);
 
             ResultSet rs = listar.executeQuery();
 
             while (rs.next()) {
-                
-                lista.add(rs.getString("doctor"));
-                lista.add(rs.getString("dur"));
-                lista.add(rs.getDate("fecha"));
-                lista.add(rs.getString("indicacion"));
-                
-//                TratamientoDto dto2=new TratamientoDto();
-//                dto2.setId_tratamiento(rs.getInt("Id_tratamiento"));
-//                dto2.setDuracion(rs.getString("duracion"));
-//                lista3.add(dto2);
-//                                
-//                DoctorDto dto1 = new DoctorDto();
-//                dto1.setNombre("Nombre");
-//                lista2.add(dto1);
-//                
-//                RecetaDto dto = new RecetaDto();
-//                dto.setId_receta(rs.getInt("Id_receta"));
-//                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
-//                dto.setIndicaciones(rs.getString("Indicaciones"));
-//                lista1.add(dto);
-//                
-//                listado.add(lista2+" "+lista3+" "+lista1);
-//                
+               
+                RecetaDto dto = new RecetaDto();
+                dto.setId_receta(rs.getInt("Id_receta"));
+                dto.setFecha_emision(rs.getDate("Fecha_Emision"));
+                dto.setIndicaciones(rs.getString("Indicaciones"));
+                dto.setCodigo(rs.getInt("Codigo"));
+                lista.add(dto);        
                             
             }
-            System.out.println(lista.toString());
             listar.close();
             conexion.close();
 
         } catch (SQLException w) {
             w.printStackTrace();
-            System.out.println("Error sql listar Las recetas por rut paciente " + w.getMessage());
+            System.out.println("Error sql listar Las recetas por id " + w.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error al listar las recetas por rut de paciente " + e.getMessage());
+            System.out.println("Error al listar las recetas por id " + e.getMessage());
         }
 
         return lista;

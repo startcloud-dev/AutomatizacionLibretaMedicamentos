@@ -20,9 +20,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
-        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Bodega | Farmaceutica</title>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
+        <title>Bodega | Farmaceutico</title>
 
 
 
@@ -65,11 +65,11 @@
                             <tbody>
                                 <tr>
                                     <td>Id Seccion </td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtIdSeccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Categoria </td>
-                                    <td><input type="text" name="txtCategoria" value="" /></td>
+                                    <td><input type="text" required="" name="txtCategoria" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -113,7 +113,7 @@
 
                     </c:if>  
 
-                        <c:out value="${lista}"/>     
+                      
                 </div>
             </div>
         </div>
