@@ -86,6 +86,8 @@
                             value="${requestScope.lista}">
                     </c:set >
 
+                  
+                    
                     <c:if test="${requestScope.lista!=null}">
 
                         <hr>
@@ -95,14 +97,16 @@
                                 <tr>
                                     <th>IdReceta</th>
                                     <th>FechaEmision</th>
+                                    <th>CodigoMedicamento</th>
                                     <th>Indicaciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${requestScope.lista}" var = "receta" >
                                 <tr>
-                                    <td><c:out value="${receta.id_receta}" /></td>
+                                <td><c:out value="${receta.id_receta}" /></td>
                                 <td><c:out value="${receta.fecha_emision}" /></td>
+                                <td><c:out value="${receta.codigo}"/></td>
                                 <td><c:out value="${receta.indicaciones}" /></td>
                                 </tr>
                             </c:forEach>
