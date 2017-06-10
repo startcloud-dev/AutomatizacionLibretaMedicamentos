@@ -27,18 +27,25 @@ public class GenerarReceta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
         
-            String mensaje ="";
-            
+            String mensaje = "";
+
             int id = Integer.valueOf(request.getParameter("txtId".trim()));
-            
-            String doct = new dao.DoctorDaoImp().recuperarNombreDoctorPorId(id);
+           
+
+            String doct = (String) request.getSession().getAttribute("usuario");
             String medi = new dao.MedicamentoDaoImp().recuperarNombreMedicamentoPorId(id);
             String paci = new dao.PacienteDaoImp().recuperarNombrePacientePorId(id);
-			
+
+            if (doct.equals("") && medi.equals("") && paci.equals("")) {
+                doct = "NO hay Registro";
+                medi = "NO hay Registro";
+                paci = "NO hay Registro";
+            }
+
             List lista = new dao.RecetaDaoImp().listar();
-            System.out.println(lista.toString()+lista.size());
+            System.out.println(lista.toString() + lista.size());
             if (lista.size() > 0) {
-                componentes.GenerarReceta.GenerarPdf(new RecetaDaoImp().listarRecetasPorId(id),doct,medi,paci, 2);
+                componentes.GenerarReceta.GenerarPdf(new RecetaDaoImp().listarRecetasPorId(id), doct, medi, paci, 2);
                 mensaje = "la receta se genero en su escritorio";
             } else {
                 mensaje = "No hay Niguna Receta";

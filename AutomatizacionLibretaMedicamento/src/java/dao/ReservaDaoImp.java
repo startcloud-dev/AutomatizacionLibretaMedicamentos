@@ -76,7 +76,7 @@ public class ReservaDaoImp implements ReservaDao {
             Connection conexion = Conexion.getConexion();
             String query = "UPDATE Reserva SET Estado=?";
             PreparedStatement mod = conexion.prepareStatement(query);
-            
+
             mod.setString(1, dto.getEstado());
 
             return mod.execute();
@@ -150,36 +150,34 @@ public class ReservaDaoImp implements ReservaDao {
         return dtoMeet;
     }
 
-    public  static Date traerFechaTermino(){
-       Date fechaSalida = null;
+    public static Date traerFechaTermino() {
+        Date fechaSalida = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT Fecha_termino FROM Reserva WHERE id_reserva = 2";
             PreparedStatement traer = conexion.prepareStatement(query);
-            
+
             ResultSet rs = traer.executeQuery();
-            
-            while(rs.next()){       
-                fechaSalida = rs.getDate("Fecha_termino");  
+
+            while (rs.next()) {
+                fechaSalida = rs.getDate("Fecha_termino");
             }
             traer.close();
             conexion.close();
-            
-        }catch(SQLException w){
-            System.out.println("Error sql al traer la fecha de termino "+w.getMessage());
+
+        } catch (SQLException w) {
+            System.out.println("Error sql al traer la fecha de termino " + w.getMessage());
             w.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Error al traer la fceha de termino "+e.getMessage());
+            System.out.println("Error al traer la fceha de termino " + e.getMessage());
             e.printStackTrace();
-            
-        
+
         }
-        
-        return  fechaSalida; 
+
+        return fechaSalida;
     }
-    
-    
-        public boolean modificarEstado(String estado, int id) {
+
+    public boolean modificarEstado(String estado, int id) {
 
         try {
             Connection conexion = Conexion.getConexion();
@@ -197,5 +195,26 @@ public class ReservaDaoImp implements ReservaDao {
         }
         return false;
     }
-    
+
+    public boolean validarReserva(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Reserva WHERE id_reserva = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
+
 }

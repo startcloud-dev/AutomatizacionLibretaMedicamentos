@@ -199,4 +199,53 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
         }
         return clave;
     }
+    
+    public String verificarFarmaceutico(String rut) {
+        String resp = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT rut_farmaceutico FROM paciente where rut_farmaceutico=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setString(1, rut);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+
+                resp = rs.getString("rut_farmaceutico");
+
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al verificar el paciente" + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al verificar el paciente" + e.getMessage());
+        }
+        return resp;
+    }
+
+    public boolean validarFarmaceutico(String rut) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Farmacuetico WHERE rut_farmaceutico = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setString(1, rut);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
 }

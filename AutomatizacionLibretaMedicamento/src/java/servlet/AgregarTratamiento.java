@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import dao.ReservaDaoImp;
 import dto.TratamientoDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,11 +36,12 @@ public class AgregarTratamiento extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String mensaje = "";
             TratamientoDto dto = new TratamientoDto();
-            dto.setId_tratamiento(Integer.parseInt(request.getParameter("txtId_tratamiento".trim())));
             dto.setDuracion(request.getParameter("txtDuracion".trim()));
             dto.setId_reserva(Integer.parseInt(request.getParameter("txtId_Reserva".trim())));
 
-            if (new dao.TratamientoDaoImp().agregar(dto)) {
+            if (!new ReservaDaoImp().validarReserva(dto.getId_reserva())) {
+                mensaje = "No existe una reserva";
+            } else if (new dao.TratamientoDaoImp().agregar(dto)) {
                 mensaje = "se agrego el tratamiento";
             } else {
                 mensaje = "no se agrego el tratamiento";

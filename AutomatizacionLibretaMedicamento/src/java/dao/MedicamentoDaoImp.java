@@ -258,10 +258,11 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
     public String recuperarNombreMedicamentoPorId(int id) {
         String nombre = "";
-    
+
         try {
             Connection conexion = Conexion.getConexion();
-            String query ="SELECT nombre FROM Medicamento where codigo=?";
+            String query = "SELECT Medicamento.NOMBRE AS NOMBRE FROM MEDICAMENTO,RECETA " +
+                            " WHERE MEDICAMENTO.CODIGO=RECETA.CODIGO AND RECETA.ID_RECETA=?";
             PreparedStatement sacar = conexion.prepareStatement(query);
 
             sacar.setInt(1, id);
@@ -270,7 +271,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             while (rs.next()) {
 
                 nombre = rs.getString("Nombre");
-                            
+
             }
             sacar.close();
             conexion.close();
@@ -284,6 +285,27 @@ public class MedicamentoDaoImp implements MedicamentoDao {
         }
 
         return nombre;
+    }
+
+    public boolean validarMedicamento(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Medicamento WHERE codigo = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
     }
     
     

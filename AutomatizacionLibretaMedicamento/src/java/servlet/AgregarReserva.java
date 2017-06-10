@@ -5,6 +5,9 @@
  */
 package servlet;
 
+import dao.MedicamentoDaoImp;
+import dao.PacienteDaoImp;
+import dao.TratamientoDaoImp;
 import dto.ReservaDto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,10 +37,8 @@ public class AgregarReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String mensaje = "";
+                       String mensaje = "";
             ReservaDto dto = new ReservaDto();
-            
-            dto.setId_reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
             dto.setFecha_inicio(Date.valueOf(request.getParameter("txtFechaIni")));
             dto.setFecha_termino(Date.valueOf(request.getParameter("txtFechaTer")));
             dto.setRut_paciente(request.getParameter("txtPaciente".trim()));
@@ -45,18 +46,25 @@ public class AgregarReserva extends HttpServlet {
             dto.setRut_farmaceutico(request.getParameter("txtFarmaceutico".trim()));
             dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
-             
-            if(new dao.ReservaDaoImp().agregar(dto)){
-                
+
+            if (!new PacienteDaoImp().validarPaciente(dto.getRut_paciente())) {
+                mensaje = "No existe un Paciente con ese Rut";
+                System.out.println("aqui llega");
+            } else if (!new TratamientoDaoImp().validarTratamiento(dto.getId_tratamiento())) {
+                mensaje = "No existe ese tratamiento";
+                System.out.println("aqui llega trata");
+            } else if (!new MedicamentoDaoImp().validarMedicamento(dto.getCodigo())) {
+                mensaje = "No existe un Medicamento con ese Codigo";
+                System.out.println("aqui llega medicamento");
+            } else if (new dao.ReservaDaoImp().agregar(dto)) {
                 mensaje = "Reserva agregada";
-                
-            }else{
+            } else {
                 mensaje = "Reserva no agregada";
             }
 
             request.setAttribute("mensaje", mensaje);
-            
-           request.getRequestDispatcher("Farmaceutico/ReservaMedicamento.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Farmaceutico/ReservaMedicamento.jsp").forward(request, response);
         }
     }
 
