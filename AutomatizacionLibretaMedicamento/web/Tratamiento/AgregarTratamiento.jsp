@@ -40,11 +40,7 @@
                     <form name="frmAgregarTratamiento" action="/AutomatizacionLibretaMedicamento/AgregarTratamiento" method="POST">
                         <h1>Agregar Tratamiento</h1>
                         <table border="0">
-                            <tbody>
-                                <tr>
-                                    <td>Numero </td>
-                                    <td><input type="text" name="txtId_tratamiento" value="" /></td>
-                                </tr>
+                           
                                 <tr>
                                     <td>Duracion</td>
                                     <td><input type="text" name="txtDuracion" value="" /></td>

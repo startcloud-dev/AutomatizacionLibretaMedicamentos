@@ -44,10 +44,7 @@
                         <h1> Reservar Medicamento </h1>
                         <table border="0">
                             <tbody>
-                                <tr>
-                                    <td> Codigo Reserva </td>
-                                    <td><input type="text" name="txtReserva" required="" value="" /></td>
-                                </tr>
+                              
                                 <tr>
                                     <td> Fecha Inicio </td>
                                     <td><input type="date" name="txtFechaIni" required="" value="" /></td>

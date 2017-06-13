@@ -24,15 +24,14 @@ public class TratamientoDaoImp implements TratamientoDao {
     public boolean agregar(TratamientoDto dto) {
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Tratamiento (Id_tratamiento,duracion,id_reserva)"
-                    + "VALUES(?,?,?)";
+            String query = "INSERT INTO Tratamiento (duracion,id_reserva)"
+                    + "VALUES(?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
-            insertar.setInt(1, dto.getId_tratamiento());
-            insertar.setString(2, dto.getDuracion());
-            insertar.setInt(3, dto.getId_reserva());
+            insertar.setString(1, dto.getDuracion());
+            insertar.setInt(2, dto.getId_reserva());
             insertar.execute();
-         
+
             insertar.close();
             conexion.close();
 

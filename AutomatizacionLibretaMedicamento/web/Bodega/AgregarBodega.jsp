@@ -63,10 +63,7 @@
                         <table  class="" border="0">
 
                             <tbody>
-                                <tr>
-                                    <td>Id Seccion </td>
-                                    <td><input type="text" required="" name="txtIdSeccion" value="" /></td>
-                                </tr>
+                              
                                 <tr>
                                     <td>Categoria </td>
                                     <td><input type="text" required="" name="txtCategoria" value="" /></td>

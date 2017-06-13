@@ -15,25 +15,24 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Medicamento (Codigo,Nombre,Tipo,Fabricante"
+            String query = "INSERT INTO Medicamento (Nombre,Tipo,Fabricante"
                     + ",Componentes,Contenido,Cantidad,Gramaje,Fecha_Vencimiento,Id_seccion,id_reserva) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
-            insertar.setInt(1, dto.getCodigo());
-            insertar.setString(2, dto.getNombre());
-            insertar.setString(3, dto.getTipo());
-            insertar.setString(4, dto.getFabricante());
-            insertar.setString(5, dto.getComponente());
-            insertar.setString(6, dto.getContenido());
-            insertar.setString(7, dto.getCantidad());
-            insertar.setString(8, dto.getGramaje());
-            insertar.setDate(9,
+            insertar.setString(1, dto.getNombre());
+            insertar.setString(2, dto.getTipo());
+            insertar.setString(3, dto.getFabricante());
+            insertar.setString(4, dto.getComponente());
+            insertar.setString(5, dto.getContenido());
+            insertar.setString(6, dto.getCantidad());
+            insertar.setString(7, dto.getGramaje());
+            insertar.setDate(8,
                     new java.sql.Date(dto.getFecha_vencimiento().getTime()));
-            insertar.setInt(10, dto.getId_seccion());
-            insertar.setInt(11, dto.getId_Reserva());
+            insertar.setInt(9, dto.getId_seccion());
+            insertar.setInt(10, dto.getId_Reserva());
             insertar.execute();
-          
+
             insertar.close();
             conexion.close();
 
@@ -44,8 +43,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
         } catch (Exception e) {
             System.out.println("Error al agregar " + e.getMessage());
             return false;
-        }
-
+        } 
     }
 
     public boolean eliminar(MedicamentoDto dto) {

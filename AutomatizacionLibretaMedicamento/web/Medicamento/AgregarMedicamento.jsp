@@ -44,10 +44,7 @@
                         <h1>Agregar Medicamento</h1>
                         <table border="0">
                             <tbody>
-                                <tr>
-                                    <td>Codigo</td>
-                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
-                                </tr>
+                              
                                 <tr>
                                     <td>Nombre</td>
                                     <td><input type="text" required="" name="txtNombre" value="" /></td>

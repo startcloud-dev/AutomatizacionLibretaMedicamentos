@@ -23,21 +23,20 @@ public class ReservaDaoImp implements ReservaDao {
 
     @Override
     public boolean agregar(ReservaDto dto) {
-        try {
+         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Reserva (Id_reserva,Fecha_inicio,"
-                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo) VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Reserva (Fecha_inicio,"
+                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ingresar = conexion.prepareStatement(query);
-            ingresar.setInt(1, dto.getId_reserva());
-            ingresar.setDate(2,
+            ingresar.setDate(1,
                     new java.sql.Date(dto.getFecha_inicio().getTime()));
-            ingresar.setDate(3,
+            ingresar.setDate(2,
                     new java.sql.Date(dto.getFecha_termino().getTime()));
-            ingresar.setString(4, dto.getRut_paciente());
-            ingresar.setInt(5, dto.getId_tratamiento());
-            ingresar.setString(6, dto.getRut_farmaceutico());
-            ingresar.setString(7, dto.getEstado());
-            ingresar.setInt(8, dto.getCodigo());
+            ingresar.setString(3, dto.getRut_paciente());
+            ingresar.setInt(4, dto.getId_tratamiento());
+            ingresar.setString(5, dto.getRut_farmaceutico());
+            ingresar.setString(6, dto.getEstado());
+            ingresar.setInt(7, dto.getCodigo());
 
             ingresar.execute();
             ingresar.close();
