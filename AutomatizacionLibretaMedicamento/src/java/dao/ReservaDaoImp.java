@@ -23,20 +23,18 @@ public class ReservaDaoImp implements ReservaDao {
 
     @Override
     public boolean agregar(ReservaDto dto) {
-         try {
+        try {
             Connection conexion = Conexion.getConexion();
             String query = "INSERT INTO Reserva (Fecha_inicio,"
-                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo) VALUES (?,?,?,?,?,?,?)";
+                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo,Cantidad) "
+                    + " VALUES (SYSDATE,SYSDATE,?,?,?,?,?,?)";
             PreparedStatement ingresar = conexion.prepareStatement(query);
-            ingresar.setDate(1,
-                    new java.sql.Date(dto.getFecha_inicio().getTime()));
-            ingresar.setDate(2,
-                    new java.sql.Date(dto.getFecha_termino().getTime()));
-            ingresar.setString(3, dto.getRut_paciente());
-            ingresar.setInt(4, dto.getId_tratamiento());
-            ingresar.setString(5, dto.getRut_farmaceutico());
-            ingresar.setString(6, dto.getEstado());
-            ingresar.setInt(7, dto.getCodigo());
+            ingresar.setString(1, dto.getRut_paciente());
+            ingresar.setInt(2, dto.getId_tratamiento());
+            ingresar.setString(3, dto.getRut_farmaceutico());
+            ingresar.setString(4, dto.getEstado());
+            ingresar.setInt(5, dto.getCodigo());
+            ingresar.setInt(6, dto.getCantidad());
 
             ingresar.execute();
             ingresar.close();
@@ -49,7 +47,6 @@ public class ReservaDaoImp implements ReservaDao {
         }
         return false;
     }
-
     @Override
     public boolean eliminar(ReservaDto dto) {
         try {
@@ -216,4 +213,26 @@ public class ReservaDaoImp implements ReservaDao {
         return resp;
     }
 
+    
+      public String recuperarEstado(int codigo) {
+        String estado = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT estado FROM Reserva WHERE id_reserva = ?";
+            PreparedStatement recup = conexion.prepareStatement(query);
+            recup.setInt(1, codigo);
+            ResultSet rs = recup.executeQuery();
+            while (rs.next()) {
+                estado = rs.getString("estado");
+            }
+            recup.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al recuperar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al recuperar " + w.getMessage());
+        }
+        return estado;
+    }
+    
 }

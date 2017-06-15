@@ -306,5 +306,77 @@ public class MedicamentoDaoImp implements MedicamentoDao {
         return resp;
     }
     
-    
+    public int aumentarStock(int cantidad, int codigo) {
+        int cant = 0;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT (CANTIDAD+?)as SUMA FROM  MEDICAMENTO  WHERE CODIGO=? ";
+            PreparedStatement stock = conexion.prepareStatement(query);
+            stock.setInt(1, cantidad);
+            stock.setInt(2, codigo);
+
+            ResultSet rs = stock.executeQuery();
+            while (rs.next()) {
+                cant = rs.getInt("SUMA");
+
+            }
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error SQL al aumentar el stock " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al aumentar el stock " + e.getMessage());
+        }
+        return cant;
+    }
+
+    public int descontarStock(int cantidad, int codigo) {
+        int cant = 0;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT (CANTIDAD-?)as RESTA FROM  MEDICAMENTO  WHERE CODIGO=? ";
+
+            PreparedStatement stock = conexion.prepareStatement(query);
+            stock.setInt(1, cantidad);
+            stock.setInt(2, codigo);
+
+            ResultSet rs = stock.executeQuery();
+            while (rs.next()) {
+                cant = rs.getInt("RESTA");
+
+            }
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error SQL al disminuir el stock " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al disminuir el stock " + e.getMessage());
+        }
+        return cant;
+    }
+
+    public boolean modificarStock(int Codigo, int resultado) {
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "UPDATE Medicamento SET Cantidad = ? "
+                    + " WHERE Codigo = ? ";
+            PreparedStatement modificar = conexion.prepareStatement(query);
+
+            modificar.setInt(1, resultado);
+            modificar.setInt(2, Codigo);
+
+            modificar.executeUpdate();
+
+            modificar.close();
+            conexion.close();
+
+            return true;
+        } catch (SQLException w) {
+            System.out.println("Error al modifcar el medicamento " + w.getMessage());
+            return false;
+        } catch (Exception e) {
+            System.out.println("Error al modificar " + e.getMessage());
+            return false;
+        }
+    }
 }

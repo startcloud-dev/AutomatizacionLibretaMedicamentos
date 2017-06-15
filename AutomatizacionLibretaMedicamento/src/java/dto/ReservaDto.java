@@ -20,7 +20,8 @@ public class ReservaDto {
     private String rut_farmaceutico;
     private String estado;
     private Integer codigo;
-
+    private Integer cantidad;
+    
     public ReservaDto() {
     }
 
@@ -88,11 +89,17 @@ public class ReservaDto {
         this.codigo = codigo;
     }
 
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
     @Override
     public String toString() {
-        return "ReservaDto{" + "id_reserva=" + id_reserva + ", fecha_inicio=" + fecha_inicio + ", fecha_termino=" + fecha_termino + ", rut_paciente=" + rut_paciente + ", id_tratamiento=" + id_tratamiento + ", rut_farmaceutico=" + rut_farmaceutico + ", estado=" + estado + ", codigo=" + codigo + '}';
+        return "ReservaDto{" + "id_reserva=" + id_reserva + ", fecha_inicio=" + fecha_inicio + ", fecha_termino=" + fecha_termino + ", rut_paciente=" + rut_paciente + ", id_tratamiento=" + id_tratamiento + ", rut_farmaceutico=" + rut_farmaceutico + ", estado=" + estado + ", codigo=" + codigo + ", cantidad=" + cantidad + '}';
     }
-    
-    
-    
+
 }

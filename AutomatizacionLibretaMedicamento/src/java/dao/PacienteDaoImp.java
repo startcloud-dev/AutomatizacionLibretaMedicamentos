@@ -199,12 +199,11 @@ public class PacienteDaoImp implements PacienteDao{
     
     }
     
-       public String recuperarNombrePacientePorId(int id) {
+         public String recuperarNombrePacientePorId(int id) {
         String nombre = "";
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT PACIENTE.NOMBRE||' '|| PACIENTE.APELLIDO_PATERNO ||' '||PACIENTE.APELLIDO_MATERNO as Nombre_completo FROM PACIENTE,RESERVA,MEDICAMENTO,RECETA " +
-                            " WHERE PACIENTE.ID_RESERVA = RESERVA.ID_RESERVA AND RESERVA.ID_RESERVA=MEDICAMENTO.ID_RESERVA AND MEDICAMENTO.CODIGO=RECETA.CODIGO AND RECETA.ID_RECETA=?";
+            String query = "SELECT nombre||' '|| apellido_paterno ||' '|| apellido_materno as Nombre_completo from paciente where id_reserva=?";
             PreparedStatement sacar = conexion.prepareStatement(query);
 
             sacar.setInt(1, id);
@@ -228,7 +227,6 @@ public class PacienteDaoImp implements PacienteDao{
 
         return nombre;
     }
-
 
     public String verificarPaciente(String rut) {
         String resp = "";
