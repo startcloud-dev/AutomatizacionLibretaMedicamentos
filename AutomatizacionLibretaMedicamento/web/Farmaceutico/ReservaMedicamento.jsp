@@ -21,7 +21,7 @@
          <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Recerva Medicamento | Farmaceutico  </title>
+        <title>Reserva Medicamento | Farmaceutico  </title>
     </head>
     <body>
         <div id="container_demo" >
@@ -44,39 +44,26 @@
                         <h1> Reservar Medicamento </h1>
                         <table border="0">
                             <tbody>
-                              
-                                <tr>
-                                    <td> Fecha Inicio </td>
-                                    <td><input type="date" name="txtFechaIni" required="" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td> Fecha Termino </td>
-                                    <td><input type="date" name="txtFechaTer" required="" value="" /></td>
-                                </tr>
                                 <tr>
                                     <td> Rut Paciente </td>
-                                    <td><input type="text" name="txtPaciente"  required="" value="" /></td>
+                                    <td><input type="text" name="txtPaciente" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Tratamiento </td>
-                                    <td><input type="text" name="txtTratamiento" required="" value="" /></td>
+                                    <td><input type="text" name="txtTratamiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Rut Farmaceutico </td>
-                                    <td><input type="text" name="txtFarmaceutico" required="" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td> Estado </td>
-                                    <td><input type="text" name="txtEstado" required="" value="" /></td>
+                                    <td><input type="text" name="txtFarmaceutico" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Medicamento </td>
-                                    <td><input type="text" name="txtCodigo" required="" value="" /></td>
-                                </tr>
+                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                </tr>                             
                                 <tr>
-                                    <td>Cantidad a reservar (cajas) </td>
+                                    <td> Cantidad a Reservar </td>
                                     <td><input type="text" name="txtCantidad" value="" /></td>
-                                </tr>
+                                </tr> 
                             </tbody>
                         </table>
                         <p class="login button">
@@ -101,7 +88,7 @@
                                     <th>Tratamiento</th>
                                     <th>Farmaceutico</th>
                                     <th>Estado</th>
-                                    <th>Codigo</th>
+                                    <th>codigo</th>
                                 </tr>
                             </thead>
                             <tbody>

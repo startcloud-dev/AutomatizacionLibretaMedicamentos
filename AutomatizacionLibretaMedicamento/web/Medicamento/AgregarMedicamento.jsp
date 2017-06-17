@@ -4,6 +4,7 @@
     Author     : Sergio
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,7 +45,6 @@
                         <h1>Agregar Medicamento</h1>
                         <table border="0">
                             <tbody>
-                              
                                 <tr>
                                     <td>Nombre</td>
                                     <td><input type="text" required="" name="txtNombre" value="" /></td>
@@ -66,7 +66,7 @@
                                     <td><input type="text" required="" name="txtContenido" value="" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Cantidad</td>
+                                    <td>Cantidad por Caja</td>
                                     <td><input type="text" required="" name="txtCantidad" value="" /></td>
                                 </tr>
                                 <tr>

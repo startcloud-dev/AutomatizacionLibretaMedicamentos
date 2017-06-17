@@ -37,15 +37,15 @@ public class AgregarReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-                       String mensaje = "";
+              String mensaje = "";
+            String estado = "En Curso";
             ReservaDto dto = new ReservaDto();
-            dto.setFecha_inicio(Date.valueOf(request.getParameter("txtFechaIni")));
-            dto.setFecha_termino(Date.valueOf(request.getParameter("txtFechaTer")));
-            dto.setRut_paciente(request.getParameter("txtPaciente".trim()));
-            dto.setId_tratamiento(Integer.parseInt(request.getParameter("txtTratamiento".trim())));
-            dto.setRut_farmaceutico(request.getParameter("txtFarmaceutico".trim()));
-            dto.setEstado(request.getParameter("txtEstado".trim()));
-            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
+            dto.setRut_paciente(request.getParameter("txtPaciente").trim());
+            dto.setId_tratamiento(Integer.parseInt(request.getParameter("txtTratamiento").trim()));
+            dto.setRut_farmaceutico(request.getParameter("txtFarmaceutico").trim());
+            dto.setEstado(estado);
+            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo").trim()));
+            dto.setCantidad(Integer.parseInt(request.getParameter("txtCantidad").trim()));
 
             if (!new PacienteDaoImp().validarPaciente(dto.getRut_paciente())) {
                 mensaje = "No existe un Paciente con ese Rut";

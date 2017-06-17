@@ -43,11 +43,7 @@
                     <form name="frmReceta" action="/AutomatizacionLibretaMedicamento/AgregarReceta" method="POST">
                         <h1> Receta </h1>
                         <table border="0">
-                            <tbody>
-                                <tr>
-                                    <td> codigo Receta </td>
-                                    <td><input type="text" name="txtReceta" value="" /></td>
-                                </tr>
+                            <tbody>                            
                                 <tr>
                                     <td> Fecha Emision </td>
                                     <td><input type="date" name="txtFechaEmi" value="" /></td>

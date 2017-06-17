@@ -1,13 +1,13 @@
 <%-- 
-    Document   : RecetasPendientes
-    Created on : 17-05-2017, 22:21:54
-    Author     : Sergio
+    Document   : DisminuirStock
+    Created on : 12-06-2017, 17:13:33
+    Author     : CETECOM
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib   prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,12 +20,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
-        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Recetas | Pendientes</title>
-
-
-
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
+        <title>Disminuir stock || farmaceutico</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -37,73 +34,72 @@
                 <div id="login" class="animate form">
                     <header>
                         <hgroup>
-                            <h1>Recetas Pendientes </h1>
+                            <h1>Disminuir Stock</h1>
                         </hgroup>
                     </header>
-
-                  
                     <c:set var="msn" scope="request" value="${requestScope.mensaje}">
 
                     </c:set>
-
                     <c:if test="${msn!=null}">
-
                         <script>
-
                             alert('<c:out value="${msn}" />');
-
                         </script>
 
                     </c:if>
-                    <hgroup>
-                        <h3></h3>
-                    </hgroup>
 
-                    <form name="frmRecetasPendientes" action="/AutomatizacionLibretaMedicamento/RecetasPendientes" method="POST">
+                    <form name="frmAumentarStock" action="/AutomatizacionLibretaMedicamento/DisminuirStock" method="POST">
+
+                        <table  class="" border="0">
+
+                            <tbody>
+                                <tr>
+                                    <td>Codigo</td>
+                                    <td><input type="text" required="" name="txtCodigo"   value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad</td>
+                                    <td><input type="text" required="" name="txtCantidad"   value="" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         <hr>
                         <p class="login button">
-                            <input type="submit" value="Listar" name="btnListarRecetas" />
+                            <input type="submit" value="DescontarStock" name="btnAumentarStock" />
                         </p>
                         <p class="login button">
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
-
-                    <hr>
                     <c:set  var="lista" scope="request" 
                             value="${requestScope.lista}">
                     </c:set >
 
                     <c:if test="${requestScope.lista!=null}">
-
-                        <hr>
-
+                        
                         <table  class="table table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>IdReceta</th>
-                                    <th>FechaEmision</th>
-                                    <th>CodigoMedicamento</th>
-                                    <th>Indicaciones</th>
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${requestScope.lista}" var = "receta" >
-                                <tr>
-                                <td><c:out value="${receta.id_receta}" /></td>
-                                <td><c:out value="${receta.fecha_emision}" /></td>
-                                <td><c:out value="${receta.codigo}"/></td>
-                                <td><c:out value="${receta.indicaciones}" /></td>
-                                </tr>
-                            </c:forEach>
+                                <c:forEach items="${requestScope.lista}" var = "med" >
+                                    <tr>
+                                        <td><c:out value="${med.codigo}" /></td>
+                                        <td><c:out value="${med.nombre}" /></td>
+                                        <td><c:out value="${med.cantidad}" /></td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
-
-                    </c:if>  
-
+                    </c:if>   
                 </div>
             </div>
         </div>
     </body>
 </html>
+
+

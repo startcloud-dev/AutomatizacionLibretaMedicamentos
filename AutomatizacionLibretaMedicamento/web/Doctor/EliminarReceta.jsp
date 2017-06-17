@@ -41,7 +41,7 @@
                     </c:if>
 
                     <form name="frmFarmaceutico" action="/AutomatizacionLibretaMedicamento/EliminarReceta" method="POST">
-                        <h1>Eliminar Farmaceutico </h1>
+                        <h1>Eliminar Receta</h1>
                         <table border="0">
                             <tbody>
                                 <tr>

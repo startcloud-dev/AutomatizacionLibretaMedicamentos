@@ -148,6 +148,14 @@
         <servlet-name>ListarMedicamentos</servlet-name>
         <servlet-class>servlet.ListarMedicamentos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AumentarStock</servlet-name>
+        <servlet-class>servlet.AumentarStock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisminuirStock</servlet-name>
+        <servlet-class>servlet.DisminuirStock</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
         <url-pattern>/AgregarBodega</url-pattern>
@@ -295,6 +303,14 @@
     <servlet-mapping>
         <servlet-name>ListarMedicamentos</servlet-name>
         <url-pattern>/ListarMedicamentos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarStock</servlet-name>
+        <url-pattern>/AumentarStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisminuirStock</servlet-name>
+        <url-pattern>/DisminuirStock</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
