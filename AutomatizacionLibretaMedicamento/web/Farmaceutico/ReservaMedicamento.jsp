@@ -88,7 +88,8 @@
                                     <th>Tratamiento</th>
                                     <th>Farmaceutico</th>
                                     <th>Estado</th>
-                                    <th>codigo</th>
+                                    <th>Codigo</th>
+                                    <th>Cantidad a reservar </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,6 +103,7 @@
                                         <td><c:out value="${reserva.rut_farmaceutico}"/></td>
                                         <td><c:out value="${reserva.estado}"/></td>
                                         <td><c:out value="${reserva.codigo}"/></td>
+                                        <td><c:out value="${reserva.cantidad}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

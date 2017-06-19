@@ -64,6 +64,7 @@ public class AgregarReserva extends HttpServlet {
 
             request.setAttribute("mensaje", mensaje);
 
+            request.setAttribute("lista",  new dao.ReservaDaoImp().listar());
             request.getRequestDispatcher("Farmaceutico/ReservaMedicamento.jsp").forward(request, response);
         }
     }

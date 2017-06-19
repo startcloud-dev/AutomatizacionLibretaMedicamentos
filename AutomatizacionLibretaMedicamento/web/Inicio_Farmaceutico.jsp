@@ -63,8 +63,6 @@
                     <br>
                     <br>
                     <a href="Medicamento/DisponibilidadStock.jsp">Disponibilidad Stock</a>
-                    
-                    
                 </div>
             </div>
         </div>

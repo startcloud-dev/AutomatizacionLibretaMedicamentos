@@ -92,7 +92,7 @@
                                         <td><c:out  value="${med.contenido}"/></td>
                                         <td><c:out  value="${med.cantidad}" /></td>
                                         <td><c:out   value="${med.gramaje}"/></td>
-                                        <td><c:out   value="${med.fecha_vencimiento}"/></td>
+                                        <td><c:out  value="${med.fecha_vencimiento}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
