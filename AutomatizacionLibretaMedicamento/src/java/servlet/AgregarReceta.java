@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dto.RecetaDto;
 import java.sql.Date;
+import dao.MedicamentoDaoImp;
 /**
  *
  * @author Sergio
@@ -25,25 +26,26 @@ public class AgregarReceta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
          
-             String mensaje = "";
-
+            String mensaje = "";
+            
             RecetaDto dto = new RecetaDto();
-            dto.setId_receta(Integer.parseInt(request.getParameter("txtReceta".trim())));
             dto.setFecha_emision(Date.valueOf(request.getParameter("txtFechaEmi")));
             dto.setCodigo(Integer.parseInt(request.getParameter("txtCodMedicamento")));
             dto.setIndicaciones(request.getParameter("txtIndicaciones"));
 
-            if (new dao.RecetaDaoImp().agregar(dto)) {
+            if (!new MedicamentoDaoImp().validarMedicamento(dto.getCodigo())) {
+                mensaje = "No existe un medicamento con ese codigo";
+            } else if (new dao.RecetaDaoImp().agregar(dto)) {
                 mensaje = "Receta agregada";
             } else {
                 mensaje = "Receta no agregada";
             }
-            
-             request.setAttribute("lista", new dao.RecetaDaoImp().listar());
-             request.setAttribute("mensaje", mensaje);
-            
-           request.getRequestDispatcher("Doctor/AgregarReceta.jsp").forward(request, response);
-            
+
+            request.setAttribute("lista", new dao.RecetaDaoImp().listar());
+            request.setAttribute("mensaje", mensaje);
+
+            request.getRequestDispatcher("Doctor/AgregarReceta.jsp").forward(request, response);
+  
             
         }
     }

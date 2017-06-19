@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import componentes.Conexion;
+import dto.ApoyoDto;
 import java.util.Date;
 
 /**
@@ -25,19 +26,16 @@ public class ReservaDaoImp implements ReservaDao {
     public boolean agregar(ReservaDto dto) {
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Reserva (Id_reserva,Fecha_inicio,"
-                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo) VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Reserva (Fecha_inicio,"
+                    + "Fecha_termino,Rut_paciente,Id_tratamiento,Rut_farmaceutico,Estado,Codigo,Cantidad) "
+                    + " VALUES (SYSDATE,SYSDATE,?,?,?,?,?,?)";
             PreparedStatement ingresar = conexion.prepareStatement(query);
-            ingresar.setInt(1, dto.getId_reserva());
-            ingresar.setDate(2,
-                    new java.sql.Date(dto.getFecha_inicio().getTime()));
-            ingresar.setDate(3,
-                    new java.sql.Date(dto.getFecha_termino().getTime()));
-            ingresar.setString(4, dto.getRut_paciente());
-            ingresar.setInt(5, dto.getId_tratamiento());
-            ingresar.setString(6, dto.getRut_farmaceutico());
-            ingresar.setString(7, dto.getEstado());
-            ingresar.setInt(8, dto.getCodigo());
+            ingresar.setString(1, dto.getRut_paciente());
+            ingresar.setInt(2, dto.getId_tratamiento());
+            ingresar.setString(3, dto.getRut_farmaceutico());
+            ingresar.setString(4, dto.getEstado());
+            ingresar.setInt(5, dto.getCodigo());
+            ingresar.setInt(6, dto.getCantidad());
 
             ingresar.execute();
             ingresar.close();
@@ -50,7 +48,6 @@ public class ReservaDaoImp implements ReservaDao {
         }
         return false;
     }
-
     @Override
     public boolean eliminar(ReservaDto dto) {
         try {
@@ -76,7 +73,7 @@ public class ReservaDaoImp implements ReservaDao {
             Connection conexion = Conexion.getConexion();
             String query = "UPDATE Reserva SET Estado=?";
             PreparedStatement mod = conexion.prepareStatement(query);
-            
+
             mod.setString(1, dto.getEstado());
 
             return mod.execute();
@@ -107,7 +104,7 @@ public class ReservaDaoImp implements ReservaDao {
                 dto.setRut_farmaceutico(rs.getString("Rut_farmaceutico"));
                 dto.setEstado(rs.getString("Estado"));
                 dto.setCodigo(rs.getInt("Codigo"));
-
+                dto.setCantidad(rs.getInt("Cantidad"));
                 lista.add(dto);
             }
             listar.close();
@@ -139,6 +136,7 @@ public class ReservaDaoImp implements ReservaDao {
                 dtoMeet.setRut_farmaceutico(rs.getString("Rut_farmaceutico"));
                 dtoMeet.setEstado(rs.getString("Estado"));
                 dtoMeet.setCodigo(rs.getInt("Codigo"));
+                dtoMeet.setCantidad(rs.getInt("Cantidad"));
             }
             buscar.close();
             conexion.close();
@@ -150,36 +148,34 @@ public class ReservaDaoImp implements ReservaDao {
         return dtoMeet;
     }
 
-    public  static Date traerFechaTermino(){
-       Date fechaSalida = null;
+    public static Date traerFechaTermino() {
+        Date fechaSalida = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT Fecha_termino FROM Reserva WHERE id_reserva = 2";
             PreparedStatement traer = conexion.prepareStatement(query);
-            
+
             ResultSet rs = traer.executeQuery();
-            
-            while(rs.next()){       
-                fechaSalida = rs.getDate("Fecha_termino");  
+
+            while (rs.next()) {
+                fechaSalida = rs.getDate("Fecha_termino");
             }
             traer.close();
             conexion.close();
-            
-        }catch(SQLException w){
-            System.out.println("Error sql al traer la fecha de termino "+w.getMessage());
+
+        } catch (SQLException w) {
+            System.out.println("Error sql al traer la fecha de termino " + w.getMessage());
             w.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Error al traer la fceha de termino "+e.getMessage());
+            System.out.println("Error al traer la fceha de termino " + e.getMessage());
             e.printStackTrace();
-            
-        
+
         }
-        
-        return  fechaSalida; 
+
+        return fechaSalida;
     }
-    
-    
-        public boolean modificarEstado(String estado, int id) {
+
+    public boolean modificarEstado(String estado, int id) {
 
         try {
             Connection conexion = Conexion.getConexion();
@@ -197,5 +193,80 @@ public class ReservaDaoImp implements ReservaDao {
         }
         return false;
     }
+
+    public boolean validarReserva(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Reserva WHERE id_reserva = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
+
     
+      public String recuperarEstado(int codigo) {
+        String estado = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT estado FROM Reserva WHERE id_reserva = ?";
+            PreparedStatement recup = conexion.prepareStatement(query);
+            recup.setInt(1, codigo);
+            ResultSet rs = recup.executeQuery();
+            while (rs.next()) {
+                estado = rs.getString("estado");
+            }
+            recup.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al recuperar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al recuperar " + w.getMessage());
+        }
+        return estado;
+    }
+      
+     public List<ApoyoDto> listarReservas() {
+        List<ApoyoDto> lista = new ArrayList<ApoyoDto>();
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "select reserva.fecha_inicio as inicio ,reserva.fecha_termino as termino, paciente.nombre as nombre,reserva.estado as estado, medicamento.nombre as medicamento ,reserva.cantidad as cantidad "
+                    + "from reserva,medicamento,paciente "
+                    + " where medicamento.codigo=reserva.codigo and reserva.rut_paciente=paciente.rut_paciente";
+            PreparedStatement listar = conexion.prepareStatement(query);
+            ResultSet rs = listar.executeQuery();
+
+            while (rs.next()) {
+                ApoyoDto dto = new ApoyoDto();
+
+                dto.setFecha_inicio(rs.getDate("inicio"));
+                dto.setFecha_termino(rs.getDate("termino"));
+                dto.setNombre_paciente(rs.getString("nombre"));
+                dto.setEstado(rs.getString("Estado"));
+                dto.setNombre_Medicamento(rs.getString("medicamento"));
+                dto.setCantidad(rs.getInt("Cantidad"));
+                lista.add(dto);
+
+            }
+            listar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error sql listar las reservas " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar las reservas   " + e.getMessage());
+        }
+        return lista;
+    }
 }

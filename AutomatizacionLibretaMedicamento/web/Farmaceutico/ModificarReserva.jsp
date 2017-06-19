@@ -4,6 +4,7 @@
     Author     : Kevin
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dto.ReservaDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -71,11 +72,15 @@
                                 </tr>
                                 <tr>
                                     <td>Estado</td>
-                                    <td><input type="Dtext" name="txtEstado" value="<%= dto.getEstado()%>" /></td>
+                                    <td><input type="text" name="txtEstado" value="<%= dto.getEstado()%>" readonly="readonly"/></td>
                                 </tr>
                                 <tr>
                                     <td>Codigo Medicamento</td>
                                     <td><input type="text" name="txtMedicamento" disable="on" value="<%= dto.getCodigo()%>" readonly="readonly" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Cajas Solicitadas</td>
+                                    <td><input type="text" name="txtCantidad" disable="on" value="<%= dto.getCantidad()%>" readonly="readonly" /></td>
                                 </tr>
                             </tbody>
                         </table>

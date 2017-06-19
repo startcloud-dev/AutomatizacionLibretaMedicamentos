@@ -13,7 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import dao.PacienteDaoImp;
+import dao.ReservaDaoImp;
 /**
  *
  * @author Kevin
@@ -34,7 +35,7 @@ public class AgregarPaciente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String mensaje = "";
+              String mensaje = "";
             PacienteDto dto = new PacienteDto();
             dto.setRut_paciente(request.getParameter("txtRut".trim()));
             dto.setNombre(request.getParameter("txtNombre".trim()));
@@ -46,7 +47,11 @@ public class AgregarPaciente extends HttpServlet {
             dto.setFecha_nacimiento(Date.valueOf(request.getParameter("txtFechaNacimiento")));
             dto.setId_Reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
 
-            if (new dao.PacienteDaoImp().agregar(dto)) {
+            if (new PacienteDaoImp().validarPaciente(dto.getRut_paciente())) {
+                mensaje = "Ya existe un paciente con ese Rut";
+            }else if (!new ReservaDaoImp().validarReserva(dto.getId_Reserva())) {
+                mensaje = "No hay Reservas con ese numero";
+            } else if (new dao.PacienteDaoImp().agregar(dto)) {
 
                 mensaje = "Paciente agregado";
 

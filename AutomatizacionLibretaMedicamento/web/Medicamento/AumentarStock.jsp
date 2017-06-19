@@ -1,12 +1,11 @@
 <%-- 
-    Document   : AgregarBodega
-    Created on : 05-04-2017, 23:16:52
-    Author     : Sergio
+    Document   : AumentarStock
+    Created on : 12-06-2017, 16:49:45
+    Author     : CETECOM
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib   prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page     import="dto.BodegaDto" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,10 +21,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
-        <title>Bodega | Farmaceutico</title>
-
-
-
+        <title>Aumentar stock || farmaceutico</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -37,7 +33,7 @@
                 <div id="login" class="animate form">
                     <header>
                         <hgroup>
-                            <h1>Bodega farmaceutica </h1>
+                            <h1>Aumentar Stock</h1>
                         </hgroup>
                     </header>
 
@@ -50,69 +46,61 @@
                         <script>
 
                             alert('<c:out value="${msn}" />');
-                         
+
                         </script>
 
                     </c:if>
-                    <hgroup>
-                        <h3></h3>
-                    </hgroup>
 
-                    <form name="frmAgregarBodega" action="/AutomatizacionLibretaMedicamento/AgregarBodega" method="POST">
+
+                    <form name="frmAumentarStock" action="/AutomatizacionLibretaMedicamento/AumentarStock" method="POST">
 
                         <table  class="" border="0">
 
                             <tbody>
-                              
                                 <tr>
-                                    <td>Categoria </td>
-                                    <td><input type="text" required="" name="txtCategoria" value="" /></td>
+                                    <td>Codigo</td>
+                                    <td><input type="text" required="" name="txtCodigo"   value="" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Cantidad</td>
+                                    <td><input type="text" required="" name="txtCantidad"   value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <hr>
                         <p class="login button">
-                            <input type="submit" value="Ingresar" name="btnAgregarBodega" />
+                            <input type="submit" value="AumentarStock" name="btnAumentarStock" />
                         </p>
                         <p class="login button">
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
 
-                    <hr>
-                    <c:set  var="lista" scope="request" 
-                            value="${requestScope.lista}">
-                    </c:set >
-
                     <c:if test="${requestScope.lista!=null}">
-
-                        <hr>
 
                         <table  class="table table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>IdSeccion</th>
-                                    <th>Categoria</th>
-
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${requestScope.lista}" var = "bodega" >
+                                <c:forEach items="${requestScope.lista}" var = "med" >
                                     <tr>
-                                        <td><c:out value="${bodega.id_seccion}" /></td>
-                                        <td><c:out value="${bodega.categoria}" /></td>
-
+                                        <td><c:out value="${med.codigo}" /></td>
+                                        <td><c:out value="${med.nombre}" /></td>
+                                        <td><c:out value="${med.cantidad}" /></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
-
-                    </c:if>  
-
-                      
+                    </c:if>   
                 </div>
             </div>
         </div>
     </body>
 </html>
+

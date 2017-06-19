@@ -61,17 +61,6 @@
 
                     <form name="frmRecetasPendientes" action="/AutomatizacionLibretaMedicamento/RecetasPendientes" method="POST">
 
-                        <table  class="" border="0">
-
-                            <tbody>
-                                <tr>
-                                    <td>Rut Paciente </td>
-                                    <td><input type="text" name="txtRut" placeholder="Rut" required="" value="" /></td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-
                         <hr>
                         <p class="login button">
                             <input type="submit" value="Listar" name="btnListarRecetas" />
@@ -86,8 +75,6 @@
                             value="${requestScope.lista}">
                     </c:set >
 
-                  
-                    
                     <c:if test="${requestScope.lista!=null}">
 
                         <hr>

@@ -15,25 +15,24 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Medicamento (Codigo,Nombre,Tipo,Fabricante"
+            String query = "INSERT INTO Medicamento (Nombre,Tipo,Fabricante"
                     + ",Componentes,Contenido,Cantidad,Gramaje,Fecha_Vencimiento,Id_seccion,id_reserva) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
-            insertar.setInt(1, dto.getCodigo());
-            insertar.setString(2, dto.getNombre());
-            insertar.setString(3, dto.getTipo());
-            insertar.setString(4, dto.getFabricante());
-            insertar.setString(5, dto.getComponente());
-            insertar.setString(6, dto.getContenido());
-            insertar.setString(7, dto.getCantidad());
-            insertar.setString(8, dto.getGramaje());
-            insertar.setDate(9,
+            insertar.setString(1, dto.getNombre());
+            insertar.setString(2, dto.getTipo());
+            insertar.setString(3, dto.getFabricante());
+            insertar.setString(4, dto.getComponente());
+            insertar.setString(5, dto.getContenido());
+            insertar.setString(6, dto.getCantidad());
+            insertar.setString(7, dto.getGramaje());
+            insertar.setDate(8,
                     new java.sql.Date(dto.getFecha_vencimiento().getTime()));
-            insertar.setInt(10, dto.getId_seccion());
-            insertar.setInt(11, dto.getId_Reserva());
+            insertar.setInt(9, dto.getId_seccion());
+            insertar.setInt(10, dto.getId_Reserva());
             insertar.execute();
-          
+
             insertar.close();
             conexion.close();
 
@@ -44,8 +43,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
         } catch (Exception e) {
             System.out.println("Error al agregar " + e.getMessage());
             return false;
-        }
-
+        } 
     }
 
     public boolean eliminar(MedicamentoDto dto) {
@@ -258,10 +256,11 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
     public String recuperarNombreMedicamentoPorId(int id) {
         String nombre = "";
-    
+
         try {
             Connection conexion = Conexion.getConexion();
-            String query ="SELECT nombre FROM Medicamento where codigo=?";
+            String query = "SELECT Medicamento.NOMBRE AS NOMBRE FROM MEDICAMENTO,RECETA " +
+                            " WHERE MEDICAMENTO.CODIGO=RECETA.CODIGO AND RECETA.ID_RECETA=?";
             PreparedStatement sacar = conexion.prepareStatement(query);
 
             sacar.setInt(1, id);
@@ -270,7 +269,7 @@ public class MedicamentoDaoImp implements MedicamentoDao {
             while (rs.next()) {
 
                 nombre = rs.getString("Nombre");
-                            
+
             }
             sacar.close();
             conexion.close();
@@ -285,6 +284,99 @@ public class MedicamentoDaoImp implements MedicamentoDao {
 
         return nombre;
     }
+
+    public boolean validarMedicamento(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Medicamento WHERE codigo = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
     
-    
+    public int aumentarStock(int cantidad, int codigo) {
+        int cant = 0;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT (CANTIDAD+?)as SUMA FROM  MEDICAMENTO  WHERE CODIGO=? ";
+            PreparedStatement stock = conexion.prepareStatement(query);
+            stock.setInt(1, cantidad);
+            stock.setInt(2, codigo);
+
+            ResultSet rs = stock.executeQuery();
+            while (rs.next()) {
+                cant = rs.getInt("SUMA");
+
+            }
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error SQL al aumentar el stock " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al aumentar el stock " + e.getMessage());
+        }
+        return cant;
+    }
+
+    public int descontarStock(int cantidad, int codigo) {
+        int cant = 0;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT (CANTIDAD-?)as RESTA FROM  MEDICAMENTO  WHERE CODIGO=? ";
+
+            PreparedStatement stock = conexion.prepareStatement(query);
+            stock.setInt(1, cantidad);
+            stock.setInt(2, codigo);
+
+            ResultSet rs = stock.executeQuery();
+            while (rs.next()) {
+                cant = rs.getInt("RESTA");
+
+            }
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error SQL al disminuir el stock " + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al disminuir el stock " + e.getMessage());
+        }
+        return cant;
+    }
+
+    public boolean modificarStock(int Codigo, int resultado) {
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "UPDATE Medicamento SET Cantidad = ? "
+                    + " WHERE Codigo = ? ";
+            PreparedStatement modificar = conexion.prepareStatement(query);
+
+            modificar.setInt(1, resultado);
+            modificar.setInt(2, Codigo);
+
+            modificar.executeUpdate();
+
+            modificar.close();
+            conexion.close();
+
+            return true;
+        } catch (SQLException w) {
+            System.out.println("Error al modifcar el medicamento " + w.getMessage());
+            return false;
+        } catch (Exception e) {
+            System.out.println("Error al modificar " + e.getMessage());
+            return false;
+        }
+    }
 }

@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr>
                                     <td>Categoria</td>
-                                    <td><input type="text" name="txtCategoria" value="${dto.BodegaDto.categoria}" /></td>
+                                    <td><input type="text" name="txtCategoria" required="" value="${dto.BodegaDto.categoria}" /></td>
                                 </tr>
                             </tbody>
                         </table>

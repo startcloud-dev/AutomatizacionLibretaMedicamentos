@@ -44,39 +44,39 @@
                             <tbody>
                                 <tr>
                                     <td>Rut </td>
-                                    <td><input type="text" name="txtRut" value="" /></td>
+                                    <td><input type="text" required="" name="txtRut" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Apellido Paterno</td>
-                                    <td><input type="text" name="txtApellidoPat" value="" /></td>
+                                    <td><input type="text" required="" name="txtApellidoPat" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>ApellidoMaterno</td>
-                                    <td><input type="text" name="txtApellidoMat" value="" /></td>
+                                    <td><input type="text" required="" name="txtApellidoMat" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Direccion</td>
-                                    <td><input type="text" name="txtDireccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtDireccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Telefono</td>
-                                    <td><input type="text" name="txtTelefono" value="" /></td>
+                                    <td><input type="text" required="" name="txtTelefono" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Correo</td>
-                                    <td><input type="text" name="txtCorreo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCorreo" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Fecha Nacimiento</td>
-                                    <td><input type="date" name="txtFechaNacimiento" value="" /></td>
+                                    <td><input type="date" required="" name="txtFechaNacimiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Codigo Reserva</td>
-                                    <td><input type="text" name="txtReserva" value="" /></td>
+                                    <td><input type="text" required="" name="txtReserva" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,6 +89,37 @@
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Doctor.jsp">Volver al menu</a>
                         </p>
                     </form>
+                        <c:set var="lista" scope="request" value="${requestScope.lista}" />
+
+                    <c:if test="${lista!=null}">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>rut</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>Correo</th>
+                                    <th>Fecha Nacimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${requestScope.lista}" var = "paciente">
+                                <tr>
+                                <td><c:out value="${paciente.rut_paciente}" /></td>
+                                <td><c:out value="${paciente.nombre}" /></td>
+                                <td><c:out  value="${paciente.apellido_paterno}"/></td>
+                                <td><c:out value="${paciente.apellido_materno}" /></td>
+                                <td><c:out value="${paciente.direccion}" /></td>
+                                <td><c:out  value="${paciente.telefono}"/></td>
+                                <td><c:out  value="${paciente.correo}" /></td>
+                                <td><c:out value="${paciente.fecha_vencimiento}"/></td>
+                            </c:forEach>
+                            </tbody>
+                        </table>        
+                    </c:if>
                 </div>
             </div>
         </div>

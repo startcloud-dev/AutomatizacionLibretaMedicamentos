@@ -43,7 +43,7 @@
                             <tbody>
                                 <tr>
                                     <td> codigo Reserva </td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input required="" type="text" name="txtCodigo" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

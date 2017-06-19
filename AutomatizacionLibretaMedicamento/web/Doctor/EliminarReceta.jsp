@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Eliminar | Doctor</title>
+        <title>Eliminar Receta | Doctor</title>
     </head>
     <body>
         <div id="container_demo" >
@@ -41,12 +41,12 @@
                     </c:if>
 
                     <form name="frmFarmaceutico" action="/AutomatizacionLibretaMedicamento/EliminarReceta" method="POST">
-                        <h1>Eliminar Farmaceutico </h1>
+                        <h1>Eliminar Receta</h1>
                         <table border="0">
                             <tbody>
                                 <tr>
                                     <td>Codigo Receta</td>
-                                    <td><input type="text" name="txtReceta" value="" /></td>
+                                    <td><input type="text" required="" name="txtReceta" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

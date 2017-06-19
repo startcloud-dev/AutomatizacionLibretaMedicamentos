@@ -35,10 +35,10 @@
                     <a href="/AutomatizacionLibretaMedicamento/Bodega/EliminarBodega.jsp">Eliminar Bodega</a>
                     <br>
                     <br>
-                    <a href="Medicamento/AgregarMedicamento.jsp">Agregar Stock Medicamento</a>
+                    <a href="Medicamento/AgregarMedicamento.jsp">Agregar Medicamento</a>
                     <br>
                     <br>
-                    <a href="Medicamento/EliminarMedicamento.jsp">Eliminar Stock Medicamento</a>
+                    <a href="Medicamento/EliminarMedicamento.jsp">Eliminar  Medicamento</a>
                     <br>
                     <br>
                     <a href="Farmaceutico/ReservaMedicamento.jsp">Reservar Medicamento</a>
@@ -50,13 +50,19 @@
                     <a href="Farmaceutico/BuscarReserva.jsp">Buscar Reserva/ModificarEstado</a>
                     <br>
                     <br>
-                    <a href="Farmaceutico/GenerarInformes.jsp">Emitir Informes </a>
+                    <a href="Farmaceutico/GenerarInformes.jsp">Emitir Informe Medicamento </a>
                     <br>
                     <br>
                     <a href="Medicamento/BajaMedicamento.jsp">Justificar Baja de Medicamento </a>
                     <br>
                     <br>
-                    <a href="Farmaceutico/RecetasPendientes.jsp" >RecetasPendientes</a>
+                    <a href="Farmaceutico/RecetasPendientes.jsp" >Recetas Pendientes</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/EmitirReserva.jsp">Emitir Reserva</a>
+                    <br>
+                    <br>
+                    <a href="Medicamento/DisponibilidadStock.jsp">Disponibilidad Stock</a>
                 </div>
             </div>
         </div>

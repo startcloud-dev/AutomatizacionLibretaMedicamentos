@@ -49,6 +49,7 @@ public class GenerarInformes {
             if (tipo == 0) { // Tipo 0 es Medicamento
                 par1.add(new Phrase("MEDICAMENTOS", font_titulo));
                
+             
                 table.addCell("Nombre");
                 table.addCell("Laboratorio");
                 table.addCell("Cantidad");
@@ -57,6 +58,7 @@ public class GenerarInformes {
             } else {
                 if (tipo == 1) {
                     par1.add(new Phrase("RESERVAS", font_titulo));
+                   
                     table.addCell("Rut paciente");
                     table.addCell("Fecha Inicio");
                     table.addCell("Fecha Termino");
@@ -64,6 +66,7 @@ public class GenerarInformes {
                     table.addCell("Estado");
                 }else if (tipo ==2){
                       par1.add(new Phrase("RECETA", font_titulo));
+               
                     table.addCell("Doctor");
 //                    table.addCell("Fecha Inicio");
 //                    table.addCell("Fecha Termino");

@@ -199,11 +199,11 @@ public class PacienteDaoImp implements PacienteDao{
     
     }
     
-     public String recuperarNombrePacientePorId(int id) {
+         public String recuperarNombrePacientePorId(int id) {
         String nombre = "";
         try {
             Connection conexion = Conexion.getConexion();
-            String query ="SELECT nombre||' '|| apellido_paterno ||' '|| apellido_materno as Nombre_completo from paciente where id_reserva=?";
+            String query = "SELECT nombre||' '|| apellido_paterno ||' '|| apellido_materno as Nombre_completo from paciente where id_reserva=?";
             PreparedStatement sacar = conexion.prepareStatement(query);
 
             sacar.setInt(1, id);
@@ -211,8 +211,8 @@ public class PacienteDaoImp implements PacienteDao{
 
             while (rs.next()) {
 
-                nombre = rs.getString("Nombre_Completo");    
-                            
+                nombre = rs.getString("Nombre_Completo");
+
             }
             sacar.close();
             conexion.close();
@@ -227,6 +227,54 @@ public class PacienteDaoImp implements PacienteDao{
 
         return nombre;
     }
-    
+
+    public String verificarPaciente(String rut) {
+        String resp = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT¨rut_paciente FROM paciente where rut_paciente=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setString(1, rut);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+
+                resp = rs.getString("rut_paciente");
+
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al verificar el paciente" + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al verificar el paciente" + e.getMessage());
+        }
+        return resp;
+    }
+
+    public boolean validarPaciente(String rut) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Paciente WHERE rut_paciente = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setString(1, rut);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
     
 }

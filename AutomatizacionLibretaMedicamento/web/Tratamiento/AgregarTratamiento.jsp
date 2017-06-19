@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
         <title>Agregar | Tratamiento</title>
     </head>
     <body>
@@ -40,18 +43,14 @@
                     <form name="frmAgregarTratamiento" action="/AutomatizacionLibretaMedicamento/AgregarTratamiento" method="POST">
                         <h1>Agregar Tratamiento</h1>
                         <table border="0">
-                            <tbody>
-                                <tr>
-                                    <td>Numero </td>
-                                    <td><input type="text" name="txtId_tratamiento" value="" /></td>
-                                </tr>
+                           
                                 <tr>
                                     <td>Duracion</td>
-                                    <td><input type="text" name="txtDuracion" value="" /></td>
+                                    <td><input type="text" required="" name="txtDuracion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>N° Reserva</td>
-                                    <td><input type="text" name="txtId_Reserva" value="" /></td>
+                                    <td><input type="text" required="" name="txtId_Reserva" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

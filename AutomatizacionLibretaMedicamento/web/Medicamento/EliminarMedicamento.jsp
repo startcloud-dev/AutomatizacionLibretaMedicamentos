@@ -48,7 +48,7 @@
                             <tbody>
                                 <tr>
                                     <td>Codigo</td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -92,7 +92,7 @@
                                         <td><c:out  value="${med.contenido}"/></td>
                                         <td><c:out  value="${med.cantidad}" /></td>
                                         <td><c:out   value="${med.gramaje}"/></td>
-                                        <td><c:out   value="${med.fecha_vencimiento}"/></td>
+                                        <td><c:out  value="${med.fecha_vencimiento}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

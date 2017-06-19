@@ -21,6 +21,9 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+          <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
         <title>Modificar | Tratamiento</title>
     </head>
     <body>
@@ -46,7 +49,7 @@
                             <tbody>
                                 <tr>
                                     <td>Numero </td>
-                                    <td><input type="text" name="txtId_tratamiento" value="" /></td>
+                                    <td><input type="text"  required="" name="txtId_tratamiento" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

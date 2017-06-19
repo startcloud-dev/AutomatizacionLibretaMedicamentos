@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package servlet;
 
-import componentes.GenerarInformes;
-import dao.RecetaDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,40 +13,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sergio
  */
-public class GenerarReceta extends HttpServlet {
+public class AumentarStock extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-        
-            String mensaje = "";
+           int Codigo = Integer.parseInt(request.getParameter("txtCodigo").trim());
+            int cantidad = Integer.parseInt(request.getParameter("txtCantidad").trim());
 
-            int id = Integer.valueOf(request.getParameter("txtId".trim()));
-           
+            int rest = new dao.MedicamentoDaoImp().aumentarStock(cantidad, Codigo);
 
-            String doct = (String) request.getSession().getAttribute("usuario");
-            String medi = new dao.MedicamentoDaoImp().recuperarNombreMedicamentoPorId(id);
-            String paci = new dao.PacienteDaoImp().recuperarNombrePacientePorId(id);
-
-            if (doct.equals("") && medi.equals("") && paci.equals("")) {
-                doct = "NO hay Registro";
-                medi = "NO hay Registro";
-                paci = "NO hay Registro";
+            if (cantidad == 0) {
+                request.setAttribute("mensaje", "No se puede aumentar stock por este valor " + cantidad);
+            } else if (new dao.MedicamentoDaoImp().modificarStock(Codigo, rest)) {
+                request.setAttribute("mensaje", "Se  aumento el stock");
+                request.setAttribute("lista", new dao.MedicamentoDaoImp().listar());
             }
 
-            List lista = new dao.RecetaDaoImp().listar();
-            System.out.println(lista.toString() + lista.size());
-            if (lista.size() > 0) {
-                componentes.GenerarReceta.GenerarPdf(new RecetaDaoImp().listarRecetasPorId(id), doct, medi, paci, 2);
-                mensaje = "la receta se genero en su escritorio";
-            } else {
-                mensaje = "No hay Niguna Receta";
-            }
-            request.setAttribute("mensaje", mensaje);
-            request.getRequestDispatcher("Doctor/GenerarReceta.jsp").forward(request, response);
-            
+            request.getRequestDispatcher("Medicamento/AumentarStock.jsp")
+                    .forward(request, response); 
         }
     }
 

@@ -53,27 +53,27 @@
                             <tbody>
                                 <tr>
                                     <td>Rut</td>
-                                    <td><input type="text" name="txtRut" value="" /></td>
+                                    <td><input type="text" required="" name="txtRut" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Direccion</td>
-                                    <td><input type="text" name="txtDireccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtDireccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Telefono</td>
-                                    <td><input type="text" name="txtTelefono" value="" /></td>
+                                    <td><input type="text" required="" name="txtTelefono" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>IdSeccion</td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtIdSeccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Password</td>
-                                    <td><input type="password" name="txtPassword" value="" /></td>
+                                    <td><input type="password" required="" name="txtPassword" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

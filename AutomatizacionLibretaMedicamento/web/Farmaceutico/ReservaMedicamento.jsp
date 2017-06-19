@@ -21,7 +21,7 @@
          <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
         <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
-        <title>Recerva Medicamento | Farmaceutico  </title>
+        <title>Reserva Medicamento | Farmaceutico  </title>
     </head>
     <body>
         <div id="container_demo" >
@@ -45,38 +45,25 @@
                         <table border="0">
                             <tbody>
                                 <tr>
-                                    <td> codigo Reserva </td>
-                                    <td><input type="text" name="txtReserva" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td> Fecha Inicio </td>
-                                    <td><input type="date" name="txtFechaIni" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td> Fecha Termino </td>
-                                    <td><input type="date" name="txtFechaTer" value="" /></td>
-                                </tr>
-                                <tr>
                                     <td> Rut Paciente </td>
-                                    <td><input type="text" name="txtPaciente" value="" /></td>
+                                    <td><input type="text" required="" name="txtPaciente" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Tratamiento </td>
-                                    <td><input type="text" name="txtTratamiento" value="" /></td>
+                                    <td><input type="text" required="" name="txtTratamiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Rut Farmaceutico </td>
-                                    <td><input type="text" name="txtFarmaceutico" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td> Estado </td>
-                                    <td><input type="text" name="txtEstado" value="" /></td>
+                                    <td><input type="text" required="" name="txtFarmaceutico" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Medicamento </td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
-                                </tr>
-                               
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
+                                </tr>                             
+                                <tr>
+                                    <td> Cantidad a Reservar </td>
+                                    <td><input type="text" required="" name="txtCantidad" value="" /></td>
+                                </tr> 
                             </tbody>
                         </table>
                         <p class="login button">
@@ -101,7 +88,8 @@
                                     <th>Tratamiento</th>
                                     <th>Farmaceutico</th>
                                     <th>Estado</th>
-                                    <th>codigo</th>
+                                    <th>Codigo</th>
+                                    <th>Cantidad a reservar </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,6 +103,7 @@
                                         <td><c:out value="${reserva.rut_farmaceutico}"/></td>
                                         <td><c:out value="${reserva.estado}"/></td>
                                         <td><c:out value="${reserva.codigo}"/></td>
+                                        <td><c:out value="${reserva.cantidad}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

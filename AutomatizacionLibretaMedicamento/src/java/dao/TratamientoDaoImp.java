@@ -24,15 +24,14 @@ public class TratamientoDaoImp implements TratamientoDao {
     public boolean agregar(TratamientoDto dto) {
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Tratamiento (Id_tratamiento,duracion,id_reserva)"
-                    + "VALUES(?,?,?)";
+            String query = "INSERT INTO Tratamiento (duracion,id_reserva)"
+                    + "VALUES(?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
 
-            insertar.setInt(1, dto.getId_tratamiento());
-            insertar.setString(2, dto.getDuracion());
-            insertar.setInt(3, dto.getId_reserva());
+            insertar.setString(1, dto.getDuracion());
+            insertar.setInt(2, dto.getId_reserva());
             insertar.execute();
-         
+
             insertar.close();
             conexion.close();
 
@@ -128,4 +127,24 @@ public class TratamientoDaoImp implements TratamientoDao {
         return lista;
     }
 
+    public boolean validarTratamiento(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM tratamiento WHERE id_tratamiento = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
 }

@@ -155,13 +155,13 @@ public class Correo {
                     internetAddresses);
 
             // Agregar el asunto al correo
-            mimeMessage.setSubject("Recordatorio de expiracion de la fecha del retiro del medicamento");
+            mimeMessage.setSubject("Recordatorio sobre el retiro del medicamento");
  
             // Creo la parte del mensaje
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setText("Debe dirigirse al cesfam a retirarse "
+            mimeBodyPart.setText("Se le recuerda de que debe retirar su "
                     + " medicamento en la siguiente fecha : "+" Formato fecha : "+" (YYYY-MM-DD) "+ 
-                   fecha.toString() + " Si no debera volver a hacer la consulta");
+                   fecha.toString() + " Si no debera volver a realizar una nueva consulta ");
 
 //                    MimeBodyPart mimeBodyPartAdjunto = new MimeBodyPart();
 //                    mimeBodyPartAdjunto.attachFile("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");

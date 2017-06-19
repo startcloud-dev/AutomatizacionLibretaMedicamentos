@@ -27,16 +27,15 @@ public class RecetaDaoImp implements RecetaDao {
 
     @Override
     public boolean agregar(RecetaDto dto) {
-        try {
+         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Receta (Id_receta,Fecha_Emision,"
-                    + "Indicaciones,Codigo) VALUES (?,?,?,?)";
+            String query = "INSERT INTO Receta (Fecha_Emision,"
+                    + "Indicaciones,Codigo) VALUES (?,?,?)";
             PreparedStatement ingresar = conexion.prepareStatement(query);
-            ingresar.setInt(1, dto.getId_receta());
-            ingresar.setDate(2,
+            ingresar.setDate(1,
                     new java.sql.Date(dto.getFecha_emision().getTime()));
-            ingresar.setString(3, dto.getIndicaciones());
-            ingresar.setInt(4, dto.getCodigo());
+            ingresar.setString(2, dto.getIndicaciones());
+            ingresar.setInt(3, dto.getCodigo());
             ingresar.execute();
             ingresar.close();
             conexion.close();
