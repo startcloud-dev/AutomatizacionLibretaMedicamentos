@@ -87,20 +87,18 @@ END;
 
 
 
-CREATE TRIGGER TBajaMedicamento
+create or replace TRIGGER TBajaMedicamento
   AFTER DELETE ON Medicamento
-  
   FOR EACH ROW
   BEGIN
   IF DELETING THEN
-  
   INSERT INTO BAJA_MEDICAMENTO(Codigo,Nombre
   ,Tipo,Fabricante,Componentes,Contenido
-  ,Cantidad,Gramaje,Fecha_Vencimiento,Id_seccion) VALUES (:old.Codigo,:old.Nombre,
+  ,Cantidad,Gramaje,Fecha_Vencimiento,Id_seccion,ID_RESERVA) VALUES (:old.Codigo,:old.Nombre,
                                        :old.Tipo,:old.Fabricante,
                                        :old.Componentes,:old.Contenido,
                                        :old.Cantidad ,:old.Gramaje , 
-                                       :old.Fecha_Vencimiento,:old.Id_seccion);
+                                       :old.Fecha_Vencimiento,:old.Id_seccion,:old.Id_reserva);
 			END IF;
   END;
 

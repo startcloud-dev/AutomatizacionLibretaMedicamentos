@@ -1,5 +1,3 @@
-
-
 package servlet;
 
 import dto.RecetaDto;
@@ -21,27 +19,20 @@ public class RecetasPendientes extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
-            String rut = request.getParameter("txtRut".trim());
-            
-            List lista = new dao.RecetaDaoImp().listarRecetasPendientes(rut);
-            
-            
-            if (lista.isEmpty()==false) {
-                
-                request.setAttribute("lista",lista);
-                request.setAttribute("mensaje", "Receta del paciente encontrada");
-            }else{
-                
-                request.setAttribute("mensaje", "Receta del paciente NO encontrada");
-                
+            List lista = new dao.RecetaDaoImp().listar();
+
+            if (lista.isEmpty() == false) {
+
+                request.setAttribute("lista", lista);
+                request.setAttribute("mensaje", "Se encontraron estas recetas ");
+            } else {
+
+                request.setAttribute("mensaje", "No hay recetas pendientes ");
+
             }
-            
+
             request.getRequestDispatcher("Farmaceutico/RecetasPendientes.jsp")
                     .forward(request, response);
-            
-            
-            
         }
     }
 

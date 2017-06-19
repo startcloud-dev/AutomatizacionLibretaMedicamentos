@@ -46,23 +46,23 @@
                             <tbody>
                                 <tr>
                                     <td> Rut Paciente </td>
-                                    <td><input type="text" name="txtPaciente" value="" /></td>
+                                    <td><input type="text" required="" name="txtPaciente" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Tratamiento </td>
-                                    <td><input type="text" name="txtTratamiento" value="" /></td>
+                                    <td><input type="text" required="" name="txtTratamiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Rut Farmaceutico </td>
-                                    <td><input type="text" name="txtFarmaceutico" value="" /></td>
+                                    <td><input type="text" required="" name="txtFarmaceutico" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Codigo Medicamento </td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>                             
                                 <tr>
                                     <td> Cantidad a Reservar </td>
-                                    <td><input type="text" name="txtCantidad" value="" /></td>
+                                    <td><input type="text" required="" name="txtCantidad" value="" /></td>
                                 </tr> 
                             </tbody>
                         </table>

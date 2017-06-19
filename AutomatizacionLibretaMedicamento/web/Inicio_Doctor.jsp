@@ -39,10 +39,16 @@
                     <a href="Tratamiento/EliminarTratamiento.jsp">Eliminar Tratamiento</a>
                     <br>
                     <br>
+                    <a href="Doctor/AgregarReceta.jsp">Agregar Prescripcion</a>
+                    <br>
+                    <br>
+                    <a href="Doctor/EliminarReceta.jsp">Eliminar Prescripcion</a>
+                    <br>
+                    <br>
                     <a href="Medicamento/RevisarStock.jsp">Revisar Stock</a>
                     <br>
                     <br>
-                    <a href="Doctor/GenerarReceta.jsp">EmitirReceta</a>
+                    <a href="Doctor/GenerarReceta.jsp">Emitir Receta</a>
                 </div>
             </div>
         </div>

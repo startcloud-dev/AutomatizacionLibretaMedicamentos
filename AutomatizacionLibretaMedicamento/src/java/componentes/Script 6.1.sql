@@ -224,16 +224,17 @@ CREATE TABLE Reserva
      Id_Tratamiento INTEGER  NOT NULL , 
      Rut_Farmaceutico VARCHAR2 (15)  NOT NULL , 
      Estado VARCHAR2 (10) , 
-     Codigo INTEGER  NOT NULL 
+     Codigo INTEGER  NOT NULL ,
+     Cantidad INTEGER NOT NULL
     ) 
 ;
 
 ALTER TABLE Reserva 
     ADD CONSTRAINT "Reserva PK" PRIMARY KEY ( id_reserva ) ;
 	
-INSERT INTO reserva VALUES (1,'04-20-2017','04-25-2017','19.112.792-7',1,'12.153.864-5','En curso',1);
-INSERT INTO reserva VALUES (2,'04-20-2017','04-25-2017','1.987.654-2',2,'9.374.097-k','En curso',2);
-INSERT INTO reserva VALUES (3,'04-20-2017','04-25-2017','15.537.193-k',3,'22.165.836-3','En curso',3);
+INSERT INTO reserva VALUES (1,'04-20-2017','04-25-2017','19.112.792-7',1,'12.153.864-5','En curso',1,10);
+INSERT INTO reserva VALUES (2,'04-20-2017','04-25-2017','1.987.654-2',2,'9.374.097-k','En curso',2,5);
+INSERT INTO reserva VALUES (3,'04-20-2017','04-25-2017','15.537.193-k',3,'22.165.836-3','En curso',3,3);
 
 
 CREATE TABLE Paciente 

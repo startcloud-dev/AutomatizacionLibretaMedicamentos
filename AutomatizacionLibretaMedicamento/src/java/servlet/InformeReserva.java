@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import componentes.GenerarInformes;
+import componentes.GenerarReserva;
 import dao.ReservaDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,18 +35,17 @@ public class InformeReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String mensaje = "";
-            List lista = new ReservaDaoImp().listar();
+              String mensaje = "";
+            List lista = new ReservaDaoImp().listarReservas();
             System.out.println(lista.toString()+lista.size());
             if (lista.size() > 0) {
-                GenerarInformes.GenerarPdf(new ReservaDaoImp().listar(), 1);
+                GenerarReserva.GenerarPdf(new ReservaDaoImp().listarReservas(), 1);
                 mensaje = "El Informe se genero en su escritorio";
             } else {
                 mensaje = "No hay Niguna Reserva";
             }
             request.setAttribute("mensaje", mensaje);
-            request.getRequestDispatcher("Farmaceutico/GenerarInformes.jsp").forward(request, response);
-          
+            request.getRequestDispatcher("Farmaceutico/EmitirReserva.jsp").forward(request, response);
         }
     }
 

@@ -48,7 +48,7 @@
                             <tbody>
                                 <tr>
                                     <td>Codigo</td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

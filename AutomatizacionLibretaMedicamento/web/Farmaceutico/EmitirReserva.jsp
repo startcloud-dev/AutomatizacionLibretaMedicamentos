@@ -1,7 +1,7 @@
 <%-- 
-    Document   : GenerarInformes
-    Created on : 24-04-2017, 12:35:12
-    Author     : Sergio
+    Document   : EmitirReserva
+    Created on : 17-jun-2017, 22:04:29
+    Author     : Kevin
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,19 +35,18 @@
                         </script>
 
                     </c:if>
-                    <form name="frmMedicamento" action="/AutomatizacionLibretaMedicamento/InformeMedicamento" method="POST">
+                    <form name="frmReserva" action="/AutomatizacionLibretaMedicamento/InformeReserva" method="POST">
                         <h1>Generar Informe </h1>
-                        <h4>Informe Medicamento </h4>
+                        <h4>Informe Reserva </h4>
                         <p class="login button">
-                            <input type="submit" value="Generar Informe" name="btnInformeM" />
+                            <input type="submit" value="Generar Informe" name="btnInformeR" />
                         </p>
-                         <p class="login button">
+                        <p class="login button">
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
-                 
                 </div>
             </div>
-        </div>   
+        </div>  
     </body>
 </html>

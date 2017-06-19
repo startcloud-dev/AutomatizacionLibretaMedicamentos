@@ -45,19 +45,19 @@
                             <tbody>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Direccion</td>
-                                    <td><input type="text" name="txtDireccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtDireccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Telefono</td>
-                                    <td><input type="text" name="txtTelefono" value="" /></td>
+                                    <td><input type="text" required="" name="txtTelefono" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Especialidad</td>
-                                    <td><input type="text" name="txtEspecialidad" value="" /></td>
+                                    <td><input type="text"  required="" name="txtEspecialidad" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

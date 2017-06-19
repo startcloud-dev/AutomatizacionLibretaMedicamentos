@@ -47,19 +47,19 @@
                             <tbody>
                                 <tr>
                                     <td>Codigo Receta</td>
-                                    <td><input type="text" name="txtReceta" value="" /></td>
+                                    <td><input type="text" required="" name="txtReceta" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Fecha Emision </td>
-                                    <td><input type="date" name="txtFechaEmi" value="" /></td>
+                                    <td><input type="date" required="" name="txtFechaEmi" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Codigo</td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Indicaciones </td>
-                                    <td><textarea name="txtIndicaciones" rows="6" cols="30">
+                                    <td><textarea name="txtIndicaciones" required="" rows="6" cols="30">
                                         </textarea></td>
                                 </tr>
                             </tbody>

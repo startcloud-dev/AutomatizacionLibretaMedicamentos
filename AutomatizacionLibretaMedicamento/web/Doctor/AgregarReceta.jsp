@@ -46,15 +46,15 @@
                             <tbody>                            
                                 <tr>
                                     <td> Fecha Emision </td>
-                                    <td><input type="date" name="txtFechaEmi" value="" /></td>
+                                    <td><input type="date" required="" name="txtFechaEmi" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>CodMedicamento</td>
-                                    <td><input type="text" name="txtCodMedicamento" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodMedicamento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td> Indicaciones </td>
-                                    <td><textarea name="txtIndicaciones" rows="6" cols="30">
+                                    <td><textarea name="txtIndicaciones"  required="" rows="6" cols="30">
                                         </textarea></td>
                                 </tr>
 

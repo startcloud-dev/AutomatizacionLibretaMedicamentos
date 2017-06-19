@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import componentes.Conexion;
+import dto.ApoyoDto;
 import java.util.Date;
 
 /**
@@ -103,7 +104,7 @@ public class ReservaDaoImp implements ReservaDao {
                 dto.setRut_farmaceutico(rs.getString("Rut_farmaceutico"));
                 dto.setEstado(rs.getString("Estado"));
                 dto.setCodigo(rs.getInt("Codigo"));
-
+                dto.setCantidad(rs.getInt("Cantidad"));
                 lista.add(dto);
             }
             listar.close();
@@ -135,6 +136,7 @@ public class ReservaDaoImp implements ReservaDao {
                 dtoMeet.setRut_farmaceutico(rs.getString("Rut_farmaceutico"));
                 dtoMeet.setEstado(rs.getString("Estado"));
                 dtoMeet.setCodigo(rs.getInt("Codigo"));
+                dtoMeet.setCantidad(rs.getInt("Cantidad"));
             }
             buscar.close();
             conexion.close();
@@ -234,5 +236,37 @@ public class ReservaDaoImp implements ReservaDao {
         }
         return estado;
     }
-    
+      
+     public List<ApoyoDto> listarReservas() {
+        List<ApoyoDto> lista = new ArrayList<ApoyoDto>();
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "select reserva.fecha_inicio as inicio ,reserva.fecha_termino as termino, paciente.nombre as nombre,reserva.estado as estado, medicamento.nombre as medicamento ,reserva.cantidad as cantidad "
+                    + "from reserva,medicamento,paciente "
+                    + " where medicamento.codigo=reserva.codigo and reserva.rut_paciente=paciente.rut_paciente";
+            PreparedStatement listar = conexion.prepareStatement(query);
+            ResultSet rs = listar.executeQuery();
+
+            while (rs.next()) {
+                ApoyoDto dto = new ApoyoDto();
+
+                dto.setFecha_inicio(rs.getDate("inicio"));
+                dto.setFecha_termino(rs.getDate("termino"));
+                dto.setNombre_paciente(rs.getString("nombre"));
+                dto.setEstado(rs.getString("Estado"));
+                dto.setNombre_Medicamento(rs.getString("medicamento"));
+                dto.setCantidad(rs.getInt("Cantidad"));
+                lista.add(dto);
+
+            }
+            listar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error sql listar las reservas " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar las reservas   " + e.getMessage());
+        }
+        return lista;
+    }
 }

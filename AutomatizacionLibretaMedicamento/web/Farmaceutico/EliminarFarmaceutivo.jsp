@@ -46,7 +46,7 @@
                             <tbody>
                                 <tr>
                                     <td>Rut Farmaceutico</td>
-                                    <td><input type="text" name="txtRut" value="" /></td>
+                                    <td><input type="text" required="" name="txtRut" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>

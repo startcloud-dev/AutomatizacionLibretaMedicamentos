@@ -46,7 +46,7 @@
                             <tbody>
                                 <tr>
                                     <td>Id Reserva</td>
-                                    <td><input type="text" name="txtId_reserva" value="" /></td>
+                                    <td><input type="text" required="" name="txtId_reserva" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
