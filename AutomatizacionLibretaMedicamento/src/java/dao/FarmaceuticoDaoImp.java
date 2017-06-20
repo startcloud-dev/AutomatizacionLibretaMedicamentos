@@ -5,7 +5,7 @@
  */
 package dao;
 
-import sql.Conexion;
+import componentes.Conexion;
 import dto.FarmaceuticoDto;
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
         try {
             Connection conexion = Conexion.getConexion();
             String query = "INSERT INTO Farmaceutico (Rut_Farmaceutico,Nombre,"
-                    + "Direccion,Telefono,id_seccion,Password) VALUES(?,?,?,?,?,?)";
+                    + "Direccion,Telefono,id_seccion,Password,id_reserva) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
             insertar.setString(1, dto.getRut());
             insertar.setString(2, dto.getNombre());
@@ -30,7 +30,8 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
             insertar.setInt(4, dto.getTelefono());
             insertar.setInt(5, dto.getId_seccion());
             insertar.setString(6, dto.getPassword());
-
+            insertar.setInt(7, dto.getId_reserva());
+            
             insertar.execute();
             insertar.close();
             conexion.close();
@@ -197,5 +198,54 @@ public class FarmaceuticoDaoImp implements FarmaceuticoDao {
             System.out.println("Error al recuperar el nombre " + w.getMessage());
         }
         return clave;
+    }
+    
+    public String verificarFarmaceutico(String rut) {
+        String resp = "";
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT rut_farmaceutico FROM paciente where rut_farmaceutico=?";
+            PreparedStatement sacar = conexion.prepareStatement(query);
+
+            sacar.setString(1, rut);
+            ResultSet rs = sacar.executeQuery();
+
+            while (rs.next()) {
+
+                resp = rs.getString("rut_farmaceutico");
+
+            }
+            sacar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            w.printStackTrace();
+            System.out.println("Error sql al verificar el paciente" + w.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al verificar el paciente" + e.getMessage());
+        }
+        return resp;
+    }
+
+    public boolean validarFarmaceutico(String rut) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Farmacuetico WHERE rut_farmaceutico = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setString(1, rut);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
     }
 }

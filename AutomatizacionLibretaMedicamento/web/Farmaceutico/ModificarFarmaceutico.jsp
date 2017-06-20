@@ -18,13 +18,16 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Modificar | Farmaceutico  </title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -43,19 +46,19 @@
                             <tbody>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Direccion</td>
-                                    <td><input type="text" name="txtDireccion" value="" /></td>
+                                    <td><input type="text" required="" name="txtDireccion" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Telefono</td>
-                                    <td><input type="text" name="txtTelefono" value="" /></td>
+                                    <td><input type="text" required="" name="txtTelefono" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Id Seccion</td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
+                                    <td><input type="text"  required="" name="txtIdSeccion" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -71,7 +74,7 @@
 
                     <c:if test="${lista!=null}">
 
-                        <table border="0">
+                        <table class="table table-bordered" >
                             <thead>
                                 <tr>
                                     <th>Rut</th>

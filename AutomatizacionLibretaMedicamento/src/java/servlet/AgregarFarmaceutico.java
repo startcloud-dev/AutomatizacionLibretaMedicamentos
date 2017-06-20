@@ -5,7 +5,9 @@
  */
 package servlet;
 
+import dao.BodegaDao;
 import dao.DoctorDaoImp;
+import dao.ReservaDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,21 +35,33 @@ public class AgregarFarmaceutico extends HttpServlet {
             dto.setTelefono(Integer.parseInt(request.getParameter("txtTelefono".trim())));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtSeccion".trim())));
             dto.setPassword(request.getParameter("txtClave".trim()));
+            dto.setId_reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
 
             String pass = request.getParameter("txtClave".trim());
             String conpass = request.getParameter("txtConfClave".trim());
             if (pass.equals(conpass)) {
-                new FarmaceuticoDaoImp().agregar(dto);
-                request.setAttribute("mensaje", "Se registro el Usuario  "
-                        + "por favor Inicie Session");
+                if (!new BodegaDao().validarSeccion(dto.getId_seccion())) {
+                    request.setAttribute("mensaje", "No SE PUEDE guardar debido "
+                            + "a que no existe una Seccion con ese Numero");
+                } else if (!new ReservaDaoImp().validarReserva(dto.getId_reserva())) {
+                    request.setAttribute("mensaje", "No SE PUEDE guardar debido "
+                            + "a que no existe una reserva con ese Numero");
+                } else if (new FarmaceuticoDaoImp().agregar(dto)) {
+                    request.setAttribute("mensaje", "Se registro el Usuario  "
+                            + "por favor Inicie Session");
+                }
             } else {
                 request.setAttribute("mensaje", "Las contraseñas no coinciden "
                         + "Intentelo nuevamente ");
             }
-            request.setAttribute("lista", new dao.FarmaceuticoDaoImp().listar());
 
-            request.getRequestDispatcher("Farmaceutico/Login_Registro_Farmaceutico.jsp").
+            request.setAttribute(
+                    "lista", new dao.FarmaceuticoDaoImp().listar());
+
+            request.getRequestDispatcher(
+                    "Farmaceutico/Login_Registro_Farmaceutico.jsp").
                     forward(request, response);
+            
         }
     }
 

@@ -17,17 +17,17 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Farmaceutico</title>
+        <title> Login |Farmaceutico</title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
-                    <h1>CESFAM :: Menu</h1>
+                    <h1>CESFAM :: Menu Farmaceutico</h1>
                     <br>
                     <a href="/AutomatizacionLibretaMedicamento/Bodega/AgregarBodega.jsp">Agregar Bodega</a>
                     <br>
@@ -35,12 +35,34 @@
                     <a href="/AutomatizacionLibretaMedicamento/Bodega/EliminarBodega.jsp">Eliminar Bodega</a>
                     <br>
                     <br>
-                    <a href="Medicamento/AgregarMedicamento.jsp">Agregar Stock Medicamento</a>
+                    <a href="Medicamento/AgregarMedicamento.jsp">Agregar Medicamento</a>
                     <br>
                     <br>
-                    <a href="Medicamento/EliminarMedicamento.jsp">Eliminar Stock Medicamento</a>
+                    <a href="Medicamento/EliminarMedicamento.jsp">Eliminar  Medicamento</a>
                     <br>
                     <br>
+                    <a href="Farmaceutico/ReservaMedicamento.jsp">Reservar Medicamento</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/EliminarReserva.jsp">Eliminar Reserva</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/BuscarReserva.jsp">Buscar Reserva/ModificarEstado</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/GenerarInformes.jsp">Emitir Informe Medicamento </a>
+                    <br>
+                    <br>
+                    <a href="Medicamento/BajaMedicamento.jsp">Justificar Baja de Medicamento </a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/RecetasPendientes.jsp" >Recetas Pendientes</a>
+                    <br>
+                    <br>
+                    <a href="Farmaceutico/EmitirReserva.jsp">Emitir Reserva</a>
+                    <br>
+                    <br>
+                    <a href="Medicamento/DisponibilidadStock.jsp">Disponibilidad Stock</a>
                 </div>
             </div>
         </div>

@@ -19,13 +19,19 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
-        <title>Bodega | Farmaceutica</title>
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/AutomatizacionLibretaMedicamento/js/jquery-3.2.1.min.js" ></script>
+        <title>Bodega | Farmaceutico</title>
+
+
+
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -44,7 +50,7 @@
                         <script>
 
                             alert('<c:out value="${msn}" />');
-
+                         
                         </script>
 
                     </c:if>
@@ -52,18 +58,15 @@
                         <h3></h3>
                     </hgroup>
 
-                    <form name="frmAgregarBodega" action="AgregarBodega" method="POST">
+                    <form name="frmAgregarBodega" action="/AutomatizacionLibretaMedicamento/AgregarBodega" method="POST">
 
-                        <table border="0">
+                        <table  class="" border="0">
 
                             <tbody>
-                                <tr>
-                                    <td>Id Seccion </td>
-                                    <td><input type="text" name="txtIdSeccion" value="" /></td>
-                                </tr>
+                              
                                 <tr>
                                     <td>Categoria </td>
-                                    <td><input type="text" name="txtCategoria" value="" /></td>
+                                    <td><input type="text" required="" name="txtCategoria" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,7 +89,7 @@
 
                         <hr>
 
-                        <table border="1">
+                        <table  class="table table-bordered" >
                             <thead>
                                 <tr>
                                     <th>IdSeccion</th>
@@ -104,7 +107,10 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-                    </c:if>       
+
+                    </c:if>  
+
+                      
                 </div>
             </div>
         </div>

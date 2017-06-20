@@ -61,8 +61,100 @@
         <servlet-class>servlet.LoginFarmaceutico</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EliminarPaciente</servlet-name>
+        <servlet-class>servlet.EliminarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarPaciente</servlet-name>
+        <servlet-class>servlet.ModificarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EntregarMedicamento</servlet-name>
+        <servlet-class>servlet.EntregarMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarTratamiento</servlet-name>
+        <servlet-class>servlet.AgregarTratamiento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarTratamiento</servlet-name>
+        <servlet-class>servlet.EliminarTratamiento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarPaciente</servlet-name>
+        <servlet-class>servlet.AgregarPaciente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarReserva</servlet-name>
+        <servlet-class>servlet.EliminarReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarReserva</servlet-name>
+        <servlet-class>servlet.AgregarReserva</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>BuscarMedicamento</servlet-name>
         <servlet-class>servlet.BuscarMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnviarCorreo</servlet-name>
+        <servlet-class>servlet.EnviarCorreo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CorreoEnvia</servlet-name>
+        <servlet-class>servlet.CorreoEnvia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarReserva</servlet-name>
+        <servlet-class>servlet.BuscarReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarReserva</servlet-name>
+        <servlet-class>servlet.ModificarReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InformeMedicamento</servlet-name>
+        <servlet-class>servlet.InformeMedicamento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InformeReserva</servlet-name>
+        <servlet-class>servlet.InformeReserva</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RevisarStock</servlet-name>
+        <servlet-class>servlet.RevisarStock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AgregarReceta</servlet-name>
+        <servlet-class>servlet.AgregarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarReceta</servlet-name>
+        <servlet-class>servlet.EliminarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarReceta</servlet-name>
+        <servlet-class>servlet.ModificarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecetasPendientes</servlet-name>
+        <servlet-class>servlet.RecetasPendientes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GenerarReceta</servlet-name>
+        <servlet-class>servlet.GenerarReceta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarMedicamentos</servlet-name>
+        <servlet-class>servlet.ListarMedicamentos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AumentarStock</servlet-name>
+        <servlet-class>servlet.AumentarStock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisminuirStock</servlet-name>
+        <servlet-class>servlet.DisminuirStock</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AgregarBodega</servlet-name>
@@ -125,8 +217,100 @@
         <url-pattern>/LoginFarmaceutico</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>EliminarPaciente</servlet-name>
+        <url-pattern>/EliminarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarPaciente</servlet-name>
+        <url-pattern>/ModificarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EntregarMedicamento</servlet-name>
+        <url-pattern>/EntregarMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarTratamiento</servlet-name>
+        <url-pattern>/AgregarTratamiento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarTratamiento</servlet-name>
+        <url-pattern>/EliminarTratamiento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarPaciente</servlet-name>
+        <url-pattern>/AgregarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarReserva</servlet-name>
+        <url-pattern>/EliminarReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarReserva</servlet-name>
+        <url-pattern>/AgregarReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>BuscarMedicamento</servlet-name>
         <url-pattern>/BuscarMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnviarCorreo</servlet-name>
+        <url-pattern>/EnviarCorreo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CorreoEnvia</servlet-name>
+        <url-pattern>/CorreoEnvia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarReserva</servlet-name>
+        <url-pattern>/BuscarReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarReserva</servlet-name>
+        <url-pattern>/ModificarReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InformeMedicamento</servlet-name>
+        <url-pattern>/InformeMedicamento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InformeReserva</servlet-name>
+        <url-pattern>/InformeReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RevisarStock</servlet-name>
+        <url-pattern>/RevisarStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarReceta</servlet-name>
+        <url-pattern>/AgregarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarReceta</servlet-name>
+        <url-pattern>/EliminarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarReceta</servlet-name>
+        <url-pattern>/ModificarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecetasPendientes</servlet-name>
+        <url-pattern>/RecetasPendientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarReceta</servlet-name>
+        <url-pattern>/GenerarReceta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarMedicamentos</servlet-name>
+        <url-pattern>/ListarMedicamentos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarStock</servlet-name>
+        <url-pattern>/AumentarStock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisminuirStock</servlet-name>
+        <url-pattern>/DisminuirStock</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -134,6 +318,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>Medicamento/BajaMedicamento.jsp</welcome-file>
+        <welcome-file>Index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

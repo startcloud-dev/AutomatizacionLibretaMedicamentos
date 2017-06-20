@@ -18,13 +18,16 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Eliminar | Farmaceutico</title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -43,7 +46,7 @@
                             <tbody>
                                 <tr>
                                     <td>Rut Farmaceutico</td>
-                                    <td><input type="text" name="txtRut" value="" /></td>
+                                    <td><input type="text" required="" name="txtRut" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -55,12 +58,13 @@
                             <a href="/AutomatizacionLibretaMedicamento/Inicio_Farmaceutico.jsp">Volver al menu</a>
                         </p>
                     </form>
-
-                    <c:set var="lista" scope="request" value="${requestScope.lista}" />
+                         <c:set var="lista" scope="request" value="${requestScope.lista}" />
 
                     <c:if test="${lista!=null}">
 
-                        <table border="1">
+
+
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Rut</th>
@@ -84,7 +88,9 @@
                             </tbody>
                         </table>
 
+
                     </c:if>
+                        
                 </div>
             </div>
         </div>   

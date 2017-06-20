@@ -11,6 +11,8 @@ public interface MedicamentoDao {
     
     public boolean ingresarJustificacion(String justificacion,Integer codigo);
     
+    public List<MedicamentoDto> revisarStockPorNombre (String nombre);
+    
     
     
 }

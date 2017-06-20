@@ -18,13 +18,16 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Modificar | Medicamento</title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -47,43 +50,39 @@
                             <tbody>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><input type="text" name="txtNombre" value="" /></td>
+                                    <td><input type="text" required="" name="txtNombre" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Tipo</td>
-                                    <td><input type="text" name="txtTipo" value="" /></td>
+                                    <td><input type="text" required="" name="txtTipo" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Fabricante</td>
-                                    <td><input type="text" name="txtFabricante" value="" /></td>
+                                    <td><input type="text" required="" name="txtFabricante" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Componente</td>
-                                    <td><input type="text" name="txtComponente" value="" /></td>
+                                    <td><input type="text" required="" name="txtComponente" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Contenido</td>
-                                    <td><input type="text" name="txtContenido" value="" /></td>
+                                    <td><input type="text" required="" name="txtContenido" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Cantidad</td>
-                                    <td><input type="text" name="txtCantidad" value="" /></td>
+                                    <td><input type="text" required="" name="txtCantidad" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Gramaje</td>
-                                    <td><input type="text" name="txtGramaje" value="" /></td>
+                                    <td><input type="text" required="" name="txtGramaje" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>FechaVencimiento</td>
-                                    <td><input type="text" name="txtFechaVencimiento" value="" /></td>
-                                </tr>
-                                <tr>
-                                    <td>Estado</td>
-                                    <td><input type="text" name="txtEstado" value="" /></td>
+                                    <td><input type="text" required="" name="txtFechaVencimiento" value="" /></td>
                                 </tr>
                                 <tr>
                                     <td>Id Seccion</td>
-                                    <td><input type="text" name="txtIdSeccion" value="" />
+                                    <td><input type="text" required="" name="txtIdSeccion" value="" />
                                 </tr>
                             </tbody>
                         </table>
@@ -98,11 +97,9 @@
                             value="${requestScope.lista}">
                     </c:set >
 
-
                     <c:if test="${requestScope.lista!=null}">
 
-
-                        <table border="1">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Codigo</th>
@@ -112,10 +109,8 @@
                                     <th>Componente</th>
                                     <th>Contenido</th>
                                     <th>Cantidad</th>
-                                    <th>Gramaje/th>
+                                    <th>Gramaje</th>
                                     <th>FechaVencimiento</th>
-                                    <th>Estado</th>
-                                    <th>IdSeccion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -130,13 +125,10 @@
                                         <td><c:out  value="${med.cantidad}" /></td>
                                         <td><c:out   value="${med.gramaje}"/></td>
                                         <td><c:out   value="${med.fecha_vencimiento}"/></td>
-                                        <td><c:out  value="${med.estado}" /></td>
-                                        <td><c:out  value="${med.id_seccion}" /></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
-
 
                     </c:if>
                 </div>

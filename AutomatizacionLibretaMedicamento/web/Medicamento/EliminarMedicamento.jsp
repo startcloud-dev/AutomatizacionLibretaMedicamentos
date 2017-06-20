@@ -18,13 +18,16 @@
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/demo.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/animate-custom.css" />
+        <link rel="stylesheet" type="text/css" href="/AutomatizacionLibretaMedicamento/css/bootstrap.min.css" />
+        <script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
         <title>Eliminar | Medicamento </title>
     </head>
     <body>
         <div id="container_demo" >
             <p style="position:absolute; top:10px;left:1100px;">Bienvenido(a) ${sessionScope.usuario}</p>
             <form action="/AutomatizacionLibretaMedicamento/CierreSession" style="position:absolute; top:10px;left:1250px;">
-                <input type="submit" value="Cerrar Session" name="btnCerrar" />
+                <input type="submit" value="Cerrar Sesion" name="btnCerrar" />
             </form>
             <div id="wrapper">
                 <div id="login" class="animate form">
@@ -45,7 +48,7 @@
                             <tbody>
                                 <tr>
                                     <td>Codigo</td>
-                                    <td><input type="text" name="txtCodigo" value="" /></td>
+                                    <td><input type="text" required="" name="txtCodigo" value="" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -62,11 +65,9 @@
                             value="${requestScope.lista}">
                     </c:set >
 
-
                     <c:if test="${requestScope.lista!=null}">
 
-
-                        <table border="1">
+                        <table  class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Codigo</th>
@@ -76,10 +77,8 @@
                                     <th>Componente</th>
                                     <th>Contenido</th>
                                     <th>Cantidad</th>
-                                    <th>Gramaje/th>
+                                    <th>Gramaje</th>
                                     <th>FechaVencimiento</th>
-                                    <th>Estado</th>
-                                    <th>IdSeccion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,15 +92,11 @@
                                         <td><c:out  value="${med.contenido}"/></td>
                                         <td><c:out  value="${med.cantidad}" /></td>
                                         <td><c:out   value="${med.gramaje}"/></td>
-                                        <td><c:out   value="${med.fecha_vencimiento}"/></td>
-                                        <td><c:out  value="${med.estado}" /></td>
-                                        <td><c:out  value="${med.id_seccion}" /></td>
+                                        <td><c:out  value="${med.fecha_vencimiento}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
-
-
                     </c:if>
                 </div>
             </div>

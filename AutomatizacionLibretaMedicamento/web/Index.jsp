@@ -25,10 +25,14 @@
                 <div id="login" class="animate form">
                     <h1>Selecione una Imagen</h1>
                     <br>
-                    <a href="/AutomatizacionLibretaMedicamento/Doctor/Login_Registro_Doctor.jsp">Ingreso Doctor</a>
-                    <br>
-                    <br>
-                    <a href="/AutomatizacionLibretaMedicamento/Farmaceutico/Login_Registro_Farmaceutico.jsp">Ingreso Farmaceutico</a>
+                    <center>
+                    <h6>Doctor</h6>
+                    <a href="/AutomatizacionLibretaMedicamento/Doctor/Login_Registro_Doctor.jsp">
+                        <img src="img/doctor.jpg" width=204 height="240" alt="Doctor"/></a>
+                    <h6> Farmaceutico</h6>
+                    <a href="/AutomatizacionLibretaMedicamento/Farmaceutico/Login_Registro_Farmaceutico.jsp">
+                        <img src="img/farmaceutico.jpg" width="204" height="240" alt="farmaceutico"/></a>
+                    </center>
                     <br>
                     <br>
                 </div>

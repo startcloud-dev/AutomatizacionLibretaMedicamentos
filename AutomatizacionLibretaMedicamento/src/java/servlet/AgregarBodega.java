@@ -23,7 +23,6 @@ public class AgregarBodega extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
          
             BodegaDto dto = new BodegaDto();
-            dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
             dto.setCategoria(request.getParameter("txtCategoria".trim()));
             
             String mensaje = "";

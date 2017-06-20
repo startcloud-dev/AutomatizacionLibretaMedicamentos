@@ -3,7 +3,7 @@
 package dao;
 import  java.sql.*;
 import dto.BodegaDto;
-import  sql.Conexion;
+import  componentes.Conexion;
 import java.util.*;
 
 
@@ -15,33 +15,32 @@ import java.util.*;
  */
 public class BodegaDao {    
    
-    public boolean agregar(BodegaDto bodega){
+   
         
+        public boolean agregar(BodegaDto bodega) {
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "INSERT INTO Bodega (id_seccion,Categoria) VALUES(?,?)";
+            String query = "INSERT INTO Bodega (Categoria) VALUES(?)";
             PreparedStatement insertar = conexion.prepareStatement(query);
-            insertar.setInt(1, bodega.getId_seccion());
-            insertar.setString(2, bodega.getCategoria());
-            
+            insertar.setString(1, bodega.getCategoria());
+
             insertar.execute();
             insertar.close();
             conexion.close();
-            
-            
+
             return true;
-            
-        } catch(SQLException w) {    
-            
-            System.out.println("Error sql al insertar "+w.getMessage());
+
+        } catch (SQLException w) {
+
+            System.out.println("Error sql al insertar " + w.getMessage());
             return false;
         } catch (Exception e) {
-            System.out.println("Error al agregar "+e.getMessage());
+            System.out.println("Error al agregar " + e.getMessage());
             return false;
         }
- 
-        
     }
+        
+    
     
     public boolean modificar(BodegaDto dto){
         try {
@@ -120,4 +119,25 @@ public class BodegaDao {
        return lista; 
     }
     
+    
+      public boolean validarSeccion(int codigo) {
+        boolean resp = false;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM Bodega WHERE id_seccion = ?";
+            PreparedStatement validar = conexion.prepareStatement(query);
+            validar.setInt(1, codigo);
+            ResultSet rs = validar.executeQuery();
+            if (rs.next()) {
+                resp = true;
+            }
+            validar.close();
+            conexion.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al validar " + e.getMessage());
+        } catch (Exception w) {
+            System.out.println("Error al validar " + w.getMessage());
+        }
+        return resp;
+    }
 }

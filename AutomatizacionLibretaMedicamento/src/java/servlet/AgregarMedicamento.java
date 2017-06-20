@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import dto.MedicamentoDto;
 import dao.MedicamentoDaoImp;
 import java.sql.Date;
+import dao.BodegaDao;
+import dao.ReservaDaoImp;
 
 
 /**
@@ -24,9 +26,8 @@ public class AgregarMedicamento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
           
-            String mensaje = "";
+              String mensaje = "";
             MedicamentoDto dto = new MedicamentoDto();
-            dto.setCodigo(Integer.parseInt(request.getParameter("txtCodigo".trim())));
             dto.setNombre(request.getParameter("txtNombre".trim()));
             dto.setTipo(request.getParameter("txtTipo".trim()));
             dto.setFabricante(request.getParameter("txtFabricante".trim()));
@@ -35,21 +36,23 @@ public class AgregarMedicamento extends HttpServlet {
             dto.setCantidad(request.getParameter("txtCantidad".trim()));
             dto.setGramaje(request.getParameter("txtGramaje".trim()));
             dto.setFecha_vencimiento(Date.valueOf(request.getParameter("txtFechaVencimiento")));
-            dto.setEstado(request.getParameter("txtEstado".trim()));
             dto.setId_seccion(Integer.parseInt(request.getParameter("txtIdSeccion".trim())));
-             
-            if(new dao.MedicamentoDaoImp().agregar(dto)){
-                
+            dto.setId_Reserva(Integer.parseInt(request.getParameter("txtReserva".trim())));
+
+            if (!new BodegaDao().validarSeccion(dto.getId_seccion())) {
+                mensaje = "la seccion no existe";
+            } else if (!new ReservaDaoImp().validarReserva(dto.getId_Reserva())) {
+                mensaje = "La reserva no existe";
+            } else if (new dao.MedicamentoDaoImp().agregar(dto)) {
                 mensaje = "Medicamento agregado";
-                
-            }else{
+            } else {
                 mensaje = "Medicamento no agregado";
             }
-            
-            request.setAttribute("lista",  new dao.MedicamentoDaoImp().listar());
+
+            request.setAttribute("lista", new dao.MedicamentoDaoImp().listar());
             request.setAttribute("mensaje", mensaje);
-            
-           request.getRequestDispatcher("Medicamento/AgregarMedicamento.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Medicamento/AgregarMedicamento.jsp").forward(request, response);
         }
     }
 
