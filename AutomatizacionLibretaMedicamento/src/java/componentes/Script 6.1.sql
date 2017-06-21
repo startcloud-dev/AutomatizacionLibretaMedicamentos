@@ -254,8 +254,8 @@ CREATE TABLE Paciente
 ALTER TABLE Paciente 
     ADD CONSTRAINT "Paciente PK" PRIMARY KEY ( Rut_Paciente ) ;
 	
-INSERT INTO Paciente VALUES ('19.112.792-7','Lucas','Romero','Gonzalez','psje Radon 2345','96358176','k.arnaiz@alumnos.duoc.cl','05-30-1989',1);
-INSERT INTO Paciente VALUES ('1.987.654-2','Marcelo','Martinez','Mendez','Pedro Prado 5678','9035241','marceloM98@gmail.com','07-13-1998',2);
+INSERT INTO Paciente VALUES ('19.112.792-7','Lucas','Romero','Gonzalez','psje Radon 2345','56996358176','k.arnaiz@alumnos.duoc.cl','05-30-1989',1);
+INSERT INTO Paciente VALUES ('1.987.654-2','Marcelo','Martinez','Mendez','Pedro Prado 5678','56964141604','s.aravenag@alumnos.duoc.cl','07-13-1998',2);
 INSERT INTO Paciente VALUES ('15.537.193-k','Felipe','Miranda','Moya','Mistral 6543','5647862','feliMM92@gmail.com','10-10-1992',3);
 
 ALTER TABLE Consulta 
