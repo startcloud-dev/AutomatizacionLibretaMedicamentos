@@ -160,8 +160,8 @@ public class Correo {
             // Creo la parte del mensaje
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setText("Se le recuerda de que debe retirar su "
-                    + " medicamento en la siguiente fecha : "+" Formato fecha : "+" (YYYY-MM-DD) "+ 
-                   fecha.toString() + " Si no debera volver a realizar una nueva consulta ");
+                    + " medicamento en la siguiente fecha : "+fecha.toString()+" Formato fecha : "+" (YYYY-MM-DD) "
+                 +"Si no debera volver a realizar una nueva consulta ");
 
 //                    MimeBodyPart mimeBodyPartAdjunto = new MimeBodyPart();
 //                    mimeBodyPartAdjunto.attachFile("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");

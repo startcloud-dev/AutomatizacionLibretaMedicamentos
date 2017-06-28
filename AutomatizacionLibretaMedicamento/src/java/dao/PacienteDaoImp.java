@@ -186,7 +186,7 @@ public class PacienteDaoImp implements PacienteDao{
             recup.setString(1, rut);
             ResultSet rs = recup.executeQuery();
             while (rs.next()) {
-                clave = rs.getString("telefono");
+                clave = rs.getString("Telefono");
             }
             recup.execute();
             conexion.close();

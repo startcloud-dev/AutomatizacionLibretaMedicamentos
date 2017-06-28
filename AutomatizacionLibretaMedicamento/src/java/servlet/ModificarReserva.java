@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
 import webservice.WSEnviarSMS_Service;
+
+
 /**
  *
  * @author Sergio
@@ -27,15 +29,13 @@ public class ModificarReserva extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_47976/SMS/WSEnviarSMS.wsdl")
     private WSEnviarSMS_Service service;
 
-
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            
-               int codigo = Integer.parseInt(request.getParameter("txtCodigo".trim()));
-
+            int codigo = Integer.parseInt(request.getParameter("txtCodigo".trim()));
+            String rut = request.getParameter("txtPaciente".trim());
             String esta = new ReservaDaoImp().recuperarEstado(codigo);
             String estado = "";
             if (esta.equalsIgnoreCase("En Bodega")) {
@@ -50,7 +50,9 @@ public class ModificarReserva extends HttpServlet {
 
                 String fechaParse = fecha.toString();
 
-                enviarMensajeDeTexto(fechaParse);
+                String numero  = new dao.PacienteDaoImp().recuperarTelefono(rut);
+                
+                enviarMensajeDeTexto(fechaParse, numero);
                 
                 if (cantidad == 0) {
                     request.setAttribute("mensaje", "No se puede descontar stock por este valor " + cantidad);
@@ -62,10 +64,9 @@ public class ModificarReserva extends HttpServlet {
             } else {
                 estado = "En bodega";
                 new ReservaDaoImp().modificarEstado(estado, codigo);
-                String rut = request.getParameter("txtPaciente".trim());
+               
                 String correo = new PacienteDaoImp().recuperarCorreo(rut); 
                 Correo.EnviarRecordatorio(correo);
-                
                 response.sendRedirect("Farmaceutico/BuscarReserva.jsp");
             }
         }
@@ -109,11 +110,14 @@ public class ModificarReserva extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void enviarMensajeDeTexto(java.lang.String fecha) {
+    private void enviarMensajeDeTexto(java.lang.String fecha, java.lang.String numero) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         webservice.WSEnviarSMS port = service.getWSEnviarSMSPort();
-        port.enviarMensajeDeTexto(fecha);
+        port.enviarMensajeDeTexto(fecha, numero);
     }
+
+   
+   
 
 }
